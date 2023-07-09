@@ -17,7 +17,7 @@ export default function SignupPage() {
       });
   
       console.log(response); // Log the response object
-  
+      console.log(response.status);
       const data = await response.json();
       console.log(data); // Log the server's response
   
@@ -25,7 +25,7 @@ export default function SignupPage() {
         setMessage(data.message);
   
         // If signup was successful, redirect to the fitness goals page
-        if (response.status === 201) { // Check for the correct status code
+        if (response.status === 200) { // Check for the correct status code
           router.push('/setGoals');
         }
       } else {
