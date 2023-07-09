@@ -6,7 +6,7 @@ export default function LoginPage() {
   const [message, setMessage] = useState('');
 
   const handleLogin = async (formData) => {
-    const response = await fetch('/api/login', {
+    const response = await fetch('http://localhost:3245/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
