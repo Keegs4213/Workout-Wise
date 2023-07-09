@@ -16,7 +16,7 @@ The main objectives of WorkoutWise are:
 
 WorkoutWise will use the following technologies:
 
-- Frontend: Next.js, React, Typescript, and CSS for styling.
+- Frontend: Next.js, React, Typescript, and React bootstrap + CSS for styling.
 - Backend: Next.js for API routes
 - Database: MongoDB for data persistence.
 - Others: Git/GitHub for version control, Vercel for deployment.
