@@ -1,6 +1,6 @@
 //pages/setGoals.jsx
 
-import styles from './../../app/globals.css'
+import styles from '../app/globals.css'
 import { useRouter } from 'next/router';
 
 const goals = [
