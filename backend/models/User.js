@@ -7,4 +7,14 @@ const userSchema = new Schema({
   password: { type: String, require: true },
 });
 
+userSchema.methods.validatePassword = async function(enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password)
+}
+
+userSchema.pre('save', async function(next) {
+  if(!this.modifiedPaths('password')) {
+    next()
+  }
+})
+
 module.exports = mongoose.model("User", userSchema);
