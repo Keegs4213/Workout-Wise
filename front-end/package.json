@@ -2,7 +2,7 @@
   "name": "workout-wise",
   "version": "0.1.0",
   "private": true,
-  "proxy" :"http://localhost:3245",
+  "proxy": "http://localhost:3245",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -23,6 +23,7 @@
     "next-connect": "^1.0.0",
     "next-cookies": "^2.0.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "typescript": "5.1.6"
   }

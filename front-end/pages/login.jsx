@@ -1,6 +1,8 @@
 // pages/login.jsx
 import { useState } from 'react';
 import LoginForm from '../app/components/LoginForm';
+import Header from '../app/components/Header';
+import "../public/bootstrap.min.css"
 
 export default function LoginPage() {
   const [message, setMessage] = useState('');
@@ -17,6 +19,7 @@ export default function LoginPage() {
 
   return (
     <div>
+      <Header/>
       <h2>Login</h2>
       <LoginForm onLogin={handleLogin} />
       <p>{message}</p>
