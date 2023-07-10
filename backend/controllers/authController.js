@@ -1,15 +1,39 @@
 // authController.js
 const User = require("../models/User");
 const asyncHandler = require("../middleware/asyncHandler");
+const bcrypt = require("bcrypt");
 
 // desc Login user
 // route POST /auth/login
 exports.LoginUser = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
+
+  // Log the email and password to check their values
+  console.log(`Email: ${email}`);
+  console.log(`Password: ${password}`);
+
   const user = await User.findOne({ email });
 
+  // Log the user to check if a user was found
+  console.log(`User: ${JSON.stringify(user)}`);
+
   if (user) {
-    if (user.password === req.body.password) {
+    // Compare the password from the request with the hashed password in the database
+    const validPassword = bcrypt.compare(
+      password,
+      user.password,
+      (err, result) => {
+        if (err) {
+          console.log("err: ", err);
+        } else if (result === true) {
+          console.log("password match!");
+        } else {
+          console.log("password dont match");
+        }
+      }
+    );
+
+    if (validPassword) {
       res.status(200).json({
         message: " user logged in!",
         response: {
@@ -19,11 +43,10 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
         },
       });
     } else {
-      res.status(400);
-      throw new Error("invalid password");
+      res.status(400).json({ message: "Invalid password" });
     }
   } else {
-    console.log("INVALID CREDENTIALS!");
+    res.status(400).json({ message: "Invalid credentials!" });
   }
 });
 
@@ -32,13 +55,21 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
 exports.SignupUser = asyncHandler(async (req, res, next) => {
   const { username, email, password } = req.body;
 
+  // Log the email, username and password to check their values
+  console.log(`Username: ${username}`);
+  console.log(`Email: ${email}`);
+  console.log(`Password: ${password}`);
+
+  // Hash the password
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   // Check if a user with the provided email already exists
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
     res.status(400).json({ message: "User with this email already exists" });
   } else {
-    const user = new User({ username, email, password });
+    const user = new User({ username, email, password: hashedPassword });
 
     // Save the user to the database
     await user.save();

@@ -3,9 +3,11 @@ import { useState } from 'react';
 import LoginForm from '../app/components/LoginForm';
 import Header from '../app/components/Header';
 import "../public/bootstrap.min.css"
+import { useRouter } from 'next/router';
 
 export default function LoginPage() {
   const [message, setMessage] = useState('');
+  const router = useRouter();
 
   const handleLogin = async (formData) => {
     const response = await fetch('http://localhost:3245/auth/login', {
@@ -13,8 +15,12 @@ export default function LoginPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     });
+    
     const data = await response.json();
     setMessage(data.message);
+    if(response.ok) {
+      router.push('/dashboard');
+    }
   };
 
   return (
