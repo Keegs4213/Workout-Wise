@@ -1,15 +1,8 @@
 //components/SignupForm.jsx
-import { useState } from "react";
-import styles from "./../../app/globals.css";
+import { useState, useEffect } from "react";
+import { Form, Button } from "react-bootstrap";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-
-const FormInput = ({label, type, value, onChange, className, name}) => (
-  <label className={styles.signupLabel}>
-    {label}:
-    <input type={type} name={name} value={value} onChange={onChange} className={className} />
-  </label>
-)
+import styles from "./../../app/globals.css";
 
 function SignupForm() {
   const [formState, setFormState] = useState({
@@ -18,6 +11,7 @@ function SignupForm() {
     email: '',
   });
   const [message, setMessage] = useState("");
+  const [usernameTaken, setUsernameTaken] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const router = isClient ? useRouter() : undefined;
 
@@ -46,42 +40,55 @@ function SignupForm() {
         router.push({pathname:`/setGoals`, query:{}});
       }
     } else {
-      setMessage("Signup failed.");
+      if(response.status === 400){
+        setUsernameTaken(true);
+        const data = await response.json();
+        setMessage(data.message);
+      } else {
+        setMessage("Signup failed.");
+      }
     }
   };
 
   return (
     <div className={styles.signupContainer}>
-      <h2>Signup to WorkoutWise</h2>
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          label="Name"
-          type="text"
-          value={formState.username}
-          onChange={handleInputChange}
-          className={styles.signupInput}
-          name="username"
-        />
-        <FormInput
-          label="Email"
-          type="email"
-          value={formState.email}
-          onChange={handleInputChange}
-          className={styles.signupInput}
-          name="email"
-        />
-        <FormInput
-          label="Password"
-          type="password"
-          value={formState.password}
-          onChange={handleInputChange}
-          className={styles.signupInput}
-          name="password"
-        />
-        <button type="submit" className={styles.signupButton}>
+      <h2>Signup</h2>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3">
+          <Form.Label>Name:</Form.Label>
+          <Form.Control
+            type="text"
+            value={formState.username}
+            onChange={handleInputChange}
+            name="username"
+            isInvalid={usernameTaken}
+          />
+          <Form.Control.Feedback type="invalid">
+            Sorry, that username's taken. Try another?
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Email:</Form.Label>
+          <Form.Control
+            type="email"
+            value={formState.email}
+            onChange={handleInputChange}
+            name="email"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
+            type="password"
+            value={formState.password}
+            onChange={handleInputChange}
+            name="password"
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
           Signup
-        </button>
-      </form>
+        </Button>
+      </Form>
       <p>{message}</p>
     </div>
   );

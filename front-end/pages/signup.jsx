@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import SignupForm from '../app/components/SignupForm';
 import { useRouter } from 'next/router';
+import Header from '../app/components/Header';
+import styles from "../app/globals.css"
+import "../public/bootstrap.min.css"
 
 export default function SignupPage() {
   const [message, setMessage] = useState('');
@@ -37,8 +40,8 @@ export default function SignupPage() {
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
+    <div className={styles["page-container"]}>
+      <Header/>
       <SignupForm onSignup={handleSignup} />
       <p>{message}</p>
     </div>

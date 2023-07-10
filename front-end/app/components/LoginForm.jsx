@@ -1,6 +1,7 @@
 // Loginpage.jsx
 import { useState } from 'react';
 import styles from './../../app/globals.css'
+import { Form, Button } from 'react-bootstrap';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -33,21 +34,22 @@ function LoginPage() {
 
   return (
     <div className={styles.loginContainer}>
-      <h2>Login to WorkoutWise</h2>
-      <form onSubmit={handleSubmit}>
-        <label className={styles.loginLabel}>
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} className={styles.loginInput} />
-        </label>
-        <label className={styles.loginLabel}>
-          Password:
-          <input type="password" value={password} onChange={handlePasswordChange} className={styles.loginInput} />
-        </label>
-        <button type="submit" className={styles.loginButton}>Login</button>
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className={styles.loginLabel}>
+          <Form.Label>Username:</Form.Label>
+          <Form.Control type="text" value={username} onChange={handleUsernameChange} className={styles.loginInput} />
+        </Form.Group>
+        <Form.Group className={styles.loginLabel}>
+          <Form.Label>Password:</Form.Label>
+          <Form.Control type="password" value={password} onChange={handlePasswordChange} className={styles.loginInput} />
+        </Form.Group>
+        <Button variant="primary" type="submit" className={styles.loginButton}>Login</Button>
+      </Form>
+      <a href="/signup"><p>Don't have an account?</p></a>
       <p>{message}</p>
     </div>
   );
 }
 
 export default LoginPage;
+
