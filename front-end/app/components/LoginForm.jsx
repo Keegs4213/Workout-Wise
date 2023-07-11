@@ -43,6 +43,7 @@ function LoginPage() {
           <Form.Label>Password:</Form.Label>
           <Form.Control type="password" value={password} onChange={handlePasswordChange} className={styles.loginInput} />
         </Form.Group>
+        <br></br>
         <Button variant="primary" type="submit" className={styles.loginButton}>Login</Button>
       </Form>
       <a href="/signup"><p>Don't have an account?</p></a>

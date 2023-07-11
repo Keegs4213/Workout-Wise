@@ -90,6 +90,11 @@ https://spoonacular.com/food-api
 take into account dietary requirements - allergens 
 
 
+dashboard - ringlet tracker - weight? + water intake or graph instead of ringlet 
+
+workout page - workout plan - tracking of some sort
+nutrition page - plan + tracking
+profile page - edit profile + set photo and settings
 
 
 
@@ -100,3 +105,5 @@ take into account dietary requirements - allergens
 
 stuff used;
 jwt password hashing
+
+
