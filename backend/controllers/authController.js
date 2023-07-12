@@ -19,21 +19,18 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
 
   if (user) {
     // Compare the password from the request with the hashed password in the database
-    const validPassword = bcrypt.compare(
-      password,
-      user.password,
-      (err, result) => {
-        if (err) {
-          console.log("err: ", err);
-        } else if (result === true) {
-          console.log("password match!");
-        } else {
-          console.log("password dont match");
-        }
+    bcrypt.compare(password, user.password, (err, result) => {
+      if (err) {
+        console.log("err: ", err);
       }
-    );
+      return result;
+    });
 
-    if (validPassword) {
+    if (
+      user &&
+      user.password &&
+      (await bcrypt.compare(password, user.password))
+    ) {
       res.status(200).json({
         message: " user logged in!",
         response: {

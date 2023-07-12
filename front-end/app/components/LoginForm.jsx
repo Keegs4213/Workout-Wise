@@ -1,5 +1,6 @@
 // Loginpage.jsx
 import { useState } from 'react';
+import { useRouter } from 'next/router'
 import styles from './../../app/globals.css'
 import { Form, Button } from 'react-bootstrap';
 
@@ -7,6 +8,8 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+
+  const router =  useRouter()
 
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
@@ -22,8 +25,9 @@ function LoginPage() {
 
     if (response.ok) {
       const data = await response.json();
-      if (data.success) {
+      if (data) {
         setMessage('Login successful!');
+        router.push('/dashboard')
       } else {
         setMessage('Login failed.');
       }

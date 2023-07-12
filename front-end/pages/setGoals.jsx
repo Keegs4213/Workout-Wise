@@ -2,35 +2,42 @@
 
 import styles from '../app/globals.css'
 import { useRouter } from 'next/router';
+import '../public/bootstrap.min.css';
+import Header from '../app/components/Header';
+
 
 const goals = [
   {
-    image: "/path/to/image1.png",
-    name: "Goal 1"
+    image: "/musclegain.png",
+    name: "Muscle Gain"
   },
   {
-    image: "/path/to/image2.png",
-    name: "Goal 2"
+    image: "/fatloss.png",
+    name: "Fat Loss"
   },
   {
-    image: "/path/to/image3.png",
-    name: "Goal 3"
+    image: "/toneup.png",
+    name: "Tone up"
   },
   {
-    image: "/path/to/image4.png",
-    name: "Goal 4"
+    image: "/mobility.png",
+    name: "Mobility"
   },
 ];
 
 function FitnessGoalsPage() {
   const router = useRouter();
 
-  const handleGoalClick = () => {
-    router.push('/customize-goal');
+  const handleGoalClick = (goal) => {
+    // Save goal to local storage
+    localStorage.setItem("fitnessGoal", goal);
+  
+    router.push('/fitnessLevel');
   };
 
   return (
     <div className={styles.fitnessGoalsContainer}>
+      <Header/>
       <h2>Select Your Fitness Goal</h2>
       <div className={styles.goalsGrid}>
         {goals.map((goal, index) => (

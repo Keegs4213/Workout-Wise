@@ -9,25 +9,25 @@ export default function LoginPage() {
   const [message, setMessage] = useState('');
   const router = useRouter();
 
-  const handleLogin = async (formData) => {
-    const response = await fetch('http://localhost:3245/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+  // const handleLogin = async (formData) => {
+  //   const response = await fetch('http://localhost:3245/auth/login', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(formData),
+  //   });
     
-    const data = await response.json();
-    setMessage(data.message);
-    if(response.ok) {
-      router.push('/dashboard');
-    }
-  };
+  //   const data = await response.json();
+  //   setMessage(data.message);
+  //   if(response.ok) {
+  //     router.push('/dashboard');
+  //   }
+  // };
 
   return (
     <div>
       <Header/>
       <h2>Login</h2>
-      <LoginForm onLogin={handleLogin} />
+      <LoginForm />
       <p>{message}</p>
     </div>
   );

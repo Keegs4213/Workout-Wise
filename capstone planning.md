@@ -76,34 +76,27 @@ workout apis
 
 CRUD users
 
-
-
 Material UI
 find API
 redux?
 
-
 Apis
-https://api-ninjas.com/api/exercises 
-https://spoonacular.com/food-api 
+https://api-ninjas.com/api/exercises
+https://spoonacular.com/food-api
 
-take into account dietary requirements - allergens 
+take into account dietary requirements - allergens
 
-
-dashboard - ringlet tracker - weight? + water intake or graph instead of ringlet 
+dashboard - ringlet tracker - steps? weight? + water intake or graph instead of ringlet
 
 workout page - workout plan - tracking of some sort
 nutrition page - plan + tracking
 profile page - edit profile + set photo and settings
 
-
-
-
-
-
-
+make WorkoutWise logo top of page and bigger
+Workout plan page - click on specific exercise for demo?
 
 stuff used;
 jwt password hashing
 
-
+stuff to ask
+page or app router for an app?
