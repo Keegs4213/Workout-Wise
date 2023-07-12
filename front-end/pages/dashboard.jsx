@@ -7,9 +7,14 @@ import Header from '../app/components/Header';
 import styles from '../app/globals.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import '../public/bootstrap.min.css';
+import { Chart as ChartJS, ArcElement } from 'chart.js';
 
-// Use dynamic import for Chart
+
+
 const Chart = dynamic(() => import('react-chartjs-2').then(mod => mod.Doughnut), { ssr: false });
+ChartJS.register(ArcElement);
+// Use dynamic import for Chart
+
 
 export default function Dashboard() {
   const data = {
@@ -33,16 +38,8 @@ export default function Dashboard() {
   return (
     <main style={{ height: '100vh' }}>
       <Header />
-      <Image
-        className={styles.logo}
-        src="/workout-wise-logo.svg" // replace with the path of your logo
-        alt="Workout Wise Logo"
-        width={180}
-        height={37}
-        priority
-      />
       <div>
-        <Chart data={data} />
+      {typeof window !== 'undefined' && <Chart data={data} />}
       </div>
       <Navbar fixed="bottom" bg="light" variant="light">
         <Nav className="mr-auto">
