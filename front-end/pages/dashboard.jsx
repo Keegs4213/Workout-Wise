@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import Header from '../app/components/Header';
-import styles from '../app/globals.css';
+import styles from '../app/globals.module.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import '../public/bootstrap.min.css';
 import { Chart as ChartJS, ArcElement } from 'chart.js';

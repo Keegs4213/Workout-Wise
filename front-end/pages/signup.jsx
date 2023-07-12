@@ -3,7 +3,7 @@ import { useState } from 'react';
 import SignupForm from '../app/components/SignupForm';
 import { useRouter } from 'next/router';
 import Header from '../app/components/Header';
-import styles from "../app/globals.css"
+import styles from '../app/globals.module.css';
 import "../public/bootstrap.min.css"
 
 export default function SignupPage() {

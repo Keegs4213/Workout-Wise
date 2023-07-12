@@ -1,0 +1,117 @@
+/* globals.modules.css */
+
+.fitnessGoalsContainer {
+  text-align: center;
+  padding: 20px;
+}
+
+.goalsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+
+.goalCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.goalImage {
+  width: 100%;
+  height: auto;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #ff5722; /* or any other color you like */
+  color: #ffffff; /* or any other color you like */
+  padding: 20px;
+  position: relative;
+}
+
+.headerTitle {
+  font-family: "YourCoolFont", sans-serif; /* Replace 'YourCoolFont' with your custom font */
+  font-size: 2em;
+  margin-left: 20px;
+}
+
+.fa-icon {
+  width: 1em; 
+  height: 1em; 
+}
+
+.animatedBackground {
+  position: relative !important;
+  background-repeat: no-repeat;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+
+  background: #189fff !important;
+  animation: pulse 5s infinite !important;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.page-container {
+  position: relative;
+}
+
+.page-container::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: #133955;
+  animation: pulse 5s infinite;
+}
+
+/* Goals page */
+
+.fitnessGoalsContainer {
+  padding: 2rem;
+}
+
+.goalCard {
+  border-radius: 10px !important;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+.goalCard:hover {
+  transform: scale(1.05);
+}
+
+.goalImage {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 250px !important; /* Adjust this as per your needs */
+  object-fit: cover !important;
+  border-radius: 10px !important;
+}

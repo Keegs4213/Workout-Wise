@@ -1,26 +1,26 @@
 //pages/setGoals.jsx
 
-import styles from '../app/globals.css'
 import { useRouter } from 'next/router';
-import '../public/bootstrap.min.css';
-import Header from '../app/components/Header';
-
+import Header from "../app/components/Header";
+import { Card, Container, Row, Col } from 'react-bootstrap';
+import styles from '../app/globals.module.css';
+import "../public/bootstrap.min.css";
 
 const goals = [
   {
-    image: "/musclegain.png",
+    image: "/musclegain.jpg",
     name: "Muscle Gain"
   },
   {
-    image: "/fatloss.png",
+    image: "/fatloss.jpg",
     name: "Fat Loss"
   },
   {
-    image: "/toneup.png",
+    image: "/toneup.jpg",
     name: "Tone up"
   },
   {
-    image: "/mobility.png",
+    image: "/mobility.jpg",
     name: "Mobility"
   },
 ];
@@ -30,25 +30,34 @@ function FitnessGoalsPage() {
 
   const handleGoalClick = (goal) => {
     // Save goal to local storage
-    localStorage.setItem("fitnessGoal", goal);
+    localStorage.setItem("fitnessGoal", goal.name);
   
     router.push('/fitnessLevel');
   };
 
-  return (
-    <div className={styles.fitnessGoalsContainer}>
-      <Header/>
+return (
+  <div>
+    <Header />
+    <Container className={styles.fitnessGoalsContainer}>
       <h2>Select Your Fitness Goal</h2>
-      <div className={styles.goalsGrid}>
-        {goals.map((goal, index) => (
-          <div key={index} onClick={handleGoalClick} className={styles.goalCard}>
-            <img src={goal.image} alt={goal.name} className={styles.goalImage} />
-            <h3>{goal.name}</h3>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+      <Row>
+     {goals.map((goal, index) => (
+   <Col key={index} sm={12} md={6} lg={6}>
+   <Card className={`card text-white bg-primary mb-3 ${styles.goalCard}`} onClick={() => handleGoalClick(goal)}>
+     <Card.Img variant="top" src={goal.image} className={styles.goalImage} />
+     <Card.Body>
+       <Card.Title>{goal.name}</Card.Title>
+       <Card.Text>
+         {goal.description}
+       </Card.Text>
+     </Card.Body>
+   </Card>
+ </Col>
+))}
+      </Row>
+    </Container>
+  </div>
+);
 }
 
 export default FitnessGoalsPage;

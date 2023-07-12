@@ -31,6 +31,8 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
       user.password &&
       (await bcrypt.compare(password, user.password))
     ) {
+      // Save user ID to local storage
+      localStorage.setItem("userId", user._id);
       res.status(200).json({
         message: " user logged in!",
         response: {
