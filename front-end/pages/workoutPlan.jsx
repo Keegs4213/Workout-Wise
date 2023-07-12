@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Header from "../app/components/Header"
 import "../public/bootstrap.min.css"
 
+
 const WorkoutWise = () => {
   const [exercises, setExercises] = useState([]);
   

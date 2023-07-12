@@ -1,163 +1,71 @@
 /* globals.css */
 :root {
-  --max-width: 1280px;
-  --max-height: 960;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-  --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-  --secondary-glow: linear-gradient(
-    to bottom right,
-    rgba(1, 65, 255, 0),
-    rgba(1, 65, 255, 0),
-    rgba(1, 65, 255, 0.3)
-  );
-
-  --tile-start-rgb: 2, 13, 46;
-  --tile-end-rgb: 2, 5, 19;
-  --tile-border: conic-gradient(
-    #ffffff80,
-    #ffffff40,
-    #ffffff30,
-    #ffffff20,
-    #ffffff10,
-    #ffffff10,
-    #ffffff80
-  );
-
-  --callout-rgb: 20, 20, 20;
-  --callout-border-rgb: 108, 108, 108;
-  --card-rgb: 100, 100, 100;
-  --card-border-rgb: 200, 200, 200;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html,
-body {
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: auto;
-  height: 100vh;
-}
-
-a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-@media (prefers-color-scheme: dark) {
+    --max-width: 1280px;
+    --max-height: 960;
+    --border-radius: 12px;
+    --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+      "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+      "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+  
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
+  
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+  
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
   html {
-    color-scheme: dark;
+    overflow-x: hidden;
   }
-}
-
-.fitnessGoalsContainer {
-  text-align: center;
-  padding: 20px;
-}
-
-.goalsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  padding: 20px;
-}
-
-.goalCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.goalImage {
-  width: 100%;
-  height: auto;
-}
-
-/* Header */
-.header {
-  display: flex;
-  align-items: center;
-  background-color: #ff5722; /* or any other color you like */
-  color: #ffffff; /* or any other color you like */
-  padding: 20px;
-  position: relative;
-}
-
-.headerTitle {
-  font-family: "YourCoolFont", sans-serif; /* Replace 'YourCoolFont' with your custom font */
-  font-size: 2em;
-  margin-left: 20px;
-}
-
-.fa-icon {
-  width: 1em; 
-  height: 1em; 
-}
-
-.animatedBackground {
-  position: relative !important;
-  background-repeat: no-repeat;
-  height: 100% !important;
-  top: 0 !important;
-  left: 0 !important;
-
-  background: #189fff !important;
-  animation: pulse 5s infinite !important;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
+  
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.7;
+  
+  a {
+    color: inherit;
+    text-decoration: underline;
   }
-  100% {
-    transform: scale(1);
-    opacity: 1;
+  
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: dark;
+    }
   }
-}
-
-.page-container {
-  position: relative;
-}
-
-.page-container::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  background: #133955;
-  animation: pulse 5s infinite;
-}
-

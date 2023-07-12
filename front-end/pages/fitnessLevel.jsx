@@ -3,14 +3,14 @@
 import { useRouter } from 'next/router';
 import Header from "../app/components/Header";
 import { Card, Container, Row, Col } from 'react-bootstrap';
-import styles from '../app/globals.css';
+import styles from '../app/globals.module.css';
 import "../public/bootstrap.min.css";
 import axios from 'axios';
 
 const levels = [
   { image: "/beginner.jpg",
     name: "Beginner",
-    description: "You don't exercise regularly and don't have much experience."
+    description: "You exercise infrequently and don't have much experience."
    
   },
   { image: "/intermediate.jpg",
@@ -56,7 +56,7 @@ function FitnessLevelPage() {
         <Row>
           {levels.map((level, index) => (
             <Col key={index} sm={12} md={4} lg={4}>
-              <Card onClick={() => handleLevelClick(level)} class="card text-white bg-primary mb-3" >
+              <Card onClick={() => handleLevelClick(level)} className="card text-white bg-primary mb-3" >
               <Card.Img variant="top" src={level.image} /> 
                 <Card.Body>
                   <Card.Title>{level.name}</Card.Title>
