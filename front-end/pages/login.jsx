@@ -10,22 +10,8 @@ export default function LoginPage() {
   const [message, setMessage] = useState('');
   const router = useRouter();
 
-  // const handleLogin = async (formData) => {
-  //   const response = await fetch('http://localhost:3245/auth/login', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(formData),
-  //   });
-    
-  //   const data = await response.json();
-  //   setMessage(data.message);
-  //   if(response.ok) {
-  //     router.push('/dashboard');
-  //   }
-  // };
-
   return (
-    <div>
+    <div className={styles["page-container"]}>
       <Header/>
       <h2>Login</h2>
       <LoginForm />

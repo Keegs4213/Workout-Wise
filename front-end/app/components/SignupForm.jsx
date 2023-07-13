@@ -2,16 +2,16 @@
 import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useRouter } from "next/router";
-import styles from "./../../app/globals.css";
+import styles from "./../../app/globals.module.css";
 
 function SignupForm() {
   const [formState, setFormState] = useState({
-    username: '',
-    password: '',
-    email: '',
+    username: "",
+    password: "",
+    email: "",
   });
   const [message, setMessage] = useState("");
-  const [usernameTaken, setUsernameTaken] = useState(false);
+  const [emailTaken, setEmailTaken] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const router = isClient ? useRouter() : undefined;
 
@@ -20,8 +20,8 @@ function SignupForm() {
   }, []);
 
   const handleInputChange = (event) => {
-    const {name, value} = event.target;
-    setFormState(prevState => ({...prevState, [name]: value}));
+    const { name, value } = event.target;
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
@@ -36,12 +36,12 @@ function SignupForm() {
     if (response.ok) {
       const data = await response.json();
       setMessage(data.message);
-      if(router) {
-        router.push({pathname:`/setGoals`, query:{}});
+      if (router) {
+        router.push({ pathname: `/setGoals`, query: {} });
       }
     } else {
-      if(response.status === 400){
-        setUsernameTaken(true);
+      if (response.status === 400) {
+        setEmailTaken(true);
         const data = await response.json();
         setMessage(data.message);
       } else {
@@ -51,7 +51,7 @@ function SignupForm() {
   };
 
   return (
-    <div className={styles.signupContainer}>
+    <div>
       <h2>Signup</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
@@ -61,11 +61,8 @@ function SignupForm() {
             value={formState.username}
             onChange={handleInputChange}
             name="username"
-            isInvalid={usernameTaken}
+            required
           />
-          <Form.Control.Feedback type="invalid">
-            Sorry, that username's taken. Try another?
-          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Email:</Form.Label>
@@ -74,7 +71,12 @@ function SignupForm() {
             value={formState.email}
             onChange={handleInputChange}
             name="email"
+            isInvalid={emailTaken}
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            Sorry, that email address is taken. Try another?
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Password:</Form.Label>
