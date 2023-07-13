@@ -1,7 +1,7 @@
 // Loginpage.jsx
 import { useState } from 'react';
 import { useRouter } from 'next/router'
-import styles from './../../app/globals.css'
+import styles from './../../app/globals.module.css'
 import { Form, Button } from 'react-bootstrap';
 
 function LoginPage() {
