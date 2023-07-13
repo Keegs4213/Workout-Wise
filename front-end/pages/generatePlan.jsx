@@ -7,68 +7,48 @@ import "../public/bootstrap.min.css";
 import styles from '../app/globals.module.css';
 
 function GeneratePlanPage() {
-  const [exercisePlan, setExercisePlan] = useState(null);
-  const [nutritionPlan, setNutritionPlan] = useState(null);
-  const [fitnessGoal, setFitnessGoal] = useState("");
-  const [fitnessLevel, setFitnessLevel] = useState("");
+  const [exercisePlan, setExercisePlan] = useState([]);
 
   useEffect(() => {
-    const workoutPlan = JSON.parse(localStorage.getItem("workoutPlan"));
-    const nutritionPlan = JSON.parse(localStorage.getItem("nutritionPlan"));
+    const fitnessGoal = localStorage.getItem("fitnessGoal");
+    const fitnessLevel = localStorage.getItem("fitnessLevel");
+    console.log(fitnessGoal);
+    console.log(fitnessLevel);
 
-    // Retrieve fitness goal and level
-    const storedFitnessGoal = localStorage.getItem("fitnessGoal");
-    const storedFitnessLevel = localStorage.getItem("fitnessLevel");
-
-    setExercisePlan(workoutPlan);
-    setNutritionPlan(nutritionPlan);
-    setFitnessGoal(storedFitnessGoal);
-    setFitnessLevel(storedFitnessLevel);
-  }, []);
-
-  useEffect(() => {
-    // Determine the exercise type based on fitness goal
-    let exerciseType = "";
-    switch(fitnessGoal) {
-      case "mobility":
-        exerciseType = "stretching";
-        break;
+    // Determine the exercise types based on fitness goal
+    let exerciseTypes = [];
+    switch(fitnessGoal.toLowerCase()) {
       case "muscle gain":
-        exerciseType = "strength";
-        break;
-      case "tone up":
-        exerciseType = "strength" + "cardio"
+        exerciseTypes = ["strength"];
         break;
       case "lose fat":
-        exerciseType = "cardio"
-      // Add more cases as per the goals
+        exerciseTypes = ["cardio"];
+        break;
+      case "tone up":
+        exerciseTypes = ["strength", "cardio"];
+        break;
+      case "mobility":
+        exerciseTypes = ["stretching"];
+        break;
       default:
-        exerciseType = "strength"; // default value
+        exerciseTypes = ["strength"]; // default value
     }
 
-    // Fetch exercise plan
-    axios.get(`https://api.api-ninjas.com/v1/exercises?type=${exerciseType}&difficulty=${fitnessLevel}`, {
-      headers: {
-        'X-Api-Key': 'VPInujgC7uxthV//ZJVY4g==01tRgS7nO7Xsk04W'
-      }
-    })
+    exerciseTypes.forEach((type) => {
+      // Fetch exercise plan for each type
+      axios.get(`https://api.api-ninjas.com/v1/exercises?type=${type}&difficulty=${fitnessLevel}`, {
+        headers: {
+          'X-Api-Key': 'VPInujgC7uxthV//ZJVY4g==01tRgS7nO7Xsk04W'
+        }
+      })
       .then(response => {
-        setExercisePlan(response.data);
+        setExercisePlan(prevPlan => [...prevPlan, ...response.data]);
       })
       .catch(error => {
         console.error("Error fetching exercise plan:", error);
       });
-
-    // Fetch nutrition plan
-    // Please replace 'YOUR_SPOONACULAR_API_KEY' with your actual API key
-    axios.get(`https://api.spoonacular.com/mealplanner/generate?apiKey=YOUR_SPOONACULAR_API_KEY&timeFrame=week&diet=${fitnessGoal}`)
-      .then(response => {
-        setNutritionPlan(response.data);
-      })
-      .catch(error => {
-        console.error("Error fetching nutrition plan:", error);
-      });
-  }, [fitnessGoal, fitnessLevel]); // added dependencies
+    });
+  }, []);
 
   return (
     <div>
@@ -83,10 +63,6 @@ function GeneratePlanPage() {
             <p>{exercise.description}</p>
           </div>
         ))}
-      </div>
-      <div>
-        <h3>Nutrition Plan:</h3>
-        {/* Display the nutrition plan here */}
       </div>
     </div>
   );

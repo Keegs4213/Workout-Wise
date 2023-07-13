@@ -27,6 +27,8 @@ function LoginPage() {
       const data = await response.json();
       if (data) {
         setMessage('Login successful!');
+        // Save the user's ID to local storage
+      localStorage.setItem('userId', data.response._id);
         router.push('/dashboard')
       } else {
         setMessage('Login failed.');

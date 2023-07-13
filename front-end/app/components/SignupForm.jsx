@@ -6,7 +6,7 @@ import styles from "./../../app/globals.module.css";
 
 function SignupForm() {
   const [formState, setFormState] = useState({
-    username: "",
+    name: "",
     password: "",
     email: "",
   });
@@ -36,6 +36,8 @@ function SignupForm() {
     if (response.ok) {
       const data = await response.json();
       setMessage(data.message);
+      // Store user's ID in local storage
+    localStorage.setItem('userId', data.response._id);
       if (router) {
         router.push({ pathname: `/setGoals`, query: {} });
       }
@@ -58,9 +60,9 @@ function SignupForm() {
           <Form.Label>Name:</Form.Label>
           <Form.Control
             type="text"
-            value={formState.username}
+            value={formState.name}
             onChange={handleInputChange}
-            name="username"
+            name="name"
             required
           />
         </Form.Group>

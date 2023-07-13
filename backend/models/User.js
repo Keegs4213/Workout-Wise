@@ -1,10 +1,13 @@
+//models/User.js
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
-  name: { type: String, require: true },
-  email: { type: String, require: true },
-  password: { type: String, require: true },
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
   fitnessGoal: { type: String },
   fitnessLevel: { type: String },
   workoutPlan: { type: Object },
@@ -16,9 +19,12 @@ userSchema.methods.validatePassword = async function(enteredPassword) {
 }
 
 userSchema.pre('save', async function(next) {
-  if(!this.modifiedPaths('password')) {
-    next()
+  if(!this.isModified('password')) {
+    next();
+  } else {
+    this.password = await bcrypt.hash(this.password, 10);
+    next();
   }
-})
+});
 
 module.exports = mongoose.model("User", userSchema);
