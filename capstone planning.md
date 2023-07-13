@@ -94,6 +94,10 @@ profile page - edit profile + set photo and settings
 
 make WorkoutWise logo top of page and bigger
 Workout plan page - click on specific exercise for demo?
+setGoals page fix scroll and image sizing
+fitnessLevel make cards hover and change colour when hovered
+make loading screen between pages that need it
+generate plan page - make it nice table and show descriptions, details etc.
 
 stuff used;
 jwt password hashing
