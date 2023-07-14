@@ -58,6 +58,13 @@
     min-height: 100vh;
     overflow: hidden;
   }
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    padding: 20px;
+    position: relative;
+  }
   
   a {
     color: inherit;

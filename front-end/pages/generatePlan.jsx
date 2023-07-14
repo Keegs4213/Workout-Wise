@@ -5,6 +5,7 @@ import axios from 'axios';
 import Header from "../app/components/Header";
 import "../public/bootstrap.min.css";
 import styles from '../app/globals.module.css';
+import { Table } from 'react-bootstrap';
 
 function GeneratePlanPage() {
   const [exercisePlan, setExercisePlan] = useState([]);
@@ -15,17 +16,22 @@ function GeneratePlanPage() {
     console.log(fitnessGoal);
     console.log(fitnessLevel);
 
+     // If the user hasn't set fitnessGoal and fitnessLevel yet, don't make an API request.
+     if (!fitnessGoal || !fitnessLevel) {
+      return;
+    }
+
     // Determine the exercise types based on fitness goal
     let exerciseTypes = [];
     switch(fitnessGoal.toLowerCase()) {
       case "muscle gain":
         exerciseTypes = ["strength"];
         break;
-      case "lose fat":
+      case "fat loss":
         exerciseTypes = ["cardio"];
         break;
       case "tone up":
-        exerciseTypes = ["strength", "cardio"];
+        exerciseTypes = ["strength"];
         break;
       case "mobility":
         exerciseTypes = ["stretching"];
@@ -42,13 +48,13 @@ function GeneratePlanPage() {
         }
       })
       .then(response => {
-        setExercisePlan(prevPlan => [...prevPlan, ...response.data]);
+        setExercisePlan(response.data);
       })
       .catch(error => {
         console.error("Error fetching exercise plan:", error);
       });
     });
-  }, []);
+  },[]);
 
   return (
     <div>
@@ -56,13 +62,31 @@ function GeneratePlanPage() {
       <h2>Your Customized Plan</h2>
       <div>
         <h3>Exercise Plan:</h3>
-        {/* Display the exercise plan here */}
-        {exercisePlan && exercisePlan.map((exercise, index) => (
-          <div key={index}>
-            <h4>{exercise.name}</h4>
-            <p>{exercise.description}</p>
-          </div>
-        ))}
+        {/* Display the exercise plan in a table */}
+        {exercisePlan && exercisePlan.length > 0 && (
+          <Table striped bordered hover className={`table-primary ${styles.exerciseTable}`}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Muscle</th>
+                <th>Difficulty</th>
+                <th>Instructions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {exercisePlan.map((exercise, index) => (
+                <tr key={index}>
+                  <td>{exercise.name}</td>
+                  <td>{exercise.type}</td>
+                  <td>{exercise.muscle}</td>
+                  <td>{exercise.difficulty}</td>
+                  <td className={styles.tableInstructions}>{exercise.instructions}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
       </div>
     </div>
   );

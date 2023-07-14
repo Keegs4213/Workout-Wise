@@ -9,19 +9,23 @@ import "../public/bootstrap.min.css";
 const goals = [
   {
     image: "/musclegain.jpg",
-    name: "Muscle Gain"
+    name: "Muscle Gain",
+    description: "Build muscle and increase strength."
   },
   {
     image: "/fatloss.jpg",
-    name: "Fat Loss"
+    name: "Fat Loss",
+    description: "Burn fat and increase your metabolism."
   },
   {
     image: "/toneup.jpg",
-    name: "Tone up"
+    name: "Tone up",
+    description: "Define muscles and increase endurance."
   },
   {
     image: "/mobility.jpg",
-    name: "Mobility"
+    name: "Mobility",
+    description: "Increase flexibility and joint health."
   },
 ];
 
@@ -42,12 +46,12 @@ return (
       <h2>Select Your Fitness Goal</h2>
       <Row>
      {goals.map((goal, index) => (
-   <Col key={index} sm={12} md={6} lg={6}>
+   <Col key={index} xs={12} sm={6} md={3}>
    <Card className={`card text-white bg-primary mb-3 ${styles.goalCard}`} onClick={() => handleGoalClick(goal)}>
      <Card.Img variant="top" src={goal.image} className={styles.goalImage} />
      <Card.Body>
        <Card.Title>{goal.name}</Card.Title>
-       <Card.Text>
+       <Card.Text className={styles.goalDescription}>
          {goal.description}
        </Card.Text>
      </Card.Body>

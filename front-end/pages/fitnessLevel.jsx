@@ -78,7 +78,7 @@ function FitnessLevelPage() {
             <Col key={index} sm={12} md={4} lg={4}>
               <Card
                 onClick={() => handleLevelClick(level)}
-                className="card text-white bg-primary mb-3"
+                className={`card text-white bg-primary mb-3 ${styles.levelCard}`}
               >
                 <Card.Img variant="top" src={level.image} />
                 <Card.Body>
