@@ -92,12 +92,22 @@ workout page - workout plan - tracking of some sort
 nutrition page - plan + tracking
 profile page - edit profile + set photo and settings
 
+
+to do:
 make WorkoutWise logo top of page and bigger
 Workout plan page - click on specific exercise for demo?
-setGoals page fix scroll and image sizing
-fitnessLevel make cards hover and change colour when hovered
+fitnessLevel change colour when hovered
 make loading screen between pages that need it
-generate plan page - make it nice table and show descriptions, details etc.
+after fitnessLevel - clickable generate workout plan button - loading screen
+split workout plan into day 1, day 2 etc. show sets + reps?
+generate plan page - make it nice table and show descriptions, details etc. 
+split workout plan into days etc.
+design dashboard
+profile page - upload image
+tracking workouts 
+
+nutrition stuff if time
+
 
 stuff used;
 jwt password hashing

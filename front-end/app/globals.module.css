@@ -14,7 +14,7 @@
 
 .ctaButton {
   font-size: 1.2rem;
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   margin-top: 2rem;
 }
 
@@ -24,7 +24,6 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-
 .heroImageCard {
   border-radius: 1rem;
   overflow: hidden;
@@ -32,41 +31,11 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-
-
-/* Goals page */
-.fitnessGoalsContainer {
-  text-align: center;
-  padding: 20px;
-}
-
-.goalsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  padding: 20px;
-}
-
-.goalCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.goalImage {
-  width: 100%;
-  height: auto;
-}
-
 /* Header */
 .header {
   display: flex;
   align-items: center;
+  justify-content: center; /* add this line */
   background-color: #ff5722; /* or any other color you like */
   color: #ffffff; /* or any other color you like */
   padding: 20px;
@@ -76,14 +45,12 @@
 .headerTitle {
   font-family: "YourCoolFont", sans-serif; /* Replace 'YourCoolFont' with your custom font */
   font-size: 2em;
-  margin-left: 20px;
 }
 
 .fa-icon {
-  width: 1em; 
-  height: 1em; 
+  width: 1em;
+  height: 1em;
 }
-
 
 @keyframes pulse {
   0% {
@@ -109,7 +76,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  padding: 50px!important;
+  padding: 50px !important;
   z-index: -1;
   background: #133955;
   animation: pulse 5s infinite;
@@ -118,29 +85,59 @@
   border-radius: 10px;
 }
 
-
-
 /* Goals page */
 
 .fitnessGoalsContainer {
-  padding: 2rem;
+  padding: 1rem;
+  text-align: center;
 }
 
 .goalCard {
-  border-radius: 10px !important;
+  border-radius: 5px !important;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1) !important;
   transition: transform 0.3s ease-in-out !important;
   cursor: pointer !important;
+  max-height: 350px; /* Adjust as per your requirements */
+  width: 100%; /* This will make the card responsive */
+  margin: 15px; /* Adds a gap around each card */
+  display: flex;
+  flex-direction: column;
+  object-fit: cover;
 }
 
 .goalCard:hover {
   transform: scale(1.05);
 }
+.goalDescription {
+  font-size: 12px;
+}
+.Card.Body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* Fitness Level page */
+.levelCard {
+  border-radius: 5px !important;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s ease-in-out !important;
+  cursor: pointer !important;
+  height: 400px; /* Adjust as per your requirements */
+  width: 100%; /* This will make the card responsive */
+  margin: 15px; /* Adds a gap around each card */
+  display: flex;
+  flex-direction: column;
+}
+.levelCard:hover {
+  transform: scale(1.05);
+}
 
-.goalImage {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 250px !important; /* Adjust this as per your needs */
-  object-fit: cover !important;
-  border-radius: 10px !important;
+/* Generate Plan page */
+.tableInstructions {
+  font-size: 10px;
+}
+
+.table {
+  border: 1px solid #ddd;
 }
