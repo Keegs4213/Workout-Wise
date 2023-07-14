@@ -43,7 +43,7 @@ return (
   <div>
     <Header />
     <Container className={styles.fitnessGoalsContainer}>
-      <h2>Select Your Fitness Goal</h2>
+      <h2 className={styles.header2}>Select Your Fitness Goal</h2>
       <Row>
      {goals.map((goal, index) => (
    <Col key={index} xs={12} sm={6} md={3}>
