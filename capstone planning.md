@@ -94,23 +94,42 @@ profile page - edit profile + set photo and settings
 
 
 to do:
-make WorkoutWise logo top of page and bigger
 Workout plan page - click on specific exercise for demo?
 fitnessLevel change colour when hovered
 make loading screen between pages that need it
 after fitnessLevel - clickable generate workout plan button - loading screen
 split workout plan into day 1, day 2 etc. show sets + reps?
-generate plan page - make it nice table and show descriptions, details etc. 
+generate plan page - make it nice table and show descriptions, details etc. - demo?
 split workout plan into days etc.
 design dashboard
 profile page - upload image
 tracking workouts 
+generate plan page - proceed to dashboard button 
+
+make sure client healthy to train on signup
+add paypal thing
+
+Dashboard nav bar at bottom 
+
+
+
+landing page - modal of people exercising video? cool animation 
 
 nutrition stuff if time
+
+
+
+
+if cardio - fetch one exercise per day 
+heart rate 120-140bpm instead of km/hr 
+beginner 15-20 mins intermediate 30mins expert 45 mins - 1 hr
+
+
+table - move type and difficulty to outside table -at top so shows what type of workout plan
+add other info into table to replace 
+do muscle .toUpperCase() and make middle_back Middle back
 
 
 stuff used;
 jwt password hashing
 
-stuff to ask
-page or app router for an app?

@@ -123,14 +123,18 @@
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1) !important;
   transition: transform 0.3s ease-in-out !important;
   cursor: pointer !important;
-  height: 400px; /* Adjust as per your requirements */
-  width: 100%; /* This will make the card responsive */
-  margin: 15px; /* Adds a gap around each card */
+  /* Adds a gap around each card */
   display: flex;
   flex-direction: column;
 }
 .levelCard:hover {
   transform: scale(1.05);
+}
+.header2 {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  position: relative;
 }
 
 /* Generate Plan page */

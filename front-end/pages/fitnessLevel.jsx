@@ -20,7 +20,7 @@ const levels = [
   },
   {
     image: "/advanced.jpg",
-    name: "Advanced",
+    name: "Expert",
     description: "You exercise regularly and have years of experience.",
   },
 ];
@@ -72,7 +72,7 @@ function FitnessLevelPage() {
     <div>
       <Header />
       <Container className={styles.fitnessLevelContainer}>
-        <h2>What is your fitness experience level?</h2>
+        <h2 className={styles.header2}>What is your fitness experience level?</h2>
         <Row>
           {levels.map((level, index) => (
             <Col key={index} sm={12} md={4} lg={4}>
