@@ -118,13 +118,12 @@ nutrition stuff if time
 
 
 Table -
-if cardio - fetch one exercise per day or pick one 
-heart rate 120-140bpm instead of km/hr 
-beginner 15-20 mins intermediate 30mins expert 45 mins - 1 hr
-do muscle .toUpperCase() and make middle_back Middle back
 Proceed to dashboard button 
-Styling?
+regenerate plan button
 
 stuff used;
 jwt password hashing
+youtube API fetch
+exercise API
+
 

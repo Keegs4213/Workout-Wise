@@ -145,3 +145,9 @@
 .table {
   border: 1px solid #ddd;
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
