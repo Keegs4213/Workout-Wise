@@ -36,8 +36,9 @@ function SignupForm() {
     if (response.ok) {
       const data = await response.json();
       setMessage(data.message);
-      // Store user's ID in local storage
-    localStorage.setItem('userId', data.response._id);
+      // Store user's ID and name in local storage
+      localStorage.setItem('userId', data.response._id);
+      localStorage.setItem('userName', data.response.name);
       if (router) {
         router.push({ pathname: `/setGoals`, query: {} });
       }
