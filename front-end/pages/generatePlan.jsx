@@ -5,6 +5,7 @@ import "../public/bootstrap.min.css";
 import styles from "../app/globals.module.css";
 import { Table, Button, Modal } from "react-bootstrap";
 import YouTube from "react-youtube";
+import { useRouter } from 'next/router';
 
 // Helper function to shuffle an array
 function shuffleArray(array) {
@@ -24,34 +25,46 @@ function randomReps() {
   return reps[Math.floor(Math.random() * reps.length)];
 }
 
-// Helper function to capitalize the first letter
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+// Helper function to capitalize the first letter of each word and replace underscores
+function formatString(string) {
+  return string
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
 function GeneratePlanPage() {
   const [exercisePlan, setExercisePlan] = useState([]);
   const [userName, setUserName] = useState("");
+  const [fitnessGoal, setFitnessGoal] = useState("");
 
   const [showModal, setShowModal] = useState(false);
   const [currentExercise, setCurrentExercise] = useState(null);
   const [currentVideo, setCurrentVideo] = useState(null);
 
+  const router = useRouter()
+
+  const handleDashboardNavigation = () => {
+    router.push("/dashboard");
+  }
+
   const openModal = (exercise) => {
     setShowModal(true);
     setCurrentExercise(exercise);
     // Search for a demonstration video
-    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${exercise.name}%20exercise%20howto%20demonstration&key=AIzaSyAn_AA9nU7HiOJ3K_2f2MYVDyOSThFGTkU`)
-  .then((response) => response.json())
-  .then((data) => {
-    if (data.items) {
-      if (data.items.length > 0) {
-        setCurrentVideo(data.items[0].id.videoId);
-      }
-    } else {
-      console.error('No items found in data:', data);
-    }
-});
+    fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${exercise.name}%20exercise%20howto%20demonstration&key=AIzaSyAn_AA9nU7HiOJ3K_2f2MYVDyOSThFGTkU`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.items) {
+          if (data.items.length > 0) {
+            setCurrentVideo(data.items[0].id.videoId);
+          }
+        } else {
+          console.error("No items found in data:", data);
+        }
+      });
   };
 
   const closeModal = () => {
@@ -71,6 +84,7 @@ function GeneratePlanPage() {
   useEffect(() => {
     const fitnessGoal = localStorage.getItem("fitnessGoal");
     const fitnessLevel = localStorage.getItem("fitnessLevel");
+    setFitnessGoal(fitnessGoal);
     console.log(fitnessGoal);
     console.log(fitnessLevel);
     const userNameFromStorage = localStorage.getItem("userName");
@@ -111,7 +125,8 @@ function GeneratePlanPage() {
       type,
       offset = 0,
       exercises = [],
-      difficulties = [fitnessLevel]
+      difficulties = [fitnessLevel],
+      maxExercises = fitnessLevelMapping[fitnessLevel].exercises
     ) => {
       try {
         const difficulty = difficulties.shift(); // get and remove the first difficulty from the array
@@ -127,9 +142,17 @@ function GeneratePlanPage() {
         let newExercises = [...exercises, ...response.data];
 
         // If we have enough exercises, process them and add them to the plan
-        if (
-          newExercises.length >= fitnessLevelMapping[fitnessLevel].exercises
-        ) {
+        if (newExercises.length >= maxExercises) {
+          if (type === "cardio" && fitnessGoal.toLowerCase() === "tone up") {
+            newExercises = newExercises.slice(
+              0,
+              fitnessLevelMapping[fitnessLevel].days
+            );
+          }
+          // If the exercise type is cardio and the fitness goal is not fat loss, we only take the first exercise
+          if (type === "cardio" && fitnessGoal.toLowerCase() !== "fat loss") {
+            newExercises = [newExercises[0]];
+          }
           return newExercises
             .slice(0, fitnessLevelMapping[fitnessLevel].exercises)
             .map((exercise) => {
@@ -138,15 +161,29 @@ function GeneratePlanPage() {
                   ...exercise,
                   recommendedSets: randomSets(),
                   recommendedReps: randomReps(),
-                  equipment: exercise.equipment, // Add this line
+                  equipment: exercise.equipment,
                 };
               } else {
                 // type === "cardio"
+                let recommendedDuration;
+                switch (fitnessLevel) {
+                  case "Beginner":
+                    recommendedDuration = Math.floor(Math.random() * 6) + 15; // 15-20 mins
+                    break;
+                  case "Intermediate":
+                    recommendedDuration = 30; // 30 mins
+                    break;
+                  case "Expert":
+                    recommendedDuration = Math.floor(Math.random() * 16) + 45; // 45-60 mins
+                    break;
+                  default:
+                    recommendedDuration = 30;
+                }
                 return {
                   ...exercise,
-                  recommendedDuration: 30,
-                  recommendedSpeed: 5,
-                  equipment: exercise.equipment, // And this line
+                  recommendedDuration,
+                  recommendedHeartRate: "120-140bpm",
+                  equipment: exercise.equipment,
                 };
               }
             });
@@ -165,24 +202,39 @@ function GeneratePlanPage() {
     };
 
     const fetchAllExercises = async () => {
-      // Fetch exercises for all types and combine them into one array
       let allExercises = [];
       for (const type of exerciseTypes) {
         const difficulties =
           fitnessLevel === "Expert"
             ? ["Expert", "Intermediate"]
             : [fitnessLevel];
-        const exercises = await fetchExercises(type, 0, [], difficulties);
+        let exerciseCount = fitnessLevelMapping[fitnessLevel].exercises;
+        if (fitnessGoal.toLowerCase() === "tone up") {
+          if (type === "cardio") {
+            // For tone up plan, ensure at least one cardio exercise is included each day
+            exerciseCount = fitnessLevelMapping[fitnessLevel].days;
+          } else if (type === "strength") {
+            // Subtract the number of cardio exercises we already fetched
+            exerciseCount -= fitnessLevelMapping[fitnessLevel].days;
+          }
+        }
+        const exercises = await fetchExercises(
+          type,
+          0,
+          [],
+          difficulties,
+          exerciseCount
+        );
         allExercises = allExercises.concat(exercises);
       }
 
-      // Shuffle and slice to get the correct number of exercises
-      shuffleArray(allExercises);
-      allExercises = allExercises.slice(
-        0,
-        fitnessLevelMapping[fitnessLevel].exercises
-      );
-
+      // No need to slice the array for "tone up" goal
+      if (fitnessGoal.toLowerCase() !== "tone up") {
+        allExercises = allExercises.slice(
+          0,
+          fitnessLevelMapping[fitnessLevel].exercises
+        );
+      }
       // Now build the plan as before
       const splitPlan = [];
       for (let i = 0; i < fitnessLevelMapping[fitnessLevel].days; i++) {
@@ -225,7 +277,12 @@ function GeneratePlanPage() {
           exercisePlan.length > 0 &&
           exercisePlan.map((day, i) => (
             <div key={i}>
-              <h3 className={styles.header2}>Day {i + 1}:</h3>
+              <h3 className={styles.header2}>
+                Day {i + 1}:{" "}
+                {fitnessGoal.toLowerCase() === "fat loss" &&
+                  "(Pick one exercise)"}
+              </h3>
+
               <Table
                 striped
                 bordered
@@ -252,14 +309,14 @@ function GeneratePlanPage() {
                           {exercise.name}
                         </Button>
                       </td>
-                      <td>{exercise.muscle}</td>
-                      <td>{exercise.difficulty}</td>
+                      <td>{formatString(exercise.muscle)}</td>
+                      <td>{formatString(exercise.difficulty)}</td>
                       <td>
                         {exercise.type === "strength"
                           ? `${exercise.recommendedSets} sets of ${exercise.recommendedReps} reps`
-                          : `${exercise.recommendedDuration} mins at ${exercise.recommendedSpeed} km/h`}
+                          : `${exercise.recommendedDuration} mins at heart rate ${exercise.recommendedHeartRate}`}
                       </td>
-                      <td>{exercise.equipment}</td>
+                      <td>{formatString(exercise.equipment)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -272,7 +329,9 @@ function GeneratePlanPage() {
           </Modal.Header>
           <Modal.Body>
             {currentVideo && <YouTube videoId={currentVideo} opts={opts} />}
-            <p className={styles.exerciseInstructions}>{currentExercise && currentExercise.instructions}</p>
+            <p className={styles.exerciseInstructions}>
+              {currentExercise && currentExercise.instructions}
+            </p>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={closeModal}>
@@ -280,6 +339,14 @@ function GeneratePlanPage() {
             </Button>
           </Modal.Footer>
         </Modal>
+      </div>
+      <div className={styles.buttonContainer}>
+        <Button variant="secondary" onClick={() => window.location.reload()}>
+          Regenerate Plan
+        </Button>
+        <Button variant="secondary" onClick={handleDashboardNavigation}>
+            Proceed to Dashboard
+        </Button>
       </div>
     </div>
   );
