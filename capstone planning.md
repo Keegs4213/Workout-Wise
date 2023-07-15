@@ -98,9 +98,7 @@ Workout plan page - click on specific exercise for demo?
 fitnessLevel change colour when hovered
 make loading screen between pages that need it
 after fitnessLevel - clickable generate workout plan button - loading screen
-split workout plan into day 1, day 2 etc. show sets + reps?
 generate plan page - make it nice table and show descriptions, details etc. - demo?
-split workout plan into days etc.
 design dashboard
 profile page - upload image
 tracking workouts 
@@ -119,16 +117,13 @@ nutrition stuff if time
 
 
 
-
-if cardio - fetch one exercise per day 
+Table -
+if cardio - fetch one exercise per day or pick one 
 heart rate 120-140bpm instead of km/hr 
 beginner 15-20 mins intermediate 30mins expert 45 mins - 1 hr
-
-
-table - move type and difficulty to outside table -at top so shows what type of workout plan
-add other info into table to replace 
 do muscle .toUpperCase() and make middle_back Middle back
-
+Proceed to dashboard button 
+Styling?
 
 stuff used;
 jwt password hashing
