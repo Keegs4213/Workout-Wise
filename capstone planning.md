@@ -84,42 +84,42 @@ Apis
 https://api-ninjas.com/api/exercises
 https://spoonacular.com/food-api
 
-take into account dietary requirements - allergens
 
-dashboard - ringlet tracker - steps? weight? + water intake or graph instead of ringlet
 
-workout page - workout plan - tracking of some sort
-nutrition page - plan + tracking
-profile page - edit profile + set photo and settings
+
+
 
 
 to do:
-Workout plan page - click on specific exercise for demo?
-fitnessLevel change colour when hovered
-make loading screen between pages that need it
 after fitnessLevel - clickable generate workout plan button - loading screen
-generate plan page - make it nice table and show descriptions, details etc. - demo?
 design dashboard
 profile page - upload image
-tracking workouts 
-generate plan page - proceed to dashboard button 
+tracking workouts
+generate plan page - proceed to dashboard button
 
-make sure client healthy to train on signup
 add paypal thing
 
-Dashboard nav bar at bottom 
-
-
-
-landing page - modal of people exercising video? cool animation 
-
-nutrition stuff if time
+landing page - modal of people exercising video? cool animation
 
 
 
 Table -
-Proceed to dashboard button 
-regenerate plan button
+tone up - cardio 1 per day
+move API key to custom environment
+mobility - recommendations change to reps not cardio
+
+Dashboard
+progress tracking - graph of some sort displaying workouts completed
+
+Nav bar
+workout plan 
+User profile - picutre, name, details like age - weight height and goals - change goal achievment badges - workouts completed etc. + notifcations of encouragement
+
+exercise library - switch exercises to your plan? with filtering?
+
+Workout history / tracking - show adherence track weight / reps for strength. track resistance/incline + speed for cardio
+
+
 
 stuff used;
 jwt password hashing
@@ -127,3 +127,5 @@ youtube API fetch
 exercise API
 
 
+
+nutrition stuff if time + mobile response

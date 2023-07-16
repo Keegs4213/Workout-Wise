@@ -107,6 +107,7 @@
 
 .goalCard:hover {
   transform: scale(1.05);
+  background-color: rgb(255, 100, 162) !important;
 }
 .goalDescription {
   font-size: 12px;
@@ -129,6 +130,7 @@
 }
 .levelCard:hover {
   transform: scale(1.05);
+  background-color: rgb(255, 100, 162) !important;
 }
 .header2 {
   display: flex;
@@ -150,4 +152,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+/* Loading Spinner */
+.loadingSpinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* this makes the container take up the full height of the view */
 }
