@@ -2,18 +2,15 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { Button } from 'react-bootstrap';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 import Header from '../app/components/Header';
 import styles from '../app/globals.module.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import '../public/bootstrap.min.css';
 import { Chart as ChartJS, ArcElement } from 'chart.js';
-
-
+import BottomNavBar from '../app/components/Navbar';
 
 const Chart = dynamic(() => import('react-chartjs-2').then(mod => mod.Doughnut), { ssr: false });
-ChartJS.register(ArcElement);
-// Use dynamic import for Chart
 
 
 export default function Dashboard() {
@@ -35,20 +32,33 @@ export default function Dashboard() {
     }]
   };
 
+  const goal = () => {
+    typeof window !== 'undefined' ? localStorage.getItem("fitnessGoal") : '';
+  };
+  
+  if (typeof window !== 'undefined') {
+    ChartJS.register(ArcElement);
+  }
+
   return (
     <main style={{ height: '100vh' }}>
       <Header />
-      <div>
-      {typeof window !== 'undefined' && <Chart data={data} />}
-      </div>
-      <Navbar fixed="bottom" bg="light" variant="light">
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-          <Nav.Link href="#contact">Contact</Nav.Link>
-        </Nav>
-      </Navbar>
+      <Container>
+        <h1 className={styles.dashboardTitle}>Dashboard</h1>
+        <Row>
+          <Col md={6}>
+            <h2 className={styles.dashboardSubtitle}>Your Progress</h2>
+            <div>
+              {typeof window !== 'undefined' && <Chart data={data} />}
+            </div>
+          </Col>
+          <Col md={6}>
+            <h2 className={styles.dashboardSubtitle}>Your Goals</h2>
+            {goal}
+          </Col>
+        </Row>
+      </Container>
+      <BottomNavBar/>
     </main>
   );
 }

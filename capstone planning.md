@@ -91,17 +91,16 @@ https://spoonacular.com/food-api
 
 
 to do:
-after fitnessLevel - clickable generate workout plan button - loading screen
 design dashboard
 profile page - upload image
 tracking workouts
 generate plan page - proceed to dashboard button
-
-add paypal thing
-
 landing page - modal of people exercising video? cool animation
-
-
+add paypal thing?
+login - reset password?
+graphs for tracking = see progress
+regenerate plan button not working - generatePlan.jsx
+log out button profile page 
 
 Table -
 tone up - cardio 1 per day
@@ -114,6 +113,7 @@ progress tracking - graph of some sort displaying workouts completed
 Nav bar
 workout plan 
 User profile - picutre, name, details like age - weight height and goals - change goal achievment badges - workouts completed etc. + notifcations of encouragement
+dashboard say - welcome user!
 
 exercise library - switch exercises to your plan? with filtering?
 
@@ -121,11 +121,13 @@ Workout history / tracking - show adherence track weight / reps for strength. tr
 
 
 
+store goal and fitness level in backend not local storage 
+
 stuff used;
 jwt password hashing
 youtube API fetch
 exercise API
 
 
-
+in future:
 nutrition stuff if time + mobile response

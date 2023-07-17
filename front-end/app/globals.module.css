@@ -109,6 +109,9 @@
   transform: scale(1.05);
   background-color: rgb(255, 100, 162) !important;
 }
+.goalCard:active {
+  background-color: rgb(94, 231, 255) !important
+}
 .goalDescription {
   font-size: 12px;
 }
@@ -131,6 +134,9 @@
 .levelCard:hover {
   transform: scale(1.05);
   background-color: rgb(255, 100, 162) !important;
+}
+.levelCard:active {
+  background-color: rgb(94, 231, 255) !important
 }
 .header2 {
   display: flex;
@@ -160,3 +166,22 @@
   align-items: center;
   height: 100vh; /* this makes the container take up the full height of the view */
 }
+/* Nav bar */
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff; /* Or any color you prefer */
+  border-top: 1px solid #ddd; /* Optional, adds a slight border at the top of the navbar */
+}
+
+.fixed-bottom .nav-link {
+  color: #333; /* Or any color you prefer */
+  text-align: center; /* Center the text and the icon */
+}
+
+.fixed-bottom .nav-link div {
+  font-size: 0.75rem; /* Adjust the size of the text */
+}
+
+/* Dashboard */

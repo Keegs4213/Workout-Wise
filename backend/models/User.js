@@ -11,20 +11,7 @@ const userSchema = new Schema({
   fitnessGoal: { type: String },
   fitnessLevel: { type: String },
   workoutPlan: { type: Object },
-  nutritionPlan: { type: Object }
-});
-
-userSchema.methods.validatePassword = async function(enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password)
-}
-
-userSchema.pre('save', async function(next) {
-  if(!this.isModified('password')) {
-    next();
-  } else {
-    this.password = await bcrypt.hash(this.password, 10);
-    next();
-  }
+  nutritionPlan: { type: Object },
 });
 
 module.exports = mongoose.model("User", userSchema);
