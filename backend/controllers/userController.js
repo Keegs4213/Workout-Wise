@@ -4,9 +4,19 @@
 const axios = require("axios"); // npm i
 const Models = require("../models"); //matches index.js
 
-const getUser = (req, res) => {
+const getUsers = (req, res) => {
   //finds all users
   Models.User.find({})
+    .then((data) => res.send({ result: 200, data: data }))
+    .catch((err) => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
+};
+
+const getUser = (req, res) => {
+  // finds user based on id
+  Models.User.findById(req.params.id)
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
       console.log(err);
@@ -53,6 +63,7 @@ const deleteUser = (req, res) => {
 };
 
 module.exports = {
+  getUsers,
   getUser,
   addUser,
   updateUser,

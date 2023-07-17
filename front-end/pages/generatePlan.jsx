@@ -48,6 +48,10 @@ function GeneratePlanPage() {
   const handleDashboardNavigation = () => {
     router.push("/dashboard");
   }
+  const handleRegeneratePlan = () => {
+    router.push("/setGoals");
+     }
+   
 
   const openModal = (exercise) => {
     setShowModal(true);
@@ -75,7 +79,7 @@ function GeneratePlanPage() {
   };
 
   const opts = {
-    height: "100%",
+    height: "300px",
     width: "100%",
     playerVars: {
       autoplay: 0,
@@ -263,6 +267,9 @@ function GeneratePlanPage() {
     return Array.from(typesSet).join(", ");
   }
 
+  
+  
+
   return (
     <div>
       <Header />
@@ -345,7 +352,7 @@ function GeneratePlanPage() {
           </Modal>
         </div>
         <div className={styles.buttonContainer}>
-          <Button variant="secondary" onClick={() => window.location.reload()}>
+          <Button variant="secondary" onClick={handleRegeneratePlan}>
             Regenerate Plan
           </Button>
           <Button variant="secondary" onClick={handleDashboardNavigation}>

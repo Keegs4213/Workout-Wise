@@ -25,12 +25,14 @@ function LoginPage() {
 
     if (response.ok) {
       const data = await response.json();
+      console.log('data:', data)
       if (data) {
         setMessage('Login successful!');
         // Save the user's ID to local storage
       localStorage.setItem('userId', data.response._id);
         router.push('/dashboard')
       } else {
+     
         setMessage('Login failed.');
       }
     } else {

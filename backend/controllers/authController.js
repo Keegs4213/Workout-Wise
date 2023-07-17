@@ -9,25 +9,31 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
 
   // Log the email and password to check their values
-  console.log(`Email: ${email}`);
-  console.log(`Password: ${password}`);
+  //  console.log(`Email: ${email}`);
+  //console.log(`Password: ${password}`);
 
   const user = await User.findOne({ email });
 
   // Log the user to check if a user was found
-  console.log(`User: ${JSON.stringify(user)}`);
+  //console.log(`User: ${JSON.stringify(user)}`);
 
   if (user) {
     // Compare the password from the request with the hashed password in the database
     bcrypt.compare(password, user.password, (err, result) => {
+      console.log("password COMPARE:", password);
+      console.log("password COMPARE:", user.password);
       if (err) {
         console.log("err: ", err);
       }
+      console.log(result);
       return result;
     });
 
-    if (user && (await bcrypt.compare(password, user.password))) {
-      
+    if (
+      user &&
+      user.password &&
+      (await bcrypt.compare(password, user.password))
+    ) {
       // Return user ID in the response
       res.status(200).json({
         message: "User logged in!",
@@ -40,8 +46,6 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
     } else {
       res.status(400).json({ message: "Invalid password" });
     }
-  } else {
-    res.status(400).json({ message: "Invalid credentials!" });
   }
 });
 

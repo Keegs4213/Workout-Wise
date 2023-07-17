@@ -5,6 +5,7 @@ import { Button, Container, Row, Col, Card } from "react-bootstrap";
 import Header from "./components/Header";
 import styles from "./globals.css";
 import "../public/bootstrap.min.css";
+import CyberButtonScreen from "./components/CyberButtonScreen"
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
               <Card.Img 
                 as={Image} 
                 variant="top" 
-                src="/../public/HomePage.jpg"
+                src="/../public/landing.jpg"
                 alt="Exercise Image"
                 width={500}
                 height={450}
@@ -26,9 +27,10 @@ export default function Home() {
               />
             </Card>
             <div className="d-grid gap-2 d-md-flex justify-content-md-center">
-              <Button variant="primary" href="/login" className={styles.ctaButton}>
+              {/* <Button variant="primary" href="/login" className={styles.ctaButton}>
                 Get Started
-              </Button>
+              </Button> */}
+              <CyberButtonScreen href="/login" className={styles.ctaButton}/>
             </div>
           </Col>
         </Row>
