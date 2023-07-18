@@ -66,15 +66,8 @@ deliver
 
 Figma design
 
-Git branches
 
-ADobe firefly for goal images
-chatgpt image ai for website logo?
 
-look at food/nutrition apis
-workout apis
-
-CRUD users
 
 Material UI
 find API
@@ -92,15 +85,12 @@ https://spoonacular.com/food-api
 
 to do:
 design dashboard
-profile page - upload image
-tracking workouts
-generate plan page - proceed to dashboard button
+profile page - upload image - make nicer
+tracking workouts - make nicer and functional
 landing page - modal of people exercising video? cool animation
 add paypal thing?
 login - reset password?
 graphs for tracking = see progress
-regenerate plan button not working - generatePlan.jsx
-log out button profile page 
 
 Table -
 tone up - cardio 1 per day

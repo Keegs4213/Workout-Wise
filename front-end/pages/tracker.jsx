@@ -4,11 +4,10 @@ import BottomNavBar from '../app/components/Navbar';
 import dynamic from 'next/dynamic';
 import "../public/bootstrap.min.css"
 
-
 const WorkoutTracker = dynamic(
     () => import('../app/components/WorkoutTracker'), 
     { ssr: false }
-  );
+);
 
 export default function TrackerPage() {
     return (
