@@ -1,12 +1,5 @@
 Capstone planning
 
-Figma planning
-
-Documentation
-
-Slides
-
-Code
 
 List of requirements:
 
@@ -29,14 +22,6 @@ Provide different categories/types of workouts like Cardio, Strength, Yoga, etc.
 
 A comprehensive database of exercises with descriptions and instructions (preferably with pictures or videos).
 Allow users to search for specific exercises based on type, muscle group, equipment, etc. 6. Nutrition tracking: - water, weight tracking?
-
-Allow users to log their daily food and beverage intake.
-Calculate and track macro and micro-nutrient intake (like proteins, carbs, fats, vitamins, etc.).
-Provide a database of foods with nutritional info. 7. Meal Plan and Recommendations:
-
-Suggest daily/weekly meal plans based on user's nutritional needs and fitness goals.
-Provide healthy recipes and cooking tips.
-Recommendations for what to eat before/after workouts. 8. Community:
 
 Allow users to share their progress, workouts, and meals with friends or the public.
 Provide a platform for users to ask questions, share tips, and get advice. 9. Notifications/Reminders: - some sort of encouragement , ticking off goals / workouts
@@ -84,34 +69,49 @@ https://spoonacular.com/food-api
 
 
 to do:
-design dashboard
-profile page - upload image - make nicer
-tracking workouts - make nicer and functional
-landing page - modal of people exercising video? cool animation
 add paypal thing?
 login - reset password?
 graphs for tracking = see progress
+store goal and fitness level in backend not local storage 
+notifcations of encouragement
 
-Table -
+Plan -
 tone up - cardio 1 per day
 move API key to custom environment
 mobility - recommendations change to reps not cardio
 
 Dashboard
 progress tracking - graph of some sort displaying workouts completed
+make more impressive 
+ask bally for ideas
+welcome user
+see other user activity?
 
-Nav bar
-workout plan 
-User profile - picutre, name, details like age - weight height and goals - change goal achievment badges - workouts completed etc. + notifcations of encouragement
-dashboard say - welcome user!
+Workout tracker - persist
+track workouts completed
+make look nicer
+doesnt appear to be adding sets/reps anymore 
 
-exercise library - switch exercises to your plan? with filtering?
+Profile - initial user goal set 
+change profile picture 
+badges for workouts completed 
+add height + weight
 
-Workout history / tracking - show adherence track weight / reps for strength. track resistance/incline + speed for cardio
+library - add pagination + more than 10 exercises
+get youtube demo working
+style nicer
+add exercises to plan?
+filtering by difficulty/goal?
 
 
 
-store goal and fitness level in backend not local storage 
+
+To do after coding:
+Design powerpoint presentation
+Documentation
+
+
+
 
 stuff used;
 jwt password hashing
@@ -121,3 +121,4 @@ exercise API
 
 in future:
 nutrition stuff if time + mobile response
+connect to smart watches

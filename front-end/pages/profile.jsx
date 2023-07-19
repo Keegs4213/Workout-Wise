@@ -80,11 +80,10 @@ export default function Profile() {
         </Row>
         <Row>
           <Col>
-            <div className="card border-info mb-3" style={{ maxWidth: '20rem' }}>
+            <div className="card border-info mb-3" style={{ maxWidth: '30rem' }}>
               <div className="card-header">Your Achievements</div>
-              <div className="card-body">
-                {/* Display user's achievements here */}
-              </div>
+              <div className="card-body">Coming in future.. </div>
+             
             </div>
           </Col> 
         </Row>
