@@ -80,13 +80,6 @@ make more impressive
 ask bally for ideas
 welcome user
 
-Workout tracker 
-track workouts completed
-make look nicer
-doesnt appear to be adding sets/reps anymore 
-pagination doesn't seem to work
-
-
 Profile - initial user goal set 
 change profile picture 
 badges for workouts completed 

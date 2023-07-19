@@ -2,11 +2,12 @@ import { useState, useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 import fetch from "isomorphic-unfetch";
-import { useTable, usePagination } from "react-table";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import { Pagination, Table } from 'react-bootstrap';
-import styles from "../globals.module.css"
+import { Pagination, Table } from "react-bootstrap";
+import styles from "../globals.module.css";
+
+const ITEMS_PER_PAGE = 4;
 
 export default function WorkoutTracker() {
   const { register, handleSubmit, reset } = useForm();
@@ -17,6 +18,7 @@ export default function WorkoutTracker() {
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [startDate, setStartDate] = useState(new Date());
   const [message, setMessage] = useState(""); // new state for message
+  const [currentPage, setCurrentPage] = useState(0); // new state for current page
 
   const columns = useMemo(
     () => [
@@ -41,19 +43,19 @@ export default function WorkoutTracker() {
           row.original.exerciseType === "strength" ? row.value : null,
       },
       {
-        Header: "Weight Used",
+        Header: "Weight(kg)",
         accessor: "weight",
         Cell: ({ row }) =>
           row.original.exerciseType === "strength" ? row.value : null,
       },
       {
-        Header: "Duration",
+        Header: "Duration(m)",
         accessor: "duration",
         Cell: ({ row }) =>
           row.original.exerciseType === "cardio" ? row.value : null,
       },
       {
-        Header: "Heart Rate",
+        Header: "Heart Rate(bpm)",
         accessor: "heartRate",
         Cell: ({ row }) =>
           row.original.exerciseType === "cardio" ? row.value : null,
@@ -62,19 +64,7 @@ export default function WorkoutTracker() {
     []
   );
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    prepareRow,
-    page,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    nextPage,
-    previousPage,
-    state: { pageIndex },
-  } = useTable({ columns, data: workouts }, usePagination);
+  
 
   const deleteWorkout = (index) => {
     const newWorkouts = [...workouts];
@@ -148,122 +138,158 @@ export default function WorkoutTracker() {
     reset(); // reset form fields after submit
   };
 
+  const totalItems = workouts.length;
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+  const start = currentPage * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const currentWorkouts = workouts.slice(start, end);
+
+  const handlePrevPage = () => {
+    setCurrentPage((old) => Math.max(old - 1, 0));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((old) => Math.min(old + 1, totalPages - 1));
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="form-group">
-  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
-    <div>
-      <label>Date</label>
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-      />
-    </div>
-    <div>
-      <label className="form-label">Exercise</label>
-      <select
-        {...register("exerciseName", { required: true })}
-        onChange={handleExerciseChange}
-        className="form-select"
-        style={{ width: "250px" }}
-      >
-        <option value="">Select an exercise</option>
-        {Array.isArray(exercises) &&
-          exercises.map((exercise, index) => (
-            <option key={index} value={exercise.name}>
-              {exercise.name}
-            </option>
-          ))}
-      </select>
-    </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "20px",
+          }}
+        >
+          <div>
+            <label>Date</label>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
+          </div>
+          <div>
+            <label className="form-label">Exercise</label>
+            <select
+              {...register("exerciseName", { required: true })}
+              onChange={handleExerciseChange}
+              className="form-select"
+              style={{ width: "250px" }}
+            >
+              <option value="">Select an exercise</option>
+              {Array.isArray(exercises) &&
+                exercises.map((exercise, index) => (
+                  <option key={index} value={exercise.name}>
+                    {exercise.name}
+                  </option>
+                ))}
+            </select>
+          </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
-        {selectedExercise && selectedExercise.type === "strength" && (
-          <>
-            <div>
-              <label>Sets</label>
-              <input type="number" {...register("sets", { required: true })} />
-            </div>
-            <div>
-              <label>Reps</label>
-              <input type="number" {...register("reps", { required: true })} />
-            </div>
-            <div>
-              <label>Weight Used (kg)</label>
-              <input
-                type="number"
-                {...register("weight", { required: true })}
-              />
-            </div>
-          </>
-        )}
-        {selectedExercise && selectedExercise.type === "cardio" && (
-          <>
-            <div>
-              <label>Duration</label>
-              <input
-                type="number"
-                {...register("duration", { required: true })}
-              />
-            </div>
-            <div>
-              <label>Heart Rate</label>
-              <input
-                type="number"
-                {...register("heartRate", { required: true })}
-              />
-            </div>
-          </>
-        )}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "20px",
+          }}
+        >
+          {selectedExercise && selectedExercise.type === "strength" && (
+            <>
+              <div>
+                <label>Sets</label>
+                <input
+                  type="number"
+                  {...register("sets", { required: true })}
+                />
+              </div>
+              <div>
+                <label>Reps</label>
+                <input
+                  type="number"
+                  {...register("reps", { required: true })}
+                />
+              </div>
+              <div>
+                <label>Weight Used (kg)</label>
+                <input
+                  type="number"
+                  {...register("weight", { required: true })}
+                />
+                 <button
+          type="submit"
+          className="btn btn-primary"
+          style={{ margin: "5px" }}
+        >
+          Submit
+        </button>
+              </div>
+            </>
+          )}
+          {selectedExercise && selectedExercise.type === "cardio" && (
+            <>
+              <div>
+                <label>Duration(minutes)</label>
+                <input
+                  type="number"
+                  {...register("duration", { required: true })}
+                />
+              </div>
+              <div>
+                <label>Heart Rate(bpm)</label>
+                <input
+                  type="number"
+                  {...register("heartRate", { required: true })}
+                />
+              </div>
+            </>
+          )}
         </div>
-        <button type="submit" className="btn btn-primary" style={{ marginLeft:"600px"}}>
-      Submit
-    </button>
+       
       </form>
-      
 
       <div>
         <h2 className={styles.header2}>Previous Workouts</h2>
         <Table striped bordered hover>
-  <thead>
-    {headerGroups.map((headerGroup) => (
-      <tr {...headerGroup.getHeaderGroupProps()}>
-        {headerGroup.headers.map((column) => (
-          <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-        ))}
-      </tr>
-    ))}
-  </thead>
-  <tbody {...getTableBodyProps()}>
-    {page.map((row, i) => {
-      prepareRow(row);
-      return (
-        <tr {...row.getRowProps()}>
-          {row.cells.map((cell) => {
-            return (
-              <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-            );
-          })}
-          <td>
-            <button
-              className="btn btn-primary"
-              onClick={() => deleteWorkout(i)}
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      );
-    })}
-  </tbody>
-</Table>
+          <thead>
+            <tr>
+              {columns.map((column, i) => (
+                <th key={i}>{column.Header}</th>
+              ))}
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentWorkouts.map((workout, i) => (
+              <tr key={i}>
+                <td>{workout.date}</td>
+                <td>{workout.exerciseName}</td>
+                <td>{workout.sets}</td>
+                <td>{workout.reps}</td>
+                <td>{workout.weight}</td>
+                <td>{workout.duration}</td>
+                <td>{workout.heartRate}</td>
+                <td>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => deleteWorkout(i + ITEMS_PER_PAGE * currentPage)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
         <div>
-        <Pagination style={{ display: "flex", justifyContent:"center", alignItems: "center", marginBottom: "20px" }}>
-  <Pagination.Prev onClick={() => previousPage()} disabled={!canPreviousPage} />
-  <Pagination.Next onClick={() => nextPage()} disabled={!canNextPage} />
-</Pagination>
-          </div>
+          <Pagination style={{ display: "flex", justifyContent:"center", alignItems: "center", marginBottom: "20px" }}>
+            <Pagination.Prev onClick={handlePrevPage} disabled={currentPage === 0} />
+            <Pagination.Next onClick={handleNextPage} disabled={currentPage === totalPages - 1} />
+          </Pagination>
         </div>
       </div>
+    </div>
   );
 }
