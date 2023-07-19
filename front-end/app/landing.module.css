@@ -1,0 +1,55 @@
+/* landing.module.css */
+.backgroundSquare {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  opacity: 0.6;
+  z-index: -1;
+  ;
+}
+
+.square1 {
+  background: url('/square1.jpg') no-repeat;
+  background-size: cover;
+  animation: float 6s ease-in-out infinite
+}
+
+.square2 {
+  background: url('/square2.jpg') no-repeat;
+  background-size: cover;
+  animation: float 6s ease-in-out infinite
+}
+
+.square3 {
+  background: url('/square3.jpg') no-repeat;
+  background-size: cover;
+  animation: float 4s ease-in-out infinite
+}
+
+.square4 {
+  background: url('/square4.jpg') no-repeat;
+  background-size: cover;
+  animation: float 6s ease-in-out infinite
+}
+
+.square5 {
+  background: url('/square5.jpg') no-repeat;
+  background-size: cover;
+  animation: float 4s ease-in-out infinite
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-40px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+
+
+
