@@ -280,19 +280,21 @@ function GeneratePlanPage() {
         </h2>
         <div>
           {exercisePlan && exercisePlan.length > 0 && (
-            <h3 className={styles.header2}>
+            <h3 className={styles.header3}>
               Plan Type: {getUniqueTypes(exercisePlan).toUpperCase()}
             </h3>
+            
           )}
           {exercisePlan &&
             exercisePlan.length > 0 &&
             exercisePlan.map((day, i) => (
-              <div key={i}>
+              <div key={i}><br></br>
                 <h3 className={styles.header2}>
                   Day {i + 1}:{" "}
                   {fitnessGoal.toLowerCase() === "fat loss" &&
                     "(Pick one exercise)"}
                 </h3>
+                
 
                 <Table
                   striped

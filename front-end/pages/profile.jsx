@@ -64,8 +64,8 @@ export default function Profile() {
                   <Form.Group controlId="goals">
                     <Form.Label><strong>Goals:</strong></Form.Label>
                     <Form.Control as="select" value={goals} onChange={handleGoalsChange}>
-                      <option>Lose Fat</option>
                       <option>Gain Muscle</option>
+                      <option>Lose Fat</option>
                       <option>Tone Up</option>
                       <option>Improve Mobility</option>
                     </Form.Control>

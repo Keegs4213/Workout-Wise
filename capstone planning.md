@@ -52,15 +52,8 @@ deliver
 Figma design
 
 
-
-
-Material UI
-find API
-redux?
-
 Apis
 https://api-ninjas.com/api/exercises
-https://spoonacular.com/food-api
 
 
 
@@ -74,6 +67,7 @@ login - reset password?
 graphs for tracking = see progress
 store goal and fitness level in backend not local storage 
 notifcations of encouragement
+library - add exercises to plan?
 
 Plan -
 tone up - cardio 1 per day
@@ -85,23 +79,18 @@ progress tracking - graph of some sort displaying workouts completed
 make more impressive 
 ask bally for ideas
 welcome user
-see other user activity?
 
-Workout tracker - persist
+Workout tracker 
 track workouts completed
 make look nicer
 doesnt appear to be adding sets/reps anymore 
+pagination doesn't seem to work
+
 
 Profile - initial user goal set 
 change profile picture 
 badges for workouts completed 
 add height + weight
-
-library - add pagination + more than 10 exercises
-get youtube demo working
-style nicer
-add exercises to plan?
-filtering by difficulty/goal?
 
 
 

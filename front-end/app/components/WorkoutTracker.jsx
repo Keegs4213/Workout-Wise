@@ -1,60 +1,67 @@
-//components/WorkoutTracker.jsx
 import { useState, useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 import fetch from "isomorphic-unfetch";
-import { useTable, usePagination } from 'react-table'
-import 'react-datepicker/dist/react-datepicker.css';
+import { useTable, usePagination } from "react-table";
+import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import { Pagination, Table } from 'react-bootstrap';
+import styles from "../globals.module.css"
 
 export default function WorkoutTracker() {
   const { register, handleSubmit, reset } = useForm();
-  const [workouts, setWorkouts] = useState([]);
+  const [workouts, setWorkouts] = useState(
+    JSON.parse(localStorage.getItem("workouts")) || []
+  );
   const [exercises, setExercises] = useState([]);
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [startDate, setStartDate] = useState(new Date());
-
-  
-
+  const [message, setMessage] = useState(""); // new state for message
 
   const columns = useMemo(
     () => [
       {
-        Header: 'Date',
-        accessor: 'date',
+        Header: "Date",
+        accessor: "date",
       },
       {
-        Header: 'Exercise Name',
-        accessor: 'exerciseName',
+        Header: "Exercise Name",
+        accessor: "exerciseName",
       },
       {
-        Header: 'Sets',
-        accessor: 'sets',
-        Cell: ({ row }) => row.original.exerciseType === 'strength' ? row.value : null,
+        Header: "Sets",
+        accessor: "sets",
+        Cell: ({ row }) =>
+          row.original.exerciseType === "strength" ? row.value : null,
       },
       {
-        Header: 'Reps',
-        accessor: 'reps',
-        Cell: ({ row }) => row.original.exerciseType === 'strength' ? row.value : null,
+        Header: "Reps",
+        accessor: "reps",
+        Cell: ({ row }) =>
+          row.original.exerciseType === "strength" ? row.value : null,
       },
       {
-        Header: 'Weight Used',
-        accessor: 'weight',
-        Cell: ({ row }) => row.original.exerciseType === 'strength' ? row.value : null,
+        Header: "Weight Used",
+        accessor: "weight",
+        Cell: ({ row }) =>
+          row.original.exerciseType === "strength" ? row.value : null,
       },
       {
-        Header: 'Duration',
-        accessor: 'duration',
-        Cell: ({ row }) => row.original.exerciseType === 'cardio' ? row.value : null,
+        Header: "Duration",
+        accessor: "duration",
+        Cell: ({ row }) =>
+          row.original.exerciseType === "cardio" ? row.value : null,
       },
       {
-        Header: 'Heart Rate',
-        accessor: 'heartRate',
-        Cell: ({ row }) => row.original.exerciseType === 'cardio' ? row.value : null,
+        Header: "Heart Rate",
+        accessor: "heartRate",
+        Cell: ({ row }) =>
+          row.original.exerciseType === "cardio" ? row.value : null,
       },
     ],
     []
-  )
+  );
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -67,7 +74,14 @@ export default function WorkoutTracker() {
     nextPage,
     previousPage,
     state: { pageIndex },
-  } = useTable({ columns, data: workouts }, usePagination)
+  } = useTable({ columns, data: workouts }, usePagination);
+
+  const deleteWorkout = (index) => {
+    const newWorkouts = [...workouts];
+    newWorkouts.splice(index, 1);
+    setWorkouts(newWorkouts);
+    localStorage.setItem("workouts", JSON.stringify(newWorkouts));
+  };
 
   useEffect(() => {
     // fetch both strength and cardio exercises
@@ -81,16 +95,15 @@ export default function WorkoutTracker() {
         headers: {
           "X-Api-Key": "VPInujgC7uxthV//ZJVY4g==01tRgS7nO7Xsk04W",
         },
-      })
+      }),
     ])
-    .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-    .then(([data1, data2]) => {
-      console.log("Strength exercises:", data1);  // log strength exercises
-      console.log("Cardio exercises:", data2);  // log cardio exercises
-      setExercises([...data1, ...data2]);
-    });
+      .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+      .then(([data1, data2]) => {
+        console.log("Strength exercises:", data1); // log strength exercises
+        console.log("Cardio exercises:", data2); // log cardio exercises
+        setExercises([...data1, ...data2]);
+      });
   }, []);
-  
 
   const handleExerciseChange = (e) => {
     const selected = exercises.find(
@@ -100,43 +113,87 @@ export default function WorkoutTracker() {
   };
 
   const onSubmit = (data) => {
-    setWorkouts((prevWorkouts) => [
-      ...prevWorkouts,
-      { ...data, date: format(startDate, "yyyy-MM-dd"), exerciseType: selectedExercise.type },
-    ]);
+    // Validate form input
+    if (
+      !data.exerciseName ||
+      (selectedExercise.type === "strength" &&
+        (!data.sets || !data.reps || !data.weight)) ||
+      (selectedExercise.type === "cardio" &&
+        (!data.duration || !data.heartRate))
+    ) {
+      setMessage("Please fill in all required fields");
+      return;
+    }
+
+    const newWorkout = {
+      ...data,
+      date: format(startDate, "yyyy-MM-dd"),
+      exerciseType: selectedExercise.type,
+      sets: Number(data.sets), // convert to number
+      reps: Number(data.reps), // convert to number
+      weight: Number(data.weight), // convert to number
+      duration: Number(data.duration), // convert to number
+      heartRate: Number(data.heartRate), // convert to number
+    };
+
+    // Save to local storage
+    const savedWorkouts = JSON.parse(localStorage.getItem("workouts")) || [];
+    savedWorkouts.push(newWorkout);
+    localStorage.setItem("workouts", JSON.stringify(savedWorkouts));
+
+    // Save to state
+    setWorkouts((prevWorkouts) => [...prevWorkouts, newWorkout]);
+
+    setMessage("Workout added successfully, nice work!");
     reset(); // reset form fields after submit
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="form-group">
-        <label>Date</label>
-        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-        <div >
-            
-          <label className="form-label">Exercise</label>
-          <select {...register('exerciseName')} onChange={handleExerciseChange} className="form-select">
-            {Array.isArray(exercises) &&
-              exercises.map((exercise, index) => (
-                <option key={index} value={exercise.name}>
-                  {exercise.name}
-                </option>
-              ))}
-          </select>
+  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+    <div>
+      <label>Date</label>
+      <DatePicker
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+      />
+    </div>
+    <div>
+      <label className="form-label">Exercise</label>
+      <select
+        {...register("exerciseName", { required: true })}
+        onChange={handleExerciseChange}
+        className="form-select"
+        style={{ width: "250px" }}
+      >
+        <option value="">Select an exercise</option>
+        {Array.isArray(exercises) &&
+          exercises.map((exercise, index) => (
+            <option key={index} value={exercise.name}>
+              {exercise.name}
+            </option>
+          ))}
+      </select>
+    </div>
         </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
         {selectedExercise && selectedExercise.type === "strength" && (
           <>
             <div>
               <label>Sets</label>
-              <input type="number" {...register("sets")} />
+              <input type="number" {...register("sets", { required: true })} />
             </div>
             <div>
               <label>Reps</label>
-              <input type="number" {...register("reps")} />
+              <input type="number" {...register("reps", { required: true })} />
             </div>
             <div>
-              <label>Weight Used</label>
-              <input type="number" {...register("weight")} />
+              <label>Weight Used (kg)</label>
+              <input
+                type="number"
+                {...register("weight", { required: true })}
+              />
             </div>
           </>
         )}
@@ -144,57 +201,69 @@ export default function WorkoutTracker() {
           <>
             <div>
               <label>Duration</label>
-              <input type="number" {...register("duration")} />
+              <input
+                type="number"
+                {...register("duration", { required: true })}
+              />
             </div>
             <div>
               <label>Heart Rate</label>
-              <input type="number" {...register("heartRate")} />
+              <input
+                type="number"
+                {...register("heartRate", { required: true })}
+              />
             </div>
           </>
         )}
-        <button type="submit" className="btn btn-primary">Submit</button>
+        </div>
+        <button type="submit" className="btn btn-primary" style={{ marginLeft:"600px"}}>
+      Submit
+    </button>
       </form>
+      
 
-      <div >
-        <h2>Previous Workouts</h2>
-        <table {...getTableProps()} className="table table-striped">
-          <thead>
-            {headerGroups.map(headerGroup => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {page.map((row, i) => {
-              prepareRow(row)
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map(cell => {
-                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  })}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+      <div>
+        <h2 className={styles.header2}>Previous Workouts</h2>
+        <Table striped bordered hover>
+  <thead>
+    {headerGroups.map((headerGroup) => (
+      <tr {...headerGroup.getHeaderGroupProps()}>
+        {headerGroup.headers.map((column) => (
+          <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+        ))}
+      </tr>
+    ))}
+  </thead>
+  <tbody {...getTableBodyProps()}>
+    {page.map((row, i) => {
+      prepareRow(row);
+      return (
+        <tr {...row.getRowProps()}>
+          {row.cells.map((cell) => {
+            return (
+              <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+            );
+          })}
+          <td>
+            <button
+              className="btn btn-primary"
+              onClick={() => deleteWorkout(i)}
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      );
+    })}
+  </tbody>
+</Table>
         <div>
-          <button  className="btn btn-primary" onClick={() => previousPage()} disabled={!canPreviousPage}>
-            Previous Page
-          </button>
-          <button  className="btn btn-primary" onClick={() => nextPage()} disabled={!canNextPage}>
-            Next Page
-          </button>
-          <div>
-            Page{' '}
-            <em>
-              {pageIndex + 1} of {pageOptions.length}
-            </em>
+        <Pagination style={{ display: "flex", justifyContent:"center", alignItems: "center", marginBottom: "20px" }}>
+  <Pagination.Prev onClick={() => previousPage()} disabled={!canPreviousPage} />
+  <Pagination.Next onClick={() => nextPage()} disabled={!canNextPage} />
+</Pagination>
           </div>
         </div>
       </div>
-    </div>
   );
 }
