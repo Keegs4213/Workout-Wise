@@ -67,21 +67,12 @@ move API key to custom environment
 
 
 to do:
-<<<<<<< HEAD
 
-library - fetches 10 exercises not 8 - fit better on page
-
-=======
->>>>>>> development
 Profile - display user goal - save changes with button 
 change profile picture 
 add height + weight input
 fix layout
 
-<<<<<<< HEAD
-workout tracker - make 5 exercises one workout
-=======
->>>>>>> development
 
 Mobile response
 

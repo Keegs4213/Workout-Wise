@@ -183,6 +183,12 @@ function GeneratePlanPage() {
                   default:
                     recommendedDuration = 30;
                 }
+                return {
+                  ...exercise,
+                  recommendedDuration,
+                  recommendedHeartRate: "120-140bpm",
+                  equipment: exercise.equipment,
+                };
               } else if (type === "stretching") {
                 let recommendedDuration;
                 switch (fitnessLevel) {

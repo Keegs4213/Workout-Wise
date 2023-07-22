@@ -1,5 +1,5 @@
 /* globals.modules.css */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); 
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 /* Landing page*/
 
 .heroSection {
@@ -72,19 +72,11 @@
 .page-container::before {
   content: "";
   position: absolute;
-<<<<<<< HEAD
-<<<<<<< HEAD
   height: 100%;
   width: 100%;
   padding: 50px !important;
-=======
-  left: 500px;
-  top: 90px;
-  height: 300px;
-=======
   left: -30px;
-  height: 400px;
->>>>>>> development
+  height: 450px;
   width: 300px;
   z-index: -1;
   background: #133955;
@@ -98,24 +90,6 @@
   font-family: "VT323", monospace;
 }
 
-.signup-container {
-  position: relative;
-}
-
-.signup-container::before {
-  content: "";
-  position: absolute;
-  left: -30px;
-  height: 450px;
-  width: 300px;
->>>>>>> development
-  z-index: -1;
-  background: #133955;
-  animation: pulse 5s infinite;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgb(0, 242, 255);
-  border-radius: 10px;
-}
 
 /* Goals page */
 
@@ -198,8 +172,8 @@
 }
 
 .tableContainer {
-  width: 100%; 
-  max-height: 500px; 
+  width: 100%;
+  max-height: 500px;
   overflow-y: auto;
 }
 .planText {
@@ -217,30 +191,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-  height: 100vh; /* this makes the container take up the full height of the view */
-=======
   height: 100vh;
->>>>>>> development
 }
 /* Nav bar */
 .fixed-bottom {
   position: fixed;
   bottom: 0;
   width: 100%;
-<<<<<<< HEAD
-  background-color: #fff; /* Or any color you prefer */
-  border-top: 1px solid #ddd; /* Optional, adds a slight border at the top of the navbar */
+  background-color: #fff;
+  border-top: 1px solid #ddd;
 }
 
 .fixed-bottom .nav-link {
-  color: #333; /* Or any color you prefer */
-  text-align: center; /* Center the text and the icon */
+  color: #333;
+  text-align: center;
 }
 
 .fixed-bottom .nav-link div {
   font-size: 0.75rem; /* Adjust the size of the text */
-=======
   background-color: #fff;
   border-top: 1px solid #ddd;
 }
@@ -252,7 +220,6 @@
 
 .fixed-bottom .nav-link div {
   font-size: 0.75rem;
->>>>>>> development
 }
 
 /* Dashboard */
@@ -275,14 +242,3 @@
 .dashboardText {
   font-family: "VT323", monospace;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-=======
->>>>>>> development
-=======
-
-
-
->>>>>>> development
