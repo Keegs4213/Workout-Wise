@@ -40,7 +40,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className={styles["page-container"]}>
+    <div className={styles["signup-container"]}>
       <Header/>
       <SignupForm onSignup={handleSignup} />
       <p>{message}</p>

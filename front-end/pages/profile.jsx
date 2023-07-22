@@ -21,28 +21,37 @@ export default function Profile() {
       const userId = localStorage.getItem("userId");
       const userNameFromStorage = localStorage.getItem("userName");
       setUserName(userNameFromStorage);
-
+  
+      const goalFromStorage = localStorage.getItem("fitnessGoal");
+      if (goalFromStorage) {
+        setGoals(goalFromStorage);
+      }
+  
       try {
         const response = await axios.get(
           `http://localhost:3245/users/${userId}`
         );
         setUser(response.data);
-        setGoals(response.data.fitnessGoal);
+        if (!goalFromStorage) {
+          setGoals(response.data.fitnessGoal);
+        }
       } catch (error) {
         console.error("Error fetching user:", error);
       }
     };
-
+  
     fetchUser();
   }, []);
-
+  
   const handleGoalsChange = (e) => {
     setGoals(e.target.value);
   };
-
+  
   // Form submission handler
   const handleFormSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
+  
+    localStorage.setItem("fitnessGoal", goals);
   
     const data = new FormData();
     data.append("image", e.target.image.files[0]);

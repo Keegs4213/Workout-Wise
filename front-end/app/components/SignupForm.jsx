@@ -54,7 +54,7 @@ function SignupForm() {
   };
 
   return (
-    <div>
+    <div  className={styles.signupContainer}>
       <h2>Signup</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
