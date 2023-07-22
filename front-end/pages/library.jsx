@@ -16,7 +16,6 @@ import YouTube from "react-youtube";
 import Header from "../app/components/Header";
 import BottomNavBar from "../app/components/Navbar";
 
-
 import "../public/bootstrap.min.css";
 import styles from "../app/globals.module.css";
 
@@ -40,7 +39,17 @@ function LibraryPage() {
 
   const filters = {
     type: ["Cardio", "Strength", "Stretching"],
-    muscle: ["Abdominals", "Biceps", "Triceps", "Lats", "Middle_Back", "Chest", "Quadriceps", "Glutes", "Hamstrings"],
+    muscle: [
+      "Abdominals",
+      "Biceps",
+      "Triceps",
+      "Lats",
+      "Middle_Back",
+      "Chest",
+      "Quadriceps",
+      "Glutes",
+      "Hamstrings",
+    ],
     difficulty: ["Beginner", "Intermediate", "Expert"],
   };
 
@@ -94,12 +103,13 @@ function LibraryPage() {
         }
       )
       .then((response) => {
-        setExercises(response.data);
+        const limitedExercises = response.data.slice(0, recordsPerPage);
+        setExercises(limitedExercises);
       })
       .catch((error) => {
         console.error("Error fetching exercises:", error);
       });
-     setIsLoading(false);
+    setIsLoading(false);
   };
 
   const handlePrevPage = () => {
@@ -114,138 +124,140 @@ function LibraryPage() {
     fetchExercises(page + 1);
   };
 
- 
   return (
     <div>
       <Header />
-      {isLoading ? <LoadingSpinner /> : <>
-      <h2 className={styles.header2}>Exercise Library</h2>
-      <InputGroup className="mb-3">
-        <FormControl
-          placeholder="Search exercises"
-          aria-label="Search exercises"
-          aria-describedby="basic-addon2"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </InputGroup>
-      <Row style={{ justifyContent: "flex-start", margin: "10px" }}>
-        <Col sm={2}>
-          <Dropdown onSelect={(value) => setTypeFilter(value)}>
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              {typeFilter || "Select Type"}
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item eventKey="">Select Type</Dropdown.Item>
-              {filters.type.map((type, i) => (
-                <Dropdown.Item eventKey={type} key={i}>
-                  {type}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-        </Col>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <h2 className={styles.header2}>Exercise Library</h2>
+          <InputGroup className="mb-3">
+            <FormControl
+              placeholder="Search exercises"
+              aria-label="Search exercises"
+              aria-describedby="basic-addon2"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </InputGroup>
+          <Row style={{ justifyContent: "flex-start", margin: "10px" }}>
+  <Col xs={12} sm={4}>
+    <Dropdown onSelect={(value) => setTypeFilter(value)}>
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                  {typeFilter || "Select Type"}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item eventKey="">Select Type</Dropdown.Item>
+                  {filters.type.map((type, i) => (
+                    <Dropdown.Item eventKey={type} key={i}>
+                      {type}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
 
-        <Col sm={2}>
-          <Dropdown
-            onSelect={(value) => setMuscleFilter(value)}
-            style={{ left: "-20px" }}
-          >
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              {muscleFilter || "Select Muscle"}
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item eventKey="">Select Muscle</Dropdown.Item>
-              {filters.muscle.map((muscle, i) => (
-                <Dropdown.Item eventKey={muscle} key={i}>
-                  {muscle}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-        </Col>
+            <Col xs={12} sm={4}>
+    <Dropdown onSelect={(value) => setMuscleFilter(value)}>
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                  {muscleFilter || "Select Muscle"}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item eventKey="">Select Muscle</Dropdown.Item>
+                  {filters.muscle.map((muscle, i) => (
+                    <Dropdown.Item eventKey={muscle} key={i}>
+                      {muscle}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
 
-        <Col sm={2}>
-          <Dropdown
-            onSelect={(value) => setDifficultyFilter(value)}
-            style={{ left: "-30px" }}
+            <Col xs={12} sm={4}>
+    <Dropdown onSelect={(value) => setDifficultyFilter(value)} >
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                  {difficultyFilter || "Select Difficulty"}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item eventKey="">Select Difficulty</Dropdown.Item>
+                  {filters.difficulty.map((difficulty, i) => (
+                    <Dropdown.Item eventKey={difficulty} key={i}>
+                      {difficulty}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
+          </Row>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "20px",
+              justifyContent: "center",
+            }}
           >
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              {difficultyFilter || "Select Difficulty"}
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item eventKey="">Select Difficulty</Dropdown.Item>
-              {filters.difficulty.map((difficulty, i) => (
-                <Dropdown.Item eventKey={difficulty} key={i}>
-                  {difficulty}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-        </Col>
-      </Row>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "20px",
-          justifyContent: "center",
-        }}
-      >
-        {exercises.map((exercise, i) => (
-          <Card
-            className="card border-light mb-3"
-            style={{ width: "300px", height: "250px" }} // Reduced width
-            key={i}
+            {exercises.map((exercise, i) => (
+              <Card
+                className="card border-light mb-3"
+                style={{ width: "300px", height: "250px" }} // Reduced width
+                key={i}
+              >
+                <Card.Body className={styles.dashboardText}>
+                  <Card.Title>{exercise.name}</Card.Title>
+                  <Card.Text>
+                    Type:{" "}
+                    {capitalizeFirstLetter(exercise.type.replace(/_/g, " "))}
+                  </Card.Text>
+                  <Card.Text>
+                    Difficulty: {capitalizeFirstLetter(exercise.difficulty)}
+                  </Card.Text>
+                  <Card.Text>
+                    Equipment:{" "}
+                    {capitalizeFirstLetter(
+                      exercise.equipment.replace(/_/g, " ")
+                    )}
+                  </Card.Text>
+                  <Button variant="primary" onClick={() => openModal(exercise)}>
+                    View Demonstration
+                  </Button>
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "60px",
+            }}
           >
-            <Card.Body>
-              <Card.Title>{exercise.name}</Card.Title>
-              <Card.Text>
-                Type: {capitalizeFirstLetter(exercise.type)}
-              </Card.Text>
-              <Card.Text>
-                Difficulty: {capitalizeFirstLetter(exercise.difficulty)}
-              </Card.Text>
-              <Card.Text>
-                Equipment: {capitalizeFirstLetter(exercise.equipment)}
-              </Card.Text>
-              <Button variant="primary" onClick={() => openModal(exercise)}>
-                View Demonstration
+            <Pagination>
+              <Pagination.Prev onClick={handlePrevPage} disabled={page === 1} />
+              <Pagination.Item>{page}</Pagination.Item>
+              <Pagination.Next onClick={handleNextPage} />
+            </Pagination>
+          </div>
+          <Modal show={showModal} onHide={closeModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {currentExercise && currentExercise.name}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {currentVideo && <YouTube videoId={currentVideo} opts={opts} />}
+              <p>{currentExercise && currentExercise.instructions}</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={closeModal}>
+                Close
               </Button>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: "60px",
-        }}
-      >
-        <Pagination>
-          <Pagination.Prev onClick={handlePrevPage} disabled={page === 1} />
-          <Pagination.Item>{page}</Pagination.Item>
-          <Pagination.Next onClick={handleNextPage} />
-        </Pagination>
-      </div>
-      <Modal show={showModal} onHide={closeModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>{currentExercise && currentExercise.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {currentVideo && <YouTube videoId={currentVideo} opts={opts} />}
-          <p>{currentExercise && currentExercise.instructions}</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={closeModal}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      <BottomNavBar />
-      </>
-      }
+            </Modal.Footer>
+          </Modal>
+          <BottomNavBar />
+        </>
+      )}
     </div>
   );
 }
