@@ -5,7 +5,10 @@
   height: 200px;
   opacity: 0.6;
   z-index: -1;
-  ;
+}
+
+.introText {
+  font-family: 'VT323', monospace;
 }
 
 .square1 {
