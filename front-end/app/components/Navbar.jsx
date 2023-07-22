@@ -4,7 +4,7 @@ import { faUser, faCheck, faList, faBook, faHome } from '@fortawesome/free-solid
 
 function BottomNavBar() {
   return (
-    <Nav className="justify-content-around fixed-bottom" activeKey="/home" style={{ boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.1)' }}>
+    <Nav className="justify-content-around fixed-bottom" activeKey="/home" style={{ backgroundColor: "#3503fc", boxShadow: '0px -2px 10px rgba(0, 0, 0, 0.1)' }}>
       <Nav.Item>
         <Nav.Link href="/dashboard">
           <FontAwesomeIcon icon={faHome} />

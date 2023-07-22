@@ -1,3 +1,5 @@
+import styles from "../globals.module.css"
+
 export default function CalorieCount() {
     const mockData = {
       totalCalories: 500,
@@ -6,9 +8,9 @@ export default function CalorieCount() {
   
     return (
       <div>
-        <h3>Calorie Count</h3>
-        <p>Total Calories Burned: {mockData.totalCalories}</p>
-        <p>Goal: {mockData.goalCalories}</p>
+        <h3 className={styles.dashboardText}>Calorie Count</h3>
+        <p className={styles.dashboardText}>Total Calories Burned: {mockData.totalCalories}</p>
+        <p className={styles.dashboardText}>Goal: {mockData.goalCalories}</p>
       </div>
     );
   }

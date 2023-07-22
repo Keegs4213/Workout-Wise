@@ -35,15 +35,13 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: center; /* add this line */
-  background-color: #ff5722; /* or any other color you like */
-  color: #ffffff; /* or any other color you like */
+  justify-content: center; 
   padding: 20px;
   position: relative;
 }
 
 .headerTitle {
-  font-family: "YourCoolFont", sans-serif; /* Replace 'YourCoolFont' with your custom font */
+  font-family: 'VT323', monospace;
   font-size: 2em;
 }
 
@@ -143,6 +141,7 @@
   align-items: center;
   justify-content: center; 
   margin-top:-25px;
+  font-family: 'VT323', monospace;
 }
 .header3 {
   display: flex;
@@ -191,5 +190,26 @@
 }
 
 /* Dashboard */
+
+
+.dashboardSubtitle {
+  font-family: 'VT323', monospace;
+
+}
+
+.goalText {
+  font-family: 'VT323', monospace;
+}
+
+.quoteText {
+  font-family: 'VT323', monospace;
+}
+
+.p {
+  font-family: 'VT323', monospace;
+}
+.dashboardText {
+  font-family: 'VT323', monospace;
+}
 
 
