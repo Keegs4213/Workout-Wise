@@ -1,68 +1,70 @@
 //profile.jsx
-import { useEffect, useState } from "react";
-import { Form, Button, Image, Container, Row, Col } from "react-bootstrap";
-import axios from "axios";
-import Header from "../app/components/Header";
-import styles from "../app/globals.module.css";
-import LoadingSpinner from "../app/components/LoadingSpinner";
-import "../public/bootstrap.min.css";
-import BottomNavBar from "../app/components/Navbar";
+import { useEffect, useState } from 'react'
+import { Form, Button, Image, Container, Row, Col } from 'react-bootstrap'
+import axios from 'axios'
+import Header from '../app/components/Header'
+import styles from '../app/globals.module.css'
+import LoadingSpinner from '../app/components/LoadingSpinner'
+import '../public/bootstrap.min.css'
+import BottomNavBar from '../app/components/Navbar'
 
 export default function Profile() {
-  const [user, setUser] = useState(null);
-  const [goals, setGoals] = useState("");
-  const [userName, setUserName] = useState("");
-  const [uploadMessage, setUploadMessage] = useState("");
-  const [imageUrl, setImageUrl] = useState("/default-profile.png");
+  const [user, setUser] = useState(null)
+  const [goals, setGoals] = useState('')
+  const [userName, setUserName] = useState('')
+  const [uploadMessage, setUploadMessage] = useState('')
+  const [imageUrl, setImageUrl] = useState('/default-profile.png')
 
   useEffect(() => {
     const fetchUser = async () => {
       // Replace this with the actual user id
-      const userId = localStorage.getItem("userId");
-      const userNameFromStorage = localStorage.getItem("userName");
-      setUserName(userNameFromStorage);
+      const userId = localStorage.getItem('userId')
+      const userNameFromStorage = localStorage.getItem('userName')
+      setUserName(userNameFromStorage)
 
       try {
         const response = await axios.get(
           `http://localhost:3245/users/${userId}`
-        );
-        setUser(response.data);
-        setGoals(response.data.fitnessGoal);
+        )
+        setUser(response.data)
+        setGoals(response.data.fitnessGoal)
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error('Error fetching user:', error)
       }
-    };
+    }
 
-    fetchUser();
-  }, []);
+    fetchUser()
+  }, [])
 
   const handleGoalsChange = (e) => {
-    setGoals(e.target.value);
-  };
+    setGoals(e.target.value)
+  }
 
   // Form submission handler
   const handleFormSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-  
-    const data = new FormData();
-    data.append("image", e.target.image.files[0]);
-  
+    e.preventDefault() // Prevent default form submission
+
+    const data = new FormData()
+    data.append('image', e.target.image.files[0])
+
     try {
-      const response = await axios.post("http://localhost:3245/upload", data);
-      setUploadMessage(response.data.message);
-      setImageUrl(response.data.filePath); // Update the image URL
+      const response = await axios.post('http://localhost:3245/upload', data)
+
+      console.log('Response:', response.data)
+      setUploadMessage(response.data.message)
+      setImageUrl(response.data.filePath) // Update the image URL
     } catch (error) {
-      console.error("Error uploading file:", error);
+      console.error('Error uploading file:', error)
       if (error.response) {
-        setUploadMessage(error.response.data.message);
+        setUploadMessage(error.response.data.message)
       } else {
-        setUploadMessage("An error occurred while uploading the file");
+        setUploadMessage('An error occurred while uploading the file')
       }
     }
-  };
+  }
 
   if (!user) {
-    return <LoadingSpinner />;
+    return <LoadingSpinner />
   }
 
   return (
@@ -71,36 +73,29 @@ export default function Profile() {
       <Container className={styles.profileContainer}>
         <h2 className={styles.header2}>Profile</h2>
         <Row>
-          <Col md={6} className="text-center">
+          <Col md={6} className='text-center'>
             <div
-              className="card border-info mb-3"
-              style={{ maxWidth: "12rem", margin: "auto" }}
+              className='card border-info mb-3'
+              style={{ maxWidth: '12rem', margin: 'auto' }}
             >
-              <div className="card-header">{userName}</div>
-              <form
-                encType="multipart/form-data"
-                onSubmit={handleFormSubmit} 
-              >
-                <input type="file" name="image" />
-                <Button variant="primary" type="submit">
+              <div className='card-header'>{userName}</div>
+              <form encType='multipart/form-data' onSubmit={handleFormSubmit}>
+                <input type='file' name='image' />
+                <Button variant='primary' type='submit'>
                   Change Profile Picture
                 </Button>
               </form>
-              <Image
-                src={imageUrl}
-                alt="profile picture"
-                roundedCircle
-              />
+              <Image src={imageUrl} alt='profile picture' roundedCircle />
               <p>{uploadMessage}</p>
             </div>
           </Col>
           <Col md={6}>
             <div
-              className="card border-info mb-3"
-              style={{ maxWidth: "20rem" }}
+              className='card border-info mb-3'
+              style={{ maxWidth: '20rem' }}
             >
-              <div className="card-header">Your Details</div>
-              <div className="card-body">
+              <div className='card-header'>Your Details</div>
+              <div className='card-body'>
                 <p>
                   <strong>Weight:</strong> {user.weight}kg
                 </p>
@@ -108,12 +103,12 @@ export default function Profile() {
                   <strong>Height:</strong> {user.height}cm
                 </p>
                 <Form>
-                  <Form.Group controlId="goals">
+                  <Form.Group controlId='goals'>
                     <Form.Label>
                       <strong>Goals:</strong>
                     </Form.Label>
                     <Form.Control
-                      as="select"
+                      as='select'
                       value={goals}
                       onChange={handleGoalsChange}
                     >
@@ -123,7 +118,7 @@ export default function Profile() {
                       <option>Improve Mobility</option>
                     </Form.Control>
                   </Form.Group>
-                  <Button variant="primary" type="submit">
+                  <Button variant='primary' type='submit'>
                     Save Changes
                   </Button>
                 </Form>
@@ -134,19 +129,19 @@ export default function Profile() {
         <Row>
           <Col>
             <div
-              className="card border-info mb-3"
-              style={{ maxWidth: "30rem" }}
+              className='card border-info mb-3'
+              style={{ maxWidth: '30rem' }}
             >
-              <div className="card-header">Your Achievements</div>
-              <div className="card-body">Coming in future.. </div>
+              <div className='card-header'>Your Achievements</div>
+              <div className='card-body'>Coming in future.. </div>
             </div>
           </Col>
         </Row>
-        <Button variant="primary" href="/login">
+        <Button variant='primary' href='/login'>
           Logout
         </Button>
       </Container>
       <BottomNavBar />
     </main>
-  );
+  )
 }
