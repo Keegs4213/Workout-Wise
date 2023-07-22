@@ -276,13 +276,7 @@ function GeneratePlanPage() {
   function getUniqueTypes(plan) {
     const typesSet = new Set();
     plan.forEach((day) =>
-      day.forEach((exercise) => {
-        if (exercise) {
-          typesSet.add(exercise.type);
-        } else {
-          console.error("Undefined exercise found");
-        }
-      })
+      day.forEach((exercise) => typesSet.add(exercise.type))
     );
     return Array.from(typesSet).join(", ");
   }
@@ -333,16 +327,14 @@ function GeneratePlanPage() {
                       {day.map((exercise, index) => (
                         <tr key={index}>
                           <td>
-                            {exercise && (
-                              <Button
-                                variant="link"
-                                onClick={() => openModal(exercise)}
-                              >
-                                {exercise.name}
-                              </Button>
-                            )}
+                            <Button
+                              variant="link"
+                              onClick={() => openModal(exercise)}
+                            >
+                              {exercise.name}
+                            </Button>
                           </td>
-                          <td>{exercise && formatString(exercise.muscle)}</td>
+                          <td>{formatString(exercise.muscle)}</td>
                           <td>{formatString(exercise.difficulty)}</td>
                           <td>
                             {exercise.type === "strength"

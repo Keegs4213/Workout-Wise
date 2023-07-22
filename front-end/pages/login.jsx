@@ -11,9 +11,9 @@ export default function LoginPage() {
   const router = useRouter();
 
   return (
-    <div className={styles["login-container"]}>
+    <div className={styles["page-container"]}>
       <Header/>
-      <h2 className={styles.loginLabel}>Login</h2>
+      <h2>Login</h2>
       <LoginForm />
       <p>{message}</p>
     </div>
