@@ -27,6 +27,7 @@ import {
 import { Line, Doughnut } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../app/components/LoadingSpinner";
+import "../app/globals.css"
 
 export default function Dashboard() {
   const [quote, setQuote] = useState("");
@@ -130,7 +131,7 @@ export default function Dashboard() {
   const workoutsCompleted = data.labels.includes(currentMonth)
     ? data.datasets[0].data[data.labels.indexOf(currentMonth)]
     : 0;
-  const totalWorkouts = 30; // This should be your total number of workouts for the month
+  const totalWorkouts = 20;
 
   const getDoughnutData = (chartData) => {
     const workoutsRemaining = totalWorkouts - workoutsCompleted;
@@ -164,7 +165,7 @@ export default function Dashboard() {
   // Import the Doughnut component dynamically
   const Doughnut = dynamic(
     () => import("react-chartjs-2").then((mod) => mod.Doughnut),
-    { ssr: false } // This line is important. It disables server-side rendering for this component
+    { ssr: false } // disables server-side rendering for this component
   );
 
   const doughnutOptions = {
@@ -203,23 +204,25 @@ export default function Dashboard() {
 
   <Row>
     <Col md={6}>
-      <h2 className={styles.dashboardSubtitle}>Workouts Completed</h2>
-      <div style={{ width: "75%", height: "75%" }}>
+      
+      <div style={{ width: "75%", height: "75%" }}><h2 className={styles.dashboardSubtitle}>Workouts Completed</h2>
         <p className={styles.dashboardText}>
           You have completed {workoutsCompleted} /
           {totalWorkouts} workouts this month
         </p>
         <Doughnut data={doughnutData} options={doughnutOptions} />
       </div>
-    </Col>
-    <Col md={6}>
-      <h3 className={styles.dashboardText}>Your current goal is {fitnessGoal}</h3>
-      <br></br>
-      <WorkoutLog /> <CalorieCount />
-      <h3 className={styles.quoteText}>Motivational Quote</h3>
-      <h5 className={styles.quoteText}>"{quote}"</h5>
-    </Col>
-  </Row>
+      </Col>
+              <Col xs={12} sm={12} md={6} lg={6}>
+                <h3 className={styles.dashboardText}>
+                  Your current goal is {fitnessGoal}
+                </h3>
+                <br></br>
+                <WorkoutLog /> <CalorieCount />
+                <h3 className={styles.quoteText}>Motivational Quote</h3>
+                <h5 className={styles.quoteText}>"{quote}"</h5>
+              </Col>
+            </Row>
             <Row>
               <Col md={6}></Col>
               <Col md={6}></Col>

@@ -7,6 +7,7 @@ import { Table, Button, Modal } from "react-bootstrap";
 import YouTube from "react-youtube";
 import { useRouter } from "next/router";
 import LoadingSpinner from "../app/components/LoadingSpinner";
+import "../app/globals.css"
 
 // Helper function to shuffle an array
 function shuffleArray(array) {
@@ -294,12 +295,12 @@ function GeneratePlanPage() {
         <LoadingSpinner />
       ) : (
         <>
-          <h2 className={styles.header2}>
+          <h3>
             Hello {userName}, here is Your Customized Plan
-          </h2>
-          <div>
+          </h3>
+          <div className={styles.tableContainer}>
             {exercisePlan && exercisePlan.length > 0 && (
-              <h3 className={styles.header3}>
+              <h3 className={styles.planText}>
                 Plan Type: {getUniqueTypes(exercisePlan).toUpperCase()}
               </h3>
             )}
