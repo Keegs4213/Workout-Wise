@@ -72,9 +72,62 @@
 .page-container::before {
   content: "";
   position: absolute;
+<<<<<<< HEAD
   height: 100%;
   width: 100%;
   padding: 50px !important;
+=======
+  left: 500px;
+  top: 90px;
+  height: 300px;
+  width: 300px;
+  z-index: -1;
+  background: #133955;
+  animation: pulse 5s infinite;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgb(0, 242, 255);
+  border-radius: 10px;
+}
+
+.loginLabel {
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.loginContainer {
+  width: 1300px;
+  height: 550px;
+  display: flex;          /* This makes .loginContainer a flex container */
+  flex-direction: column; /* This stacks the children vertically */
+  align-items: center;    /* This centers the children horizontally */
+}
+
+.signupContainer {
+  width: 1300px;
+  height: 568px;
+  display: flex;          /* This makes .loginContainer a flex container */
+  flex-direction: column; /* This stacks the children vertically */
+  align-items: center;    /* This centers the children horizontally */
+}
+
+.signup-container {
+  position: relative;
+}
+
+.signup-container::before {
+  content: "";
+  position: absolute;
+  left: 500px;
+  top: 95px;
+<<<<<<< Updated upstream
+  height: 330px;
+=======
+  height: 350px;
+>>>>>>> Stashed changes
+  width: 300px;
+>>>>>>> development
   z-index: -1;
   background: #133955;
   animation: pulse 5s infinite;
