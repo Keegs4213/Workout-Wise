@@ -96,7 +96,8 @@ export default function Dashboard() {
 
     const countsByMonth = {};
 
-    for (let workout of workouts) {
+    for (let i = 0; i < workouts.length; i += 5) {
+      const workout = workouts[i];
       const month = workout.date.slice(0, 7);
 
       countsByMonth[month] = (countsByMonth[month] || 0) + 1;
@@ -131,7 +132,7 @@ export default function Dashboard() {
   const workoutsCompleted = data.labels.includes(currentMonth)
     ? data.datasets[0].data[data.labels.indexOf(currentMonth)]
     : 0;
-  const totalWorkouts = 20;
+  const totalWorkouts = 15;
 
   const getDoughnutData = (chartData) => {
     const workoutsRemaining = totalWorkouts - workoutsCompleted;
