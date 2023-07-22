@@ -53,11 +53,15 @@ function LoginPage() {
         </Form.Group>
         <br></br>
         <Button variant="primary" type="submit" className={styles.loginButton}>Login</Button>
-      </Form>
+      </Form><br></br>
       <a href="/signup"><p>Don't have an account?</p></a>
       <p>{message}</p>
     </div>
   );
 }
 
+<<<<<<< Updated upstream
 export default LoginPage;
+=======
+export default LoginPage;
+>>>>>>> Stashed changes

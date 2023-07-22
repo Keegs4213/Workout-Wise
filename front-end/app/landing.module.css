@@ -11,6 +11,10 @@
   font-family: 'VT323', monospace;
 }
 
+.introText {
+  font-family: 'VT323', monospace;
+}
+
 .square1 {
   background: url('/square1.jpg') no-repeat;
   background-size: cover;

@@ -116,7 +116,11 @@ align-items: center;
   position: absolute;
   left: 500px;
   top: 95px;
+<<<<<<< Updated upstream
   height: 330px;
+=======
+  height: 350px;
+>>>>>>> Stashed changes
   width: 300px;
   z-index: -1;
   background: #133955;
