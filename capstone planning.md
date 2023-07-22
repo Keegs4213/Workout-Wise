@@ -68,13 +68,12 @@ move API key to custom environment
 
 to do:
 
+library - fetches 10 exercises not 8 - fit better on page
 
 Profile - display user goal - save changes with button 
 change profile picture 
 add height + weight input
 fix layout
-
-fix login + signup
 
 workout tracker - make 5 exercises one workout
 

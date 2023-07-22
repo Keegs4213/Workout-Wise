@@ -65,59 +65,16 @@
   }
 }
 
-.login-container {
+.page-container {
   position: relative;
 }
 
-.login-container::before {
+.page-container::before {
   content: "";
   position: absolute;
-  left: 500px;
-  top: 90px;
-  height: 300px;
-  width: 300px;
-  z-index: -1;
-  background: #133955;
-  animation: pulse 5s infinite;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgb(0, 242, 255);
-  border-radius: 10px;
-}
-
-.loginLabel {
-display: flex;
-justify-content: center;
-align-items: center;
-
-}
-
-.loginContainer {
-  width: 1300px;
-  height: 550px;
-  display: flex;          /* This makes .loginContainer a flex container */
-  flex-direction: column; /* This stacks the children vertically */
-  align-items: center;    /* This centers the children horizontally */
-}
-
-.signupContainer {
-  width: 1300px;
-  height: 568px;
-  display: flex;          /* This makes .loginContainer a flex container */
-  flex-direction: column; /* This stacks the children vertically */
-  align-items: center;    /* This centers the children horizontally */
-}
-
-.signup-container {
-  position: relative;
-}
-
-.signup-container::before {
-  content: "";
-  position: absolute;
-  left: 500px;
-  top: 95px;
-  height: 330px;
-  width: 300px;
+  height: 100%;
+  width: 100%;
+  padding: 50px !important;
   z-index: -1;
   background: #133955;
   animation: pulse 5s infinite;
@@ -168,6 +125,7 @@ align-items: center;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1) !important;
   transition: transform 0.3s ease-in-out !important;
   cursor: pointer !important;
+  /* Adds a gap around each card */
   display: flex;
   flex-direction: column;
 }
@@ -211,24 +169,24 @@ align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
+  height: 100vh; /* this makes the container take up the full height of the view */
 }
 /* Nav bar */
 .fixed-bottom {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #fff; 
-  border-top: 1px solid #ddd; 
+  background-color: #fff; /* Or any color you prefer */
+  border-top: 1px solid #ddd; /* Optional, adds a slight border at the top of the navbar */
 }
 
 .fixed-bottom .nav-link {
-  color: #333; 
-  text-align: center; 
+  color: #333; /* Or any color you prefer */
+  text-align: center; /* Center the text and the icon */
 }
 
 .fixed-bottom .nav-link div {
-  font-size: 0.75rem; 
+  font-size: 0.75rem; /* Adjust the size of the text */
 }
 
 /* Dashboard */
@@ -253,6 +211,5 @@ align-items: center;
 .dashboardText {
   font-family: 'VT323', monospace;
 }
-
 
 

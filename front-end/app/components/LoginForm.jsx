@@ -43,11 +43,11 @@ function LoginPage() {
   return (
     <div className={styles.loginContainer}>
       <Form onSubmit={handleSubmit}>
-        <Form.Group>
+        <Form.Group className={styles.loginLabel}>
           <Form.Label>Email:</Form.Label>
           <Form.Control type="text" value={email} onChange={handleEmailChange} className={styles.loginInput} />
         </Form.Group>
-        <Form.Group>
+        <Form.Group className={styles.loginLabel}>
           <Form.Label>Password:</Form.Label>
           <Form.Control type="password" value={password} onChange={handlePasswordChange} className={styles.loginInput} />
         </Form.Group>
@@ -61,3 +61,4 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
