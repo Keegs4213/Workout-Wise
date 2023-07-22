@@ -9,6 +9,8 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const router = useRouter();
 
@@ -17,12 +19,15 @@ function LoginPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true); 
 
     const response = await fetch("http://localhost:3245/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
+
+    setIsLoading(false); 
 
     if (response.ok) {
       const data = await response.json();
@@ -76,13 +81,5 @@ function LoginPage() {
 }
 
 export default LoginPage;
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-=======
-export default LoginPage;
->>>>>>> Stashed changes
->>>>>>> development
-=======
->>>>>>> development
+

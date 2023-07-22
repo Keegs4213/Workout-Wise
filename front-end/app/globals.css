@@ -1,11 +1,7 @@
 /* globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Tektur&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&family=Russo+One&family=Monoton&family=Major+Mono+Display&display=swap');
-<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-:root {
-=======
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); 
 /* :root {
 >>>>>>> development
     --max-width: 1280px;
@@ -46,13 +42,8 @@
     margin: 0;
   } */
   
-<<<<<<< HEAD
-  html {
-    overflow-x: hidden;
-  }
-=======
 
->>>>>>> development
+
   
   html, body {
     /* color: rgb(var(--foreground-rgb));
@@ -69,10 +60,6 @@
     margin: auto;
     height: 100%;
     min-height: 100vh;
-<<<<<<< HEAD
-    overflow: hidden;
-=======
->>>>>>> development
   }
   /* h1 {
     display: flex;
