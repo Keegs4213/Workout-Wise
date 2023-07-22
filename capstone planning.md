@@ -57,36 +57,29 @@ https://api-ninjas.com/api/exercises
 
 
 
-
-
-
-
-to do:
-add paypal thing?
 login - reset password?
 graphs for tracking = see progress
 store goal and fitness level in backend not local storage 
 notifcations of encouragement
 library - add exercises to plan?
-
-Plan -
-tone up - cardio 1 per day
 move API key to custom environment
+
+
+
+to do:
 mobility - recommendations change to reps not cardio
 
-Dashboard
-progress tracking - graph of some sort displaying workouts completed
-make more impressive 
-ask bally for ideas
-welcome user
+library - fetches 10 exercises not 8 - fit better on page
 
-Profile - initial user goal set 
+Profile - display user goal - save changes with button 
 change profile picture 
-badges for workouts completed 
-add height + weight
+add height + weight input
+fix layout
+
+workout tracker - make 5 exercises one workout
 
 
-
+Mobile response
 
 To do after coding:
 Design powerpoint presentation
@@ -94,13 +87,13 @@ Documentation
 
 
 
-
 stuff used;
 jwt password hashing
 youtube API fetch
 exercise API
-
+multer 
 
 in future:
 nutrition stuff if time + mobile response
 connect to smart watches
+interaction with other users - competitons, see users activty in feed, badges /achievements 

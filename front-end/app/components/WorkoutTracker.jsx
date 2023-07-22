@@ -1,3 +1,4 @@
+//components/WorkoutTracker.jsx
 import { useState, useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
@@ -7,7 +8,7 @@ import DatePicker from "react-datepicker";
 import { Pagination, Table } from "react-bootstrap";
 import styles from "../globals.module.css";
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 5;
 
 export default function WorkoutTracker() {
   const { register, handleSubmit, reset } = useForm();
@@ -243,6 +244,13 @@ export default function WorkoutTracker() {
                   type="number"
                   {...register("heartRate", { required: true })}
                 />
+                 <button
+          type="submit"
+          className="btn btn-primary"
+          style={{ margin: "5px" }}
+        >
+          Submit
+        </button>
               </div>
             </>
           )}
@@ -251,7 +259,6 @@ export default function WorkoutTracker() {
       </form>
 
       <div>
-        <h2 className={styles.header2}>Previous Workouts</h2>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -284,7 +291,7 @@ export default function WorkoutTracker() {
           </tbody>
         </Table>
         <div>
-          <Pagination style={{ display: "flex", justifyContent:"center", alignItems: "center", marginBottom: "20px" }}>
+          <Pagination style={{ display: "flex", justifyContent:"center", alignItems: "center", marginTop:"-20px" }}>
             <Pagination.Prev onClick={handlePrevPage} disabled={currentPage === 0} />
             <Pagination.Next onClick={handleNextPage} disabled={currentPage === totalPages - 1} />
           </Pagination>
