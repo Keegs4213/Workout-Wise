@@ -67,26 +67,33 @@ move API key to custom environment
 
 
 to do:
+<<<<<<< HEAD
 
 library - fetches 10 exercises not 8 - fit better on page
 
+=======
+>>>>>>> development
 Profile - display user goal - save changes with button 
 change profile picture 
 add height + weight input
 fix layout
 
+<<<<<<< HEAD
 workout tracker - make 5 exercises one workout
+=======
+>>>>>>> development
 
 Mobile response
 
 To do after coding:
 Design powerpoint presentation
-Documentation
+Documentation - better google docs or github markup?
 
+tidy code
 
 
 stuff used;
-jwt password hashing
+bcrypt password hashing
 youtube API fetch
 exercise API
 multer 

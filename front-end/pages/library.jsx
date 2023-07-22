@@ -105,11 +105,12 @@ function LibraryPage() {
       .then((response) => {
         const limitedExercises = response.data.slice(0, recordsPerPage);
         setExercises(limitedExercises);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching exercises:", error);
-      });
-    setIsLoading(false);
+        setIsLoading(false); });
+ 
   };
 
   const handlePrevPage = () => {
@@ -126,7 +127,7 @@ function LibraryPage() {
 
   return (
     <div>
-      <Header />
+      <Header/>
       {isLoading ? (
         <LoadingSpinner />
       ) : (
@@ -199,31 +200,27 @@ function LibraryPage() {
             }}
           >
             {exercises.map((exercise, i) => (
-              <Card
-                className="card border-light mb-3"
-                style={{ width: "300px", height: "250px" }} // Reduced width
-                key={i}
-              >
-                <Card.Body className={styles.dashboardText}>
-                  <Card.Title>{exercise.name}</Card.Title>
-                  <Card.Text>
-                    Type:{" "}
-                    {capitalizeFirstLetter(exercise.type.replace(/_/g, " "))}
-                  </Card.Text>
-                  <Card.Text>
-                    Difficulty: {capitalizeFirstLetter(exercise.difficulty)}
-                  </Card.Text>
-                  <Card.Text>
-                    Equipment:{" "}
-                    {capitalizeFirstLetter(
-                      exercise.equipment.replace(/_/g, " ")
-                    )}
-                  </Card.Text>
-                  <Button variant="primary" onClick={() => openModal(exercise)}>
-                    View Demonstration
-                  </Button>
-                </Card.Body>
-              </Card>
+            <Card
+            className="card border-light mb-3"
+            style={{ width: "300px", height: "235px" }} // Adjusted width and height
+            key={i}
+          >
+            <Card.Body className={styles.dashboardText} style={{ fontSize: "1em" }}>
+              <Card.Title style={{ fontSize: "1.3em" }}>{exercise.name}</Card.Title>
+              <Card.Text >
+                Type: {capitalizeFirstLetter(exercise.type.replace(/_/g, " "))}
+              </Card.Text>
+              <Card.Text >
+                Difficulty: {capitalizeFirstLetter(exercise.difficulty)}
+              </Card.Text>
+              <Card.Text >
+                Equipment: {capitalizeFirstLetter(exercise.equipment.replace(/_/g, " "))}
+              </Card.Text>
+              <Button variant="primary" style={{ fontSize: ".8em" }} onClick={() => openModal(exercise)}>
+                View Demonstration
+              </Button>
+            </Card.Body>
+          </Card>
             ))}
           </div>
           <div
