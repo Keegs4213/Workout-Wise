@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useRouter } from "next/router";
 import styles from "./../../app/globals.module.css";
+import "../globals.css"
 
 function SignupForm() {
   const [formState, setFormState] = useState({
@@ -55,7 +56,7 @@ function SignupForm() {
 
   return (
     <div  className={styles.signupContainer}>
-      <h2>Signup</h2>
+      <h2 className={styles.loginLabel}>Signup</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Name:</Form.Label>

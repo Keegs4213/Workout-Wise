@@ -1,15 +1,16 @@
 // Loginpage.jsx
-import { useState } from 'react';
-import { useRouter } from 'next/router'
-import styles from './../../app/globals.module.css'
-import { Form, Button } from 'react-bootstrap';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import styles from "./../../app/globals.module.css";
+import { Form, Button } from "react-bootstrap";
+import "../globals.css"
 
 function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const router =  useRouter()
+  const router = useRouter();
 
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
@@ -17,26 +18,25 @@ function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('http://localhost:3245/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = await fetch("http://localhost:3245/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
 
     if (response.ok) {
       const data = await response.json();
-      console.log('data:', data)
+      console.log("data:", data);
       if (data) {
-        setMessage('Login successful!');
+        setMessage("Login successful!");
         // Save the user's ID to local storage
-      localStorage.setItem('userId', data.response._id);
-        router.push('/dashboard')
+        localStorage.setItem("userId", data.response._id);
+        router.push("/dashboard");
       } else {
-     
-        setMessage('Login failed.');
+        setMessage("Login failed.");
       }
     } else {
-      setMessage('Login failed.');
+      setMessage("Login failed.");
     }
   };
 
@@ -45,23 +45,34 @@ function LoginPage() {
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Email:</Form.Label>
-          <Form.Control type="text" value={email} onChange={handleEmailChange} className={styles.loginInput} />
+          <Form.Control
+            type="text"
+            value={email}
+            onChange={handleEmailChange}
+            className={styles.loginInput}
+          />
         </Form.Group>
         <Form.Group>
           <Form.Label>Password:</Form.Label>
-          <Form.Control type="password" value={password} onChange={handlePasswordChange} className={styles.loginInput} />
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+            className={styles.loginInput}
+          />
         </Form.Group>
         <br></br>
-        <Button variant="primary" type="submit" className={styles.loginButton}>Login</Button>
-      </Form><br></br>
-      <a href="/signup"><p>Don't have an account?</p></a>
+        <Button variant="primary" type="submit" className={styles.loginButton}>
+          Login
+        </Button>
+      </Form>
+      <br></br>
+      <a href="/signup">
+        <p>Don't have an account?</p>
+      </a>
       <p>{message}</p>
     </div>
   );
 }
 
-<<<<<<< Updated upstream
 export default LoginPage;
-=======
-export default LoginPage;
->>>>>>> Stashed changes
