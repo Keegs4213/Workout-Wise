@@ -58,7 +58,7 @@ export default function CyberButton({ label }) {
   });
 
   return (
-    <Link href="/login" passHref style={{"text-decoration":"none"}}>
+    <Link href="/login" passHref style={{"textDecoration":"none"}}>
       <View 
         onMouseEnter={() => setHovered(true)} 
         onMouseLeave={() => setHovered(false)} 
@@ -179,8 +179,6 @@ const styles = StyleSheet.create({
     borderLeftColor: SHADOW_COLOR,
   },
   glitchText: {
-    textShadowColor: SHADOW_COLOR,
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 1,
+    textShadow: `2px 2px 1px ${SHADOW_COLOR}`
   },
 });

@@ -35,13 +35,13 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   padding: 20px;
   position: relative;
 }
 
 .headerTitle {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 2em;
 }
 
@@ -73,6 +73,7 @@
   content: "";
   position: absolute;
 <<<<<<< HEAD
+<<<<<<< HEAD
   height: 100%;
   width: 100%;
   padding: 50px !important;
@@ -80,6 +81,10 @@
   left: 500px;
   top: 90px;
   height: 300px;
+=======
+  left: -30px;
+  height: 400px;
+>>>>>>> development
   width: 300px;
   z-index: -1;
   background: #133955;
@@ -90,26 +95,7 @@
 }
 
 .loginLabel {
-display: flex;
-justify-content: center;
-align-items: center;
-
-}
-
-.loginContainer {
-  width: 1300px;
-  height: 550px;
-  display: flex;          /* This makes .loginContainer a flex container */
-  flex-direction: column; /* This stacks the children vertically */
-  align-items: center;    /* This centers the children horizontally */
-}
-
-.signupContainer {
-  width: 1300px;
-  height: 568px;
-  display: flex;          /* This makes .loginContainer a flex container */
-  flex-direction: column; /* This stacks the children vertically */
-  align-items: center;    /* This centers the children horizontally */
+  font-family: "VT323", monospace;
 }
 
 .signup-container {
@@ -119,13 +105,8 @@ align-items: center;
 .signup-container::before {
   content: "";
   position: absolute;
-  left: 500px;
-  top: 95px;
-<<<<<<< Updated upstream
-  height: 330px;
-=======
-  height: 350px;
->>>>>>> Stashed changes
+  left: -30px;
+  height: 450px;
   width: 300px;
 >>>>>>> development
   z-index: -1;
@@ -141,6 +122,10 @@ align-items: center;
 .fitnessGoalsContainer {
   padding: 1rem;
   text-align: center;
+}
+.html,
+.body {
+  height: 100%;
 }
 
 .goalCard {
@@ -161,7 +146,7 @@ align-items: center;
   background-color: rgb(255, 100, 162) !important;
 }
 .goalCard:active {
-  background-color: rgb(94, 231, 255) !important
+  background-color: rgb(94, 231, 255) !important;
 }
 .goalDescription {
   font-size: 12px;
@@ -187,20 +172,20 @@ align-items: center;
   background-color: rgb(255, 100, 162) !important;
 }
 .levelCard:active {
-  background-color: rgb(94, 231, 255) !important
+  background-color: rgb(94, 231, 255) !important;
 }
 .header2 {
   display: flex;
   align-items: center;
-  justify-content: center; 
-  margin-top:-25px;
-  font-family: 'VT323', monospace;
+  justify-content: center;
+  margin-top: -25px;
+  font-family: "VT323", monospace;
 }
 .header3 {
   display: flex;
   align-items: center;
-  justify-content: center; 
-  margin-top:-10px;
+  justify-content: center;
+  margin-top: -10px;
 }
 
 /* Generate Plan page */
@@ -212,23 +197,38 @@ align-items: center;
   border: 1px solid #ddd;
 }
 
+.tableContainer {
+  width: 100%; 
+  max-height: 500px; 
+  overflow-y: auto;
+}
+.planText {
+  font-family: "VT323", monospace;
+}
+
 .buttonContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 3px;
 }
 /* Loading Spinner */
 .loadingSpinnerContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   height: 100vh; /* this makes the container take up the full height of the view */
+=======
+  height: 100vh;
+>>>>>>> development
 }
 /* Nav bar */
 .fixed-bottom {
   position: fixed;
   bottom: 0;
   width: 100%;
+<<<<<<< HEAD
   background-color: #fff; /* Or any color you prefer */
   border-top: 1px solid #ddd; /* Optional, adds a slight border at the top of the navbar */
 }
@@ -240,29 +240,43 @@ align-items: center;
 
 .fixed-bottom .nav-link div {
   font-size: 0.75rem; /* Adjust the size of the text */
+=======
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.fixed-bottom .nav-link {
+  color: #333;
+  text-align: center;
+}
+
+.fixed-bottom .nav-link div {
+  font-size: 0.75rem;
+>>>>>>> development
 }
 
 /* Dashboard */
 
-
 .dashboardSubtitle {
-  font-family: 'VT323', monospace;
-
+  font-family: "VT323", monospace;
 }
 
 .goalText {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
 }
 
 .quoteText {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
 }
 
 .p {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
 }
 .dashboardText {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> development
