@@ -67,27 +67,23 @@ move API key to custom environment
 
 
 to do:
-
-
 Profile - display user goal - save changes with button 
 change profile picture 
 add height + weight input
 fix layout
 
-fix login + signup
-
-workout tracker - make 5 exercises one workout
 
 Mobile response
 
 To do after coding:
 Design powerpoint presentation
-Documentation
+Documentation - better google docs or github markup?
 
+tidy code
 
 
 stuff used;
-jwt password hashing
+bcrypt password hashing
 youtube API fetch
 exercise API
 multer 
