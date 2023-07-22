@@ -5,7 +5,7 @@ import "../public/bootstrap.min.css";
 import styles from "../app/globals.module.css";
 import { Table, Button, Modal } from "react-bootstrap";
 import YouTube from "react-youtube";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import LoadingSpinner from "../app/components/LoadingSpinner";
 
 // Helper function to shuffle an array
@@ -43,15 +43,14 @@ function GeneratePlanPage() {
   const [currentExercise, setCurrentExercise] = useState(null);
   const [currentVideo, setCurrentVideo] = useState(null);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleDashboardNavigation = () => {
     router.push("/dashboard");
-  }
+  };
   const handleRegeneratePlan = () => {
     router.push("/setGoals");
-     }
-   
+  };
 
   const openModal = (exercise) => {
     setShowModal(true);
@@ -168,8 +167,7 @@ function GeneratePlanPage() {
                   recommendedReps: randomReps(),
                   equipment: exercise.equipment,
                 };
-              } else {
-                // type === "cardio"
+              } else if (type === "cardio") {
                 let recommendedDuration;
                 switch (fitnessLevel) {
                   case "Beginner":
@@ -184,6 +182,22 @@ function GeneratePlanPage() {
                   default:
                     recommendedDuration = 30;
                 }
+              } else if (type === "stretching") {
+                let recommendedDuration;
+                switch (fitnessLevel) {
+                  case "Beginner":
+                    recommendedDuration = Math.floor(Math.random() * 6) + 5; // 5-10 mins
+                    break;
+                  case "Intermediate":
+                    recommendedDuration = Math.floor(Math.random() * 6) + 10; // 10-15 mins
+                    break;
+                  case "Expert":
+                    recommendedDuration = Math.floor(Math.random() * 6) + 15; // 15-20 mins
+                    break;
+                  default:
+                    recommendedDuration = 10;
+                }
+
                 return {
                   ...exercise,
                   recommendedDuration,
@@ -267,102 +281,104 @@ function GeneratePlanPage() {
     return Array.from(typesSet).join(", ");
   }
 
-  
-  
-
   return (
     <div>
       <Header />
-      {isLoading ? <LoadingSpinner /> : 
-      <>
-        <h2 className={styles.header2}>
-          Hello {userName}, here is Your Customized Plan
-        </h2>
-        <div>
-          {exercisePlan && exercisePlan.length > 0 && (
-            <h3 className={styles.header3}>
-              Plan Type: {getUniqueTypes(exercisePlan).toUpperCase()}
-            </h3>
-            
-          )}
-          {exercisePlan &&
-            exercisePlan.length > 0 &&
-            exercisePlan.map((day, i) => (
-              <div key={i}><br></br>
-                <h3 className={styles.header2}>
-                  Day {i + 1}:{" "}
-                  {fitnessGoal.toLowerCase() === "fat loss" &&
-                    "(Pick one exercise)"}
-                </h3>
-                
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <h2 className={styles.header2}>
+            Hello {userName}, here is Your Customized Plan
+          </h2>
+          <div>
+            {exercisePlan && exercisePlan.length > 0 && (
+              <h3 className={styles.header3}>
+                Plan Type: {getUniqueTypes(exercisePlan).toUpperCase()}
+              </h3>
+            )}
+            {exercisePlan &&
+              exercisePlan.length > 0 &&
+              exercisePlan.map((day, i) => (
+                <div key={i}>
+                  <br></br>
+                  <h3 className={styles.header2}>
+                    Day {i + 1}:{" "}
+                    {fitnessGoal.toLowerCase() === "fat loss" &&
+                      "(Pick one exercise)"}
+                  </h3>
 
-                <Table
-                  striped
-                  bordered
-                  hover
-                  className={`table-primary ${styles.exerciseTable}`}
-                >
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Muscle</th>
-                      <th>Difficulty</th>
-                      <th>Recommendations</th>
-                      <th>Equipment</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {day.map((exercise, index) => (
-                      <tr key={index}>
-                        <td>
-                          <Button
-                            variant="link"
-                            onClick={() => openModal(exercise)}
-                          >
-                            {exercise.name}
-                          </Button>
-                        </td>
-                        <td>{formatString(exercise.muscle)}</td>
-                        <td>{formatString(exercise.difficulty)}</td>
-                        <td>
-                          {exercise.type === "strength"
-                            ? `${exercise.recommendedSets} sets of ${exercise.recommendedReps} reps`
-                            : `${exercise.recommendedDuration} mins at heart rate ${exercise.recommendedHeartRate}`}
-                        </td>
-                        <td>{formatString(exercise.equipment)}</td>
+                  <Table
+                    striped
+                    bordered
+                    hover
+                    className={`table-primary ${styles.exerciseTable}`}
+                  >
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Muscle</th>
+                        <th>Difficulty</th>
+                        <th>Recommendations</th>
+                        <th>Equipment</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              </div>
-            ))}
-          <Modal show={showModal} onHide={closeModal}>
-            <Modal.Header closeButton>
-              <Modal.Title>{currentExercise && currentExercise.name}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {currentVideo && <YouTube videoId={currentVideo} opts={opts} />}
-              <p className={styles.exerciseInstructions}>
-                {currentExercise && currentExercise.instructions}
-              </p>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={closeModal}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
-        <div className={styles.buttonContainer}>
-          <Button variant="secondary" onClick={handleRegeneratePlan}>
-            Regenerate Plan
-          </Button>
-          <Button variant="secondary" onClick={handleDashboardNavigation}>
+                    </thead>
+                    <tbody>
+                      {day.map((exercise, index) => (
+                        <tr key={index}>
+                          <td>
+                            <Button
+                              variant="link"
+                              onClick={() => openModal(exercise)}
+                            >
+                              {exercise.name}
+                            </Button>
+                          </td>
+                          <td>{formatString(exercise.muscle)}</td>
+                          <td>{formatString(exercise.difficulty)}</td>
+                          <td>
+                            {exercise.type === "strength"
+                              ? `${exercise.recommendedSets} sets of ${exercise.recommendedReps} reps`
+                              : exercise.type === "cardio"
+                              ? `${exercise.recommendedDuration} mins at heart rate ${exercise.recommendedHeartRate}`
+                              : `${exercise.recommendedDuration} mins total, switch sides if required`}
+                          </td>
+                          <td>{formatString(exercise.equipment)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </div>
+              ))}
+            <Modal show={showModal} onHide={closeModal}>
+              <Modal.Header closeButton>
+                <Modal.Title>
+                  {currentExercise && currentExercise.name}
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                {currentVideo && <YouTube videoId={currentVideo} opts={opts} />}
+                <p className={styles.exerciseInstructions}>
+                  {currentExercise && currentExercise.instructions}
+                </p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={closeModal}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
+          <div className={styles.buttonContainer}>
+            <Button variant="secondary" onClick={handleRegeneratePlan}>
+              Regenerate Plan
+            </Button>
+            <Button variant="secondary" onClick={handleDashboardNavigation}>
               Proceed to Dashboard
-          </Button>
-        </div>
-      </>
-      }
+            </Button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -67,7 +67,6 @@ move API key to custom environment
 
 
 to do:
-mobility - recommendations change to reps not cardio
 
 library - fetches 10 exercises not 8 - fit better on page
 
@@ -77,7 +76,6 @@ add height + weight input
 fix layout
 
 workout tracker - make 5 exercises one workout
-
 
 Mobile response
 
