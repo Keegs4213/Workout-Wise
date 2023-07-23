@@ -62,17 +62,28 @@ Architecture Diagram
 [Insert Diagram Here]
 
 User Stories
-#	User Story Title	User Story Description	Priority	Additional Notes
-1	Account Creation	As a new user, I want to be able to create an account so that I can access personalized workout plans.	High	
-2	Goal Setting	As a user, I want to set my fitness goals so that the system can generate a workout plan that aligns with my objectives.	High	
-3	Workout Tracking	As a user, I want to track my workouts so that I can monitor my progress over time.	Medium	
-4	Discover New Exercises	As a user, I want to discover new exercises so that I can add variety to my workout routine.	Low	
-5	Update Profile	As a user, I want to update my profile (including goals and fitness level) so that my workout plan can be adjusted accordingly.	Medium	
-User Flow
-[Insert User Flow Diagram Here]
+| # | User Story Title | User Story Description | Priority | Additional Notes |
+|---|------------------|------------------------|----------|------------------|
+| 1 | Account Creation | As a new user, I want to be able to create an account so that I can access personalized workout plans. | High | |
+| 2 | Goal Setting | As a user, I want to set my fitness goals so that the system can generate a workout plan that aligns with my objectives. | High | |
+| 3 | Workout Tracking | As a user, I want to track my workouts so that I can monitor my progress over time. | Medium | |
+| 4 | Discover New Exercises | As a user, I want to discover new exercises so that I can add variety to my workout routine. | Low | |
+| 5 | Update Profile | As a user, I want to update my profile (including goals and fitness level) so that my workout plan can be adjusted accordingly. | Medium | |
+**8. User Flow Diagram**
+```mermaid
+graph TD
+    A[User Logs In/Creates account] --> B[User Sets Personal Goals]
+    B --> C[User Receives Personalized Workout Plan]
+    C --> D[User Starts Tracking Daily Workouts]
+    B --> E[User Joins Community and Interacts with Other Users]
+    D --> F[User Monitors Progress Towards Goals]
+    E --> F
+    F --> G[User Reaches Goals and Sets New Ones]
+    G --> B
+```
 
 Wireframe Design
-[Insert Wireframe Design Here]
+![Figma design](/Figma.png)
 
 Open Questions/Out of Scope
 Features considered out of scope include nutrition tracking and social networking capabilities.
