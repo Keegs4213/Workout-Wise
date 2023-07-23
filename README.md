@@ -131,4 +131,4 @@ The software effectively meets its objectives by providing users with personaliz
 - Express.js
 - MongoDB
 - [Exercises API](https://api-ninjas.com/api/exercises)
-- Youtube API
+- [Youtube API](https://developers.google.com/youtube/v3)
