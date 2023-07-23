@@ -83,7 +83,7 @@ graph TD
 ```
 
 **Wireframe Design**
-![Figma design](/Figma.png)
+![Figma design](/Figma.PNG)
 
 **Open Questions/Out of Scope**
 Features considered out of scope include nutrition tracking and social networking capabilities.
