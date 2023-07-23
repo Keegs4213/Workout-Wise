@@ -82,13 +82,13 @@ graph TD
     G --> B
 ```
 
-Wireframe Design
+**Wireframe Design**
 ![Figma design](/Figma.png)
 
-Open Questions/Out of Scope
+**Open Questions/Out of Scope**
 Features considered out of scope include nutrition tracking and social networking capabilities.
 
-Non-functional Requirements
+**Non-functional Requirements**
 Security: User login, secure storage of personal details, and data encryption are necessary.
 The application should be able to handle multiple user requests simultaneously.
 The application should be easy to use with a user-friendly interface.
@@ -97,17 +97,17 @@ The application should have a high degree of reliability.
 Project Planning
 [Insert Gantt Chart or Trello Board Here]
 
-Testing Strategy
+**Testing Strategy**
 Each feature of the application was tested using a combination of unit tests, integration tests, and end-to-end tests. Edge cases were handled by anticipating user errors and providing appropriate error messages.
 
-Implementation
+**Implementation**
 Considerations for deploying the software included ensuring a secure environment for user data and maintaining a robust infrastructure capable of handling multiple requests.
 
-End-to-end solution
+**End-to-end solution**
 The software effectively meets its objectives by providing users with personalized workout plans based on their fitness goals and levels.
 
-References
-[Link to GitHub Repository]
+**References**
+[(https://github.com/Keegs4213/Workout-Wise]
 Key Resources:
 Next.js
 React.js
