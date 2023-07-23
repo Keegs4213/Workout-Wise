@@ -122,7 +122,7 @@ I had to consider whether this was to a mobile-only app or a desktop + mobile ap
 The software effectively meets its objectives by providing users with personalized workout plans based on their fitness goals and levels and a way to track their workouts.
 
 ## References 
-[(https://github.com/Keegs4213/Workout-Wise]
+[WorkoutWise GitHub Repository](https://github.com/Keegs4213/Workout-Wise)
 
 *Key Resources*:
 - Next.js
@@ -130,5 +130,5 @@ The software effectively meets its objectives by providing users with personaliz
 - React-Bootstrap
 - Express.js
 - MongoDB
-- [https://api-ninjas.com/api/exercises] - Exercises API
+- [Exercises API](https://api-ninjas.com/api/exercises)
 - Youtube API
