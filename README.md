@@ -69,7 +69,7 @@ User Stories
 | 3 | Workout Tracking | As a user, I want to track my workouts so that I can monitor my progress over time. | Medium | |
 | 4 | Discover New Exercises | As a user, I want to discover new exercises so that I can add variety to my workout routine. | Low | |
 | 5 | Update Profile | As a user, I want to update my profile (including goals and fitness level) so that my workout plan can be adjusted accordingly. | Medium | |
-**8. User Flow Diagram**
+** User Flow Diagram**
 ```mermaid
 graph TD
     A[User Logs In/Creates account] --> B[User Sets Personal Goals]
@@ -82,19 +82,19 @@ graph TD
     G --> B
 ```
 
-Wireframe Design
+**Wireframe Design**
 ![Figma design](/Figma.png)
 
-Open Questions/Out of Scope
+**Open Questions/Out of Scope**
 Features considered out of scope include nutrition tracking and social networking capabilities.
 
-Non-functional Requirements
+**Non-functional Requirements**
 Security: User login, secure storage of personal details, and data encryption are necessary.
 The application should be able to handle multiple user requests simultaneously.
 The application should be easy to use with a user-friendly interface.
 The application should respond quickly to user requests.
 The application should have a high degree of reliability.
-Project Planning
+**Project Planning**
 [Insert Gantt Chart or Trello Board Here]
 
 Testing Strategy
