@@ -62,13 +62,13 @@ Architecture Diagram
 [Insert Diagram Here]
 
 User Stories
-| # | User Story Title | User Story Description | Priority | Additional Notes |
+| # | User Story Title | User Story Description | Priority |                                                                        
 |---|------------------|------------------------|----------|------------------|
-| 1 | Account Creation | As a new user, I want to be able to create an account so that I can access personalized workout plans. | High | |
-| 2 | Goal Setting | As a user, I want to set my fitness goals so that the system can generate a workout plan that aligns with my objectives. | High | |
-| 3 | Workout Tracking | As a user, I want to track my workouts so that I can monitor my progress over time. | Medium | |
-| 4 | Discover New Exercises | As a user, I want to discover new exercises so that I can add variety to my workout routine. | Low | |
-| 5 | Update Profile | As a user, I want to update my profile (including goals and fitness level) so that my workout plan can be adjusted accordingly. | Medium | |
+| 1 | Account Creation | As a new user, I want to be able to create an account so that I can access personalized workout plans. | High | 
+| 2 | Goal Setting | As a user, I want to set my fitness goals so that the system can generate a workout plan that aligns with my objectives. | High | 
+| 3 | Workout Tracking | As a user, I want to track my workouts so that I can monitor my progress over time. | Medium | 
+| 4 | Discover New Exercises | As a user, I want to discover new exercises so that I can add variety to my workout routine. | Low | 
+| 5 | Update Profile | As a user, I want to update my profile (including goals and fitness level) so that my workout plan can be adjusted accordingly. | Medium | 
 **8. User Flow Diagram**
 ```mermaid
 graph TD
@@ -86,30 +86,51 @@ graph TD
 ![Figma design](/Figma.PNG)
 
 **Open Questions/Out of Scope**
-Features considered out of scope include nutrition tracking and social networking capabilities.
+Features considered out of scope include nutrition tracking and social networking capabilities. Also integration of smart watches to display more data by using the respective SDK.
 
 **Non-functional Requirements**
-Security: User login, secure storage of personal details, and data encryption are necessary.
+Security: User login, secure storage of personal details, and data encryption. I have achieved this using bcrypt to hash and store sensitive user information in my database.
 The application should be able to handle multiple user requests simultaneously.
 The application should be easy to use with a user-friendly interface.
 The application should respond quickly to user requests.
 The application should have a high degree of reliability.
 Project Planning
-[Insert Gantt Chart or Trello Board Here]
+```mermaid
+gantt
+    title WorkoutWise Project Plan
+
+    section Planning
+    Requirements Gathering   :done,    des1, 2023-01-01, 7d
+    Designing                :done,    des2, after des1, 7d
+    Wireframing              :active,  des3, after des2, 7d
+
+    section Development
+    Frontend Development     :         des4, after des3, 14d
+    Backend Development      :         des5, after des3, 14d
+    Integration              :         des6, after des4, 7d
+
+    section Testing and Deployment
+    Testing                  :         des7, after des6, 7d
+    Deployment               :         des8, after des7, 3d
+```
 
 **Testing Strategy**
-Each feature of the application was tested using a combination of unit tests, integration tests, and end-to-end tests. Edge cases were handled by anticipating user errors and providing appropriate error messages.
+Steps taken to achieve product quality included frequent testing during the development process, I was constantly testing throughout the whole process making sure no unexpected errors occured when changing parts of my application. Using different details, routes, actions etc all to ensure everything was working as expected.
+Edge cases were handled by anticipating user errors and providing appropriate error messages, leading to more efficient debugging.
 
 **Implementation**
-Considerations for deploying the software included ensuring a secure environment for user data and maintaining a robust infrastructure capable of handling multiple requests.
+I had to consider whether this was to a mobile only app or a desktop + mobile application and I started with mobile only design but decided to do both to make it more accessible, I have deployed with Vercel but obviously in future I would have to get a domain and use a service like AWS to get to a production level
 
 **End-to-end solution**
-The software effectively meets its objectives by providing users with personalized workout plans based on their fitness goals and levels.
+The software effectively meets its objectives by providing users with personalized workout plans based on their fitness goals and levels and a way to track their workouts.
 
 **References**
 [(https://github.com/Keegs4213/Workout-Wise]
 Key Resources:
 Next.js
 React.js
+React-Bootstrap
 Express.js
 MongoDB
+[https://api-ninjas.com/api/exercises] - Exercises API
+Youtube API
