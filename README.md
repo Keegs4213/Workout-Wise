@@ -84,50 +84,51 @@ graph TD
 ## Open Questions/Out of Scope
 Features considered out of scope include nutrition tracking and social networking capabilities. Also integration of smart watches to display more data by using the respective SDK.
 
-**Non-functional Requirements**
+## Non-functional Requirements
 Security: User login, secure storage of personal details, and data encryption. I have achieved this using bcrypt to hash and store sensitive user information in my database.
 The application should be able to handle multiple user requests simultaneously.
 The application should be easy to use with a user-friendly interface.
 The application should respond quickly to user requests.
 The application should have a high degree of reliability.
 
-**Project Planning**
+## Project Planning
 ```mermaid
 gantt
     title WorkoutWise Project Plan
 
     section Planning
-    Requirements Gathering   :done,    des1, 2023-01-01, 7d
-    Designing                :done,    des2, after des1, 7d
-    Wireframing              :active,  des3, after des2, 7d
+    Requirements Gathering   :   des1, 2023-06-29, 1d
+    Designing                :   des2, after des1, 1d
+    Wireframing              :  des3, after des2, 1d
 
     section Development
-    Frontend Development     :         des4, after des3, 14d
-    Backend Development      :         des5, after des3, 14d
-    Integration              :         des6, after des4, 7d
+    Frontend Development     :         des4, after des3, 21d
+    Backend Development      :         des5, after des3, 21d
+    Integration              :         des6, after des4, 1d
 
     section Testing and Deployment
-    Testing                  :         des7, after des6, 7d
-    Deployment               :         des8, after des7, 3d
+    Testing                  :         des7, after des6, 1d
+    Deployment               :         des8, after des7, 1d
 ```
 
-**Testing Strategy**
-Steps taken to achieve product quality included frequent testing during the development process, I was constantly testing throughout the whole process making sure no unexpected errors occured when changing parts of my application. Using different details, routes, actions etc all to ensure everything was working as expected.
+## Testing Strategy
+Steps taken to achieve product quality included frequent testing during the development process, I was constantly testing throughout the whole process making sure no unexpected errors occurred when changing parts of my application. Using different details, routes, actions etc all to ensure everything was working as expected.
 Edge cases were handled by anticipating user errors and providing appropriate error messages, leading to more efficient debugging.
 
-**Implementation**
-I had to consider whether this was to a mobile only app or a desktop + mobile application and I started with mobile only design but decided to do both to make it more accessible, I have deployed with Vercel but obviously in future I would have to get a domain and use a service like AWS to get to a production level
+## Implementation
+I had to consider whether this was to a mobile-only app or a desktop + mobile application and I started with mobile-only design but decided to do both to make it more accessible, I have deployed with Vercel but obviously, in future I would have to get a domain and use a service like AWS to get to a production level
 
-**End-to-end solution**
+## End-to-end solution
 The software effectively meets its objectives by providing users with personalized workout plans based on their fitness goals and levels and a way to track their workouts.
 
-**References**
+## References 
 [(https://github.com/Keegs4213/Workout-Wise]
-Key Resources:
-Next.js
-React.js
-React-Bootstrap
-Express.js
-MongoDB
-[https://api-ninjas.com/api/exercises] - Exercises API
-Youtube API
+
+*Key Resources*:
+- Next.js
+- React.js
+- React-Bootstrap
+- Express.js
+- MongoDB
+- [https://api-ninjas.com/api/exercises] - Exercises API
+- Youtube API
