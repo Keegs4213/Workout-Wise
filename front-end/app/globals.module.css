@@ -41,7 +41,7 @@
 }
 
 .headerTitle {
-  font-family: "VT323", monospace;
+  font-family: 'VT323', monospace;
   font-size: 2em;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .page-container::before {
-  content: "";
+  content: '';
   position: absolute;
   height: 100%;
   width: 100%;
@@ -87,9 +87,26 @@
 }
 
 .loginLabel {
-  font-family: "VT323", monospace;
+  font-family: 'VT323', monospace;
 }
 
+.signup-container {
+  position: relative;
+}
+
+.signup-container::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  height: 450px;
+  width: 300px;
+  z-index: -1;
+  background: #133955;
+  animation: pulse 5s infinite;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgb(0, 242, 255);
+  border-radius: 10px;
+}
 
 /* Goals page */
 
@@ -153,7 +170,7 @@
   align-items: center;
   justify-content: center;
   margin-top: -25px;
-  font-family: "VT323", monospace;
+  font-family: 'VT323', monospace;
 }
 .header3 {
   display: flex;
@@ -177,7 +194,7 @@
   overflow-y: auto;
 }
 .planText {
-  font-family: "VT323", monospace;
+  font-family: 'VT323', monospace;
 }
 
 .buttonContainer {
@@ -198,13 +215,13 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #fff;
-  border-top: 1px solid #ddd;
+  background-color: #fff; /* Or any color you prefer */
+  border-top: 1px solid #ddd; /* Optional, adds a slight border at the top of the navbar */
 }
 
 .fixed-bottom .nav-link {
-  color: #333;
-  text-align: center;
+  color: #333; /* Or any color you prefer */
+  text-align: center; /* Center the text and the icon */
 }
 
 .fixed-bottom .nav-link div {
@@ -225,20 +242,20 @@
 /* Dashboard */
 
 .dashboardSubtitle {
-  font-family: "VT323", monospace;
+  font-family: 'VT323', monospace;
 }
 
 .goalText {
-  font-family: "VT323", monospace;
+  font-family: 'VT323', monospace;
 }
 
 .quoteText {
-  font-family: "VT323", monospace;
+  font-family: 'VT323', monospace;
 }
 
 .p {
-  font-family: "VT323", monospace;
+  font-family: 'VT323', monospace;
 }
 .dashboardText {
-  font-family: "VT323", monospace;
+  font-family: 'VT323', monospace;
 }

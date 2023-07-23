@@ -69,7 +69,7 @@ move API key to custom environment
 to do:
 
 Profile - display user goal - save changes with button 
-change profile picture 
+change profile picture - save to profile 
 add height + weight input
 fix layout
 

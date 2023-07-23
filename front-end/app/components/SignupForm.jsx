@@ -16,16 +16,16 @@ function SignupForm() {
   const [emailTaken, setEmailTaken] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const router = isClient ? useRouter() : undefined;
+  const router = useRouter();
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    setIsClient(true)
+  }, [])
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormState((prevState) => ({ ...prevState, [name]: value }));
-  };
+    const { name, value } = event.target
+    setFormState((prevState) => ({ ...prevState, [name]: value }))
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -61,7 +61,7 @@ function SignupForm() {
     } finally {
       setIsLoading(false); // Set isLoading back to false after the fetch request is completed
     }
-  };
+  }
 
   return (
     <div>
@@ -110,7 +110,10 @@ function SignupForm() {
       )}
       <p>{message}</p>
     </div>
-  );
+  )
 }
 
+
 export default SignupForm;
+
+
