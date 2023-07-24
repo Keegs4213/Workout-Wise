@@ -13,7 +13,7 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
   //console.log(`Password: ${password}`);
 
   const user = await User.findOne({ email });
-
+  console.log('NOW', user)
   // Log the user to check if a user was found
   //console.log(`User: ${JSON.stringify(user)}`);
 
@@ -41,6 +41,7 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
           _id: user._id,
           name: user.name,
           email: user.email,
+          
         },
       });
     } else {
@@ -52,7 +53,7 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
 // desc Signup user
 // route POST /auth/signup
 exports.SignupUser = asyncHandler(async (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, profileImageUrl, weight, height } = req.body;
 
   // Log the email, username and password to check their values
   console.log(`Name: ${name}`);
@@ -65,18 +66,21 @@ exports.SignupUser = asyncHandler(async (req, res, next) => {
   if (existingUser) {
     res.status(400).json({ message: "User with this email already exists" });
   } else {
-    const user = new User({ name, email, password: hashedPassword });
+    const user = new User({
+      name,
+      email,
+      password: hashedPassword,
+      profileImageUrl,
+      weight,
+      height,
+    });
 
     // Save the user to the database
     await user.save();
 
     res.status(201).json({
       message: "User signed up successfully",
-      response: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      },
+      response: user,
     });
   }
 });

@@ -49,16 +49,6 @@ function FitnessLevelPage() {
         }
       );
 
-      // Save workout and nutrition plans to local storage
-      localStorage.setItem(
-        "workoutPlan",
-        JSON.stringify(response.data.workoutPlan)
-      );
-      localStorage.setItem(
-        "nutritionPlan",
-        JSON.stringify(response.data.nutritionPlan)
-      );
-
       // Save fitness level to local storage
       localStorage.setItem("fitnessLevel", level.name);
 
