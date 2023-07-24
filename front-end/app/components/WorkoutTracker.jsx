@@ -6,7 +6,6 @@ import fetch from "isomorphic-unfetch";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { Pagination, Table } from "react-bootstrap";
-import styles from "../globals.module.css";
 
 const ITEMS_PER_PAGE = 5;
 

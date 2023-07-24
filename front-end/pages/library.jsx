@@ -202,7 +202,7 @@ function LibraryPage() {
             {exercises.map((exercise, i) => (
             <Card
             className="card border-light mb-3"
-            style={{ width: "300px", height: "235px" }} // Adjusted width and height
+            style={{ width: "300px", height: "235px" }} 
             key={i}
           >
             <Card.Body className={styles.dashboardText} style={{ fontSize: "1em" }}>

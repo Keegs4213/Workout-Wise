@@ -7,12 +7,11 @@ import "../public/bootstrap.min.css";
 import styles from "./landing.module.css";
 import CyberButtonScreen from "./components/CyberButtonScreen";
 
-
 export default function Home() {
   return (
     <main>
       <Container className={styles.container}>
-      <div
+        <div
           className={`${styles.backgroundSquare} ${styles.square1}`}
           style={{ top: "10%", left: "5%" }}
         />
@@ -41,21 +40,8 @@ export default function Home() {
             <Card
               border="light"
               className={`shadow mb-4 ${styles.heroImageCard}`}
-            >
-              {/* <Card.Img
-                as={Image}
-                variant="top"
-                src="/landing.jpg"
-                alt="Exercise Image"
-                width={500}
-                height={450}
-                priority
-              /> */}
-            </Card>
+            ></Card>
             <div className="d-grid gap-2 d-md-flex justify-content-md-center">
-              {/* <Button variant="primary" href="/login" className={styles.ctaButton}>
-                Get Started
-              </Button> */}
               <CyberButtonScreen href="/login" className={styles.ctaButton} />
             </div>
           </Col>
