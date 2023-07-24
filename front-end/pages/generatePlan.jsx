@@ -237,7 +237,7 @@ function GeneratePlanPage() {
         let exerciseCount = fitnessLevelMapping[fitnessLevel].exercises;
         if (fitnessGoal.toLowerCase() === "tone up") {
           if (type === "cardio") {
-            // For tone up plan, ensure at least one cardio exercise is included each day
+            // For tone up plan, ensure at least one cardio exercise is included 
             exerciseCount = fitnessLevelMapping[fitnessLevel].days;
           } else if (type === "strength") {
             // Subtract the number of cardio exercises we already fetched

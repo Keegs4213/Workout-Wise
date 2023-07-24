@@ -45,9 +45,9 @@ const updateUser = (req, res) => {
   .then((data) => {
     if (req.body.profileImageUrl) {
       data.profileImageUrl = req.body.profileImageUrl; // Update the profile image URL
-      data.weight = req.body.weight; // Add this line
-      data.height = req.body.height; // Add this line
-      data.fitnessGoal = req.body.fitnessGoal; // Add this line
+      data.weight = req.body.weight; 
+      data.height = req.body.height; 
+      data.fitnessGoal = req.body.fitnessGoal; 
       data.save(); // Save the changes
     }
     res.send({ result: 200, updatedUser: data })

@@ -4,7 +4,6 @@ export default function WorkoutLog() {
     const mockData = [
       { date: "2023-07-21", workoutType: "Cycling", duration: "30 minutes", intensity: "Moderate" },
       { date: "2023-07-22", workoutType: "Weightlifting", duration: "1 hour", intensity: "High" },
-      // Add more data as needed
     ];
   
     return (

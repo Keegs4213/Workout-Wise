@@ -100,7 +100,7 @@ export default function Dashboard() {
 
     }
 
-    console.log('Counts by Month:', countsByMonth) // <-- Add this line
+    console.log('Counts by Month:', countsByMonth) 
 
     const chartData = {
       labels: Object.keys(countsByMonth),
@@ -114,7 +114,7 @@ export default function Dashboard() {
       ],
     }
 
-    console.log('Chart Data:', chartData) // <-- Add this line
+    console.log('Chart Data:', chartData) 
 
     return chartData
   }
@@ -146,7 +146,7 @@ export default function Dashboard() {
       ],
     }
 
-    console.log('Doughnut Data:', doughnutData) // <-- Add this line
+    console.log('Doughnut Data:', doughnutData) 
 
     return doughnutData
   }

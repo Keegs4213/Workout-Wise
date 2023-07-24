@@ -124,9 +124,9 @@
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1) !important;
   transition: transform 0.3s ease-in-out !important;
   cursor: pointer !important;
-  max-height: 350px; /* Adjust as per your requirements */
-  width: 100%; /* This will make the card responsive */
-  margin: 15px; /* Adds a gap around each card */
+  max-height: 350px; 
+  width: 100%; 
+  margin: 15px; 
   display: flex;
   flex-direction: column;
   object-fit: cover;
@@ -154,7 +154,6 @@
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1) !important;
   transition: transform 0.3s ease-in-out !important;
   cursor: pointer !important;
-  /* Adds a gap around each card */
   display: flex;
   flex-direction: column;
 }
@@ -215,28 +214,6 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #fff; /* Or any color you prefer */
-  border-top: 1px solid #ddd; /* Optional, adds a slight border at the top of the navbar */
-}
-
-.fixed-bottom .nav-link {
-  color: #333; /* Or any color you prefer */
-  text-align: center; /* Center the text and the icon */
-}
-
-.fixed-bottom .nav-link div {
-  font-size: 0.75rem; /* Adjust the size of the text */
-  background-color: #fff;
-  border-top: 1px solid #ddd;
-}
-
-.fixed-bottom .nav-link {
-  color: #333;
-  text-align: center;
-}
-
-.fixed-bottom .nav-link div {
-  font-size: 0.75rem;
 }
 
 /* Dashboard */

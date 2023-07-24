@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useRouter } from "next/router";
 import styles from "./../../app/globals.module.css";
-import LoadingSpinner from "./LoadingSpinner"; // <-- Import your loading spinner component
+import LoadingSpinner from "./LoadingSpinner"; 
 import "../globals.css"
 
 function SignupForm() {
