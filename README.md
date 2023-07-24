@@ -35,15 +35,15 @@ graph TB
 ```
 
 ## Purpose
-The project, WorkoutWise, aims to solve the problem of personalized workout planning for individuals with varying fitness goals and levels. The opportunity lies in providing users with a solution that is tailored to their specific needs, something that generic workout plans often fail to deliver. Currently, individuals must sift through a multitude of generic plans or hire a personal trainer to get a personalized plan. The desired state is to have an easily accessible, personalized workout plan at the user's fingertips.
+WorkoutWise aims to address the problem of personalized workout planning for individuals with varying fitness goals and levels. We see an opportunity in offering users a solution tailored to their specific needs, a characteristic that generic workout plans often lack. Currently, individuals need to sift through numerous generic plans or hire a personal trainer to receive a personalized plan. We envision a future where an easily accessible, personalized workout plan lies at every user's fingertips.
 
-This problem has been addressed by other projects, but often these solutions lack the level of personalization offered by WorkoutWise or require a subscription.
+Other projects have attempted to address this problem, but they often lack the level of personalization that WorkoutWise offers or require a subscription.
 
 ## Industry/ domain
-The domain of this project is Health and Fitness, specifically online fitness training. The current state of the industry is dynamic with challenges from startups and an increasing shift towards online fitness due to global circumstances. The project is also relevant to the wellness and digital health industries.
+WorkoutWise operates within the Health and Fitness domain, specifically focusing on online fitness training. The industry is currently dynamic, facing challenges from startups and an increasing shift towards online fitness due to global circumstances. Our project also holds relevance to the wellness and digital health industries.
 
 ## Stakeholders
-The stakeholders are individuals interested in fitness, specifically those seeking personalized workout plans. This includes fitness beginners, intermediates, and experts. The software is also relevant to health and wellness organizations interested in providing personalized workout plans to their clients. Potentially healthcare professionals helping clients to lose weight or personal trainers looking for inspiration for exercises to show their clients. Stakeholders expect an easy-to-use, efficient, and effective solution for workout planning.
+Stakeholders for WorkoutWise are individuals interested in fitness, especially those seeking personalized workout plans. This includes fitness beginners, intermediates, and experts. The software also interests health and wellness organizations that aim to offer personalized workout plans to their clients. Healthcare professionals assisting clients with weight loss or personal trainers seeking inspiration for exercises to demonstrate to their clients may find value in our software. Stakeholders anticipate an easy-to-use, efficient, and effective solution for workout planning.
 
 ## Product Description
 **Architecture Diagram**
@@ -82,14 +82,10 @@ graph TD
 ![Figma design](/Figma.PNG)
 
 ## Open Questions/Out of Scope
-Features considered out of scope include nutrition tracking and social networking capabilities. Also integration of smart watches to display more data by using the respective SDK.
+We consider features such as nutrition tracking and social networking capabilities to be out of scope. Integration of smartwatches to display more data using their respective SDK also falls outside the scope of this project.
 
 ## Non-functional Requirements
-Security: User login, secure storage of personal details, and data encryption. I have achieved this using bcrypt to hash and store sensitive user information in my database.
-The application should be able to handle multiple user requests simultaneously.
-The application should be easy to use with a user-friendly interface.
-The application should respond quickly to user requests.
-The application should have a high degree of reliability.
+For security, we have implemented user login, secure storage of personal details, and data encryption. We achieved this using bcrypt to hash and store sensitive user information in our database. The application can handle multiple user requests simultaneously, offers a user-friendly interface, responds quickly to user requests, and exhibits a high degree of reliability.
 
 ## Project Planning
 ```mermaid
@@ -112,11 +108,10 @@ gantt
 ```
 
 ## Testing Strategy
-Steps taken to achieve product quality included frequent testing during the development process, I was constantly testing throughout the whole process making sure no unexpected errors occurred when changing parts of my application. Using different details, routes, actions etc all to ensure everything was working as expected.
-Edge cases were handled by anticipating user errors and providing appropriate error messages, leading to more efficient debugging.
+We ensured product quality through frequent testing during the development process. We constantly tested all aspects of the application throughout the entire process to ensure that no unexpected errors occurred when making changes. We handled edge cases by anticipating user errors and providing appropriate error messages, which led to more efficient debugging.
 
 ## Implementation
-I had to consider whether this was to a mobile-only app or a desktop + mobile application and I started with mobile-only design but decided to do both to make it more accessible, I have deployed with Vercel but obviously, in future I would have to get a domain and use a service like AWS to get to a production level
+We initially considered making this a mobile-only app but decided to support both desktop and mobile platforms to make it more accessible. We have deployed the application with Vercel, but in the future, we plan to acquire a domain and use a service like AWS for production-level deployment.
 
 ## End-to-end solution
 The software effectively meets its objectives by providing users with personalized workout plans based on their fitness goals and levels and a way to track their workouts.
