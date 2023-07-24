@@ -17,7 +17,7 @@ function LoginPage() {
   const handleEmailChange = (event) => setEmail(event.target.value)
   const handlePasswordChange = (event) => setPassword(event.target.value)
 
-  const handleSubmit = async (event) => {D
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true); 
 

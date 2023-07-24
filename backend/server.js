@@ -49,19 +49,37 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage })
 
-app.post('/upload', upload.single('image'), (req, res) => {
+app.post('/upload', upload.single('image'), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: 'No photo uploaded' })
   }
   try {
+    const filePath = `/upload/${req.file.filename}`;
     res.status(200).json({
       message: 'Photo successfully uploaded',
-      filePath: `/upload/${req.file.filename}`,
+      filePath: filePath,
+    })
+
+    // Update the user's profile image URL
+    const userId = req.body.userId; // Get the user id from the request body
+    if (userId) {
+      const User = require('./models/User');  // Import the User model
+      await User.findByIdAndUpdate(
+        userId,
+        { profileImageUrl: filePath },
+        { useFindAndModify: false, new: true }
+      );
+    }
+
+    res.status(200).json({
+      message: 'Photo successfully uploaded',
+      filePath: filePath,
     })
   } catch (error) {
     console.log(error)
   }
 })
+
 
 app.listen(PORT, () => {
   console.log(`Server connect to PORT:${PORT}`)

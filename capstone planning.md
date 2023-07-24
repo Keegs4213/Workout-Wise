@@ -68,18 +68,14 @@ move API key to custom environment
 
 to do:
 
-Profile - display user goal - save changes with button 
-change profile picture - save to profile 
-add height + weight input
-fix layout
-
-
+Profile 
+get help - fix saving profile picture + weight / height
 Mobile response
 
-To do after coding:
-Design powerpoint presentation
+Practise presentation - time limit?
 Documentation - better google docs or github markup?
-
+deploy software 
+do i need to generate a swagger/postman?
 tidy code
 
 
