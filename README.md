@@ -1,49 +1,27 @@
 # WorkoutWise: Your Personal Fitness Companion
 
-Welcome to the GitHub repository for WorkoutWise, a comprehensive fitness application designed as a capstone project. This app is designed to make your workout experience more intelligent and goal-oriented, whether you're a beginner or a fitness enthusiast.
-
-## Objectives
-
-The main objectives of WorkoutWise are:
-
-- To provide a personalized workout based on user goals.
-- To offer a simple and intuitive interface for tracking daily workouts and generating workout plans.
-- To foster a community of fitness enthusiasts who can motivate and learn from each other.
-- To leverage technology to make fitness accessible and enjoyable for everyone.
-
- 
-## Technologies
-
-WorkoutWise will use the following technologies:
-
-- Frontend: Next.js, React, Typescript, and React bootstrap + CSS for styling.
-- Backend: Express.js
-- Database: MongoDB for data persistence.
-- Others: Git/GitHub for version control, Vercel for deployment.
-
-## Project Planning
-```mermaid
-graph TB
-    A[Start] --> B[Project Planning]
-    B --> C[Design & Mockup]
-    C --> D[Setting Up the Project]
-    D --> E[Development of Core Features]
-    E --> F[Testing]
-    F --> G[Deployment]
-    G --> H[Maintenance and Further Development]
-    H --> I[End]
-```
+Welcome to the GitHub repository for WorkoutWise, a comprehensive fitness application designed as a capstone project. This app is designed to make your workout experience more intelligent and personalised towards the user's fitness goals, whether you're a beginner or a fitness expert.
 
 ## Purpose
-WorkoutWise aims to address the problem of personalized workout planning for individuals with varying fitness goals and levels. We see an opportunity in offering users a solution tailored to their specific needs, a characteristic that generic workout plans often lack. Currently, individuals need to sift through numerous generic plans or hire a personal trainer to receive a personalized plan. We envision a future where an easily accessible, personalized workout plan lies at every user's fingertips.
+
+This project explores the potential of creating a workout companion app that acknowledges the need for personalization in fitness regimes, recognizing that there isn't a single path to achieving fitness goals. WorkoutWise aims to address this gap in the market by providing personalized workout plans and workout tracking based on the user's goals and experience level.
+
+This problem is valuable as it goes beyond the standard "one-size-fits-all" approach found in many fitness apps. In the current state, users often find themselves following fitness and nutrition plans that do not consider their individual differences or preferences, which can lead to demotivation and unmet goals. WorkoutWise, on the other hand, aims to provide a more tailored approach that may increase user engagement and the achievement of fitness goals.
+
+Currently, individuals need to sift through numerous generic plans or hire a personal trainer to receive a personalized plan. We envision a future where an easily accessible, personalized workout plan lies at every user's fingertips.
 
 Other projects have attempted to address this problem, but they often lack the level of personalization that WorkoutWise offers or require a subscription.
 
 ## Industry/ domain
-WorkoutWise operates within the Health and Fitness domain, specifically focusing on online fitness training. The industry is currently dynamic, facing challenges from startups and an increasing shift towards online fitness due to global circumstances. Our project also holds relevance to the wellness and digital health industries.
+WorkoutWise operates at the crossroads of Health and Fitness, with a particular emphasis on online fitness training. The industry landscape is extremely dynamic, with challenges emerging from innovative startups and a pronounced shift towards digital fitness solutions, prompted by the prevailing global circumstances.
+
+This project holds relevance not only to the fitness industry but also extends its value to the wellness and digital health sectors. The industry's value chain is diverse, encompassing fitness enthusiasts, personal trainers, nutritionists, and software developers. This project could also be relevant to other industries where personal goal tracking and community support are beneficial.
+
 
 ## Stakeholders
-Stakeholders for WorkoutWise are individuals interested in fitness, especially those seeking personalized workout plans. This includes fitness beginners, intermediates, and experts. The software also interests health and wellness organizations that aim to offer personalized workout plans to their clients. Healthcare professionals assisting clients with weight loss or personal trainers seeking inspiration for exercises to demonstrate to their clients may find value in our software. Stakeholders anticipate an easy-to-use, efficient, and effective solution for workout planning.
+Stakeholders for WorkoutWise are individuals interested in fitness, especially those seeking personalized workout plans. This includes all experience levels ranging from fitness beginners to intermediates, and experts. The software also interests health and wellness organizations that aim to offer personalized workout plans to their clients.
+
+Healthcare professionals assisting clients with weight loss or personal trainers seeking inspiration for exercises to demonstrate to their clients may find value in our software. Stakeholders anticipate an easy-to-use, efficient, and effective solution for workout planning.
 
 ## Product Description
 **Architecture Diagram**
@@ -111,7 +89,7 @@ gantt
 We ensured product quality through frequent testing during the development process. We constantly tested all aspects of the application throughout the entire process to ensure that no unexpected errors occurred when making changes. We handled edge cases by anticipating user errors and providing appropriate error messages, which led to more efficient debugging.
 
 ## Implementation
-We initially considered making this a mobile-only app but decided to support both desktop and mobile platforms to make it more accessible. We have deployed the application with Vercel, but in the future, we plan to acquire a domain and use a service like AWS for production-level deployment.
+We initially considered making this a mobile-only app but decided to support both desktop and mobile platforms to make it more accessible. We have deployed the application with Vercel, but in the future, we plan to acquire a domain and use a service like Elastic Beanstalk + AWS for production-level deployment.
 
 ## End-to-end solution
 The software effectively meets its objectives by providing users with personalized workout plans based on their fitness goals and levels and a way to track their workouts.
