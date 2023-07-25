@@ -54,8 +54,10 @@ export default function Dashboard() {
         const response = await axios.get(
           `http://localhost:3245/users/${userId}`
         )
+        console.log(response.data, 'RESPONSE DATA')
         setUser(response.data)
         setGoals(response.data.fitnessGoal)
+        setImageUrl(response.data?.profileImageUrl)
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching user:', error)
@@ -92,15 +94,14 @@ export default function Dashboard() {
 
     const countsByMonth = {}
 
-    for (let i = 0; i < workouts.length; i += 5) {
-      const workout = workouts[i];
-      const month = workout.date.slice(0, 7);
+    for (let i = 0; i < workouts?.length; i += 5) {
+      const workout = workouts[i]
+      const month = workout.date.slice(0, 7)
 
-      countsByMonth[month] = (countsByMonth[month] || 0) + 1;
-
+      countsByMonth[month] = (countsByMonth[month] || 0) + 1
     }
 
-    console.log('Counts by Month:', countsByMonth) 
+    console.log('Counts by Month:', countsByMonth)
 
     const chartData = {
       labels: Object.keys(countsByMonth),
@@ -114,7 +115,7 @@ export default function Dashboard() {
       ],
     }
 
-    console.log('Chart Data:', chartData) 
+    console.log('Chart Data:', chartData)
 
     return chartData
   }
@@ -128,10 +129,8 @@ export default function Dashboard() {
 
   const workoutsCompleted = data.labels.includes(currentMonth)
     ? data.datasets[0].data[data.labels.indexOf(currentMonth)]
-
-    : 0;
-  const totalWorkouts = 15;
-
+    : 0
+  const totalWorkouts = 15
 
   const getDoughnutData = (chartData) => {
     const workoutsRemaining = totalWorkouts - workoutsCompleted
@@ -146,7 +145,7 @@ export default function Dashboard() {
       ],
     }
 
-    console.log('Doughnut Data:', doughnutData) 
+    console.log('Doughnut Data:', doughnutData)
 
     return doughnutData
   }
