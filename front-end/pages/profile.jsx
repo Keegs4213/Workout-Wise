@@ -7,6 +7,7 @@ import LoadingSpinner from "../app/components/LoadingSpinner";
 import "../public/bootstrap.min.css";
 import BottomNavBar from "../app/components/Navbar";
 import "../app/globals.css";
+import { set } from 'mongoose'
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -26,11 +27,12 @@ export default function Profile() {
       try {
         const response = await axios.get(
           `http://localhost:3245/users/${userId}`
-        );
-        setUser(response.data);
-        setGoals(response.data.fitnessGoal);
-        setWeight(response.data.weight);
-        setHeight(response.data.height);
+          )
+          console.log(response?.data.data, 'RESPONSE DATA')
+          setUser(response?.data.data)
+          setGoals(response?.data?.fitnessGoal)
+          setWeight(response?.data?.data?.weight)
+          setHeight(response?.data?.data?.height)
 
         
         if (response.data.profileImageUrl) {
@@ -63,20 +65,21 @@ export default function Profile() {
 
     try {
       const response = await axios.put(
-        `http://localhost:3245/users/update/${user._id}`
-      );
-      console.log(response);
-      if (response.data === 200) {
-        setUser(response.data.updatedUser);
-        setUploadMessage("Profile updated successfully");
-      } else {
-        setUploadMessage("Failed to update profile");
-      }
+        `http://localhost:3245/users/update/${user._id}`,
+        {
+          weight: weight,
+          height: height,
+          fitnessGoal: goals,
+        }
+      )
+      console.log(response.data.data, 'resDATA')
+      setUser(response.data.data)
+      setUploadMessage('Profile updated successfully')
     } catch (error) {
-      console.error("Error updating profile:", error);
-      setUploadMessage("An error occurred while updating the profile");
+      console.error('Error updating profile:', error)
+      setUploadMessage('An error occurred while updating the profile')
     }
-  };
+  }
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();

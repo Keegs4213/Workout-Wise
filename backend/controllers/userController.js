@@ -43,14 +43,14 @@ const updateUser = (req, res) => {
     { useFindAndModify: false, new: true } // Adding 'new: true' returns the updated document
   )
   .then((data) => {
-    if (req.body.profileImageUrl) {
+    if (req.body) {
       data.profileImageUrl = req.body.profileImageUrl; // Update the profile image URL
       data.weight = req.body.weight; 
       data.height = req.body.height; 
       data.fitnessGoal = req.body.fitnessGoal; 
       data.save(); // Save the changes
     }
-    res.send({ result: 200, updatedUser: data })
+    res.send({ result: 200, data })
   })
   .catch((err) => {
     console.log(err);

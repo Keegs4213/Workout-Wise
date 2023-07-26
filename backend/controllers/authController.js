@@ -6,14 +6,13 @@ const bcrypt = require("bcrypt");
 // desc Login user
 // route POST /auth/login
 exports.LoginUser = asyncHandler(async (req, res, next) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body
 
   // Log the email and password to check their values
   //  console.log(`Email: ${email}`);
   //console.log(`Password: ${password}`);
 
   const user = await User.findOne({ email });
-  console.log('NOW', user)
   // Log the user to check if a user was found
   //console.log(`User: ${JSON.stringify(user)}`);
 
@@ -53,7 +52,7 @@ exports.LoginUser = asyncHandler(async (req, res, next) => {
 // desc Signup user
 // route POST /auth/signup
 exports.SignupUser = asyncHandler(async (req, res, next) => {
-  const { name, email, password, profileImageUrl, weight, height } = req.body;
+  const { name, email, password, profileImageUrl, weight, height } = req.body
 
   // Log the email, username and password to check their values
   console.log(`Name: ${name}`);

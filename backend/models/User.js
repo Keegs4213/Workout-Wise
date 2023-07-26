@@ -10,9 +10,9 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   fitnessGoal: { type: String },
   fitnessLevel: { type: String },
-  profileImageUrl: { type: String },
-  weight: { type: Number},
-  height: { type: Number },
+  profileImageUrl: { type: String, default: 'upload/sample.jpg'},
+  weight: { type: Number, default: 0},
+  height: { type: Number, default: 0 },
 });
 
 module.exports = mongoose.model("User", userSchema);
