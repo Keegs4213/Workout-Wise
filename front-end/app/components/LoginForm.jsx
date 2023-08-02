@@ -1,6 +1,7 @@
 // Loginpage.jsx
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import styles from './../../app/globals.module.css'
 import { Form, Button } from 'react-bootstrap'
 import '../globals.css'
@@ -73,9 +74,9 @@ function LoginPage() {
         </Button>
       </Form>
       <br></br>
-      <a href='/signup'>
-        <p>Don&#39;t have an account?</p>
-      </a>
+      <Link href='/signup'>
+        <a>Don&#39;t have an account?</a>
+      </Link>
       <p>{message}</p>
     </div>
   )
