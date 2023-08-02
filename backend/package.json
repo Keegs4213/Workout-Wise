@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server.js",
+    "start": "node server.js",
     "client": "npm run dev --prefix front-end",
     "test": "echo \"Error: no test specified\" && exit 1",
     "proj": "concurrently \"npm start\" \"npm run client\""

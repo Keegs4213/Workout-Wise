@@ -1,7 +1,7 @@
 // authController.js
 const User = require("../models/User");
 const asyncHandler = require("../middleware/asyncHandler");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 // desc Login user
 // route POST /auth/login

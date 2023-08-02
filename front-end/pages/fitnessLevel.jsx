@@ -42,7 +42,7 @@ function FitnessLevelPage() {
     // Send a request to update the user's data
     try {
       const response = await axios.put(
-        `http://localhost:3245/users/update/${userId}`,
+        `http://localhost:8080/users/update/${userId}`,
         {
           fitnessGoal,
           fitnessLevel: level.name,

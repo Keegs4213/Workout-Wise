@@ -26,7 +26,7 @@ export default function Profile() {
 
       try {
         const response = await axios.get(
-          `http://localhost:3245/users/${userId}`
+          `http://localhost:8080/users/${userId}`
           )
           console.log(response?.data.data, 'RESPONSE DATA')
           setUser(response?.data.data)
@@ -65,7 +65,7 @@ export default function Profile() {
 
     try {
       const response = await axios.put(
-        `http://localhost:3245/users/update/${user._id}`,
+        `http://localhost:8080/users/update/${user._id}`,
         {
           weight: weight,
           height: height,
@@ -89,7 +89,7 @@ export default function Profile() {
     data.append("userId", user._id);
 
     try {
-      const response = await axios.post("http://localhost:3245/upload", data);
+      const response = await axios.post("http://localhost:8080/upload", data);
 
       console.log("Response:", response.data);
       setUploadMessage(response.data.message);

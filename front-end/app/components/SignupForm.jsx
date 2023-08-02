@@ -33,7 +33,7 @@ function SignupForm() {
     setIsLoading(true); // Set isLoading to true at the start of the async function
 
     try {
-      const response = await fetch("http://localhost:3245/auth/signup", {
+      const response = await fetch("http://localhost:8080/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),

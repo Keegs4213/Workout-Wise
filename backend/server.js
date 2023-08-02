@@ -9,13 +9,23 @@ const multer = require('multer')
 require('dotenv').config()
 
 const app = express()
-const PORT = 3245
+const PORT = 8080 
 
 // Connect to the database
 require('./database/mongodb')
 
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', // Allow localhost for development
+    'https://workout-wise-aolewzngq-keegs4213.vercel.app' // Allow your production domain
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+
 // Middleware
-app.use(cors())
+app.use(cors(corsOptions));
 app.use(express.json())
 
 // Routes

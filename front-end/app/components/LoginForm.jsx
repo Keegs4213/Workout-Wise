@@ -23,7 +23,7 @@ function LoginPage() {
     setIsLoading(true); 
 
 
-    const response = await fetch('http://localhost:3245/auth/login', {
+    const response = await fetch('http://localhost:8080/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -75,7 +75,7 @@ function LoginPage() {
       </Form>
       <br></br>
       <Link href='/signup'>
-        <a>Don&#39;t have an account?</a>
+        <p>Don&#39;t have an account?</p>
       </Link>
       <p>{message}</p>
     </div>
