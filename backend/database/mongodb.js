@@ -1,6 +1,6 @@
 //mongodb.js
 const Mongoose = require("mongoose");
-const uri = process.env.DB_URI || "mongodb://127.0.0.1:27017/WorkoutWise";
+const uri = "mongodb+srv://keegangreig3:123@cluster0.eso15oc.mongodb.net/?retryWrites=true&w=majority";
 
 const mongooseOptions = {
   useNewUrlParser: true,
