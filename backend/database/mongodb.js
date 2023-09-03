@@ -1,6 +1,7 @@
 //mongodb.js
 const Mongoose = require("mongoose");
-const uri = "mongodb+srv://keegangreig3:123@cluster0.eso15oc.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
+
 
 const mongooseOptions = {
   useNewUrlParser: true,
