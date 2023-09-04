@@ -18,12 +18,12 @@ const levels = [
   {
     image: "/intermediate.jpg",
     name: "Intermediate",
-    description: "You exercise semi-regularly and have some experience.",
+    description: "You exercise semi-regularly (2-3 days per week) and have some experience.",
   },
   {
     image: "/advanced.jpg",
     name: "Expert",
-    description: "You exercise regularly and have years of experience.",
+    description: "You exercise frequently (5+ days per week) and have years of experience.",
   },
 ];
 
