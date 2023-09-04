@@ -10,6 +10,13 @@ require('dotenv').config()
 
 const app = express()
 const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server connect to PORT:${PORT}`);
+});
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Connected to server' })
+})
 
 
 // Connect to the database
@@ -92,10 +99,5 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 })
 
 
-app.listen(PORT, () => {
-  console.log(`Server connect to PORT:${PORT}`)
-})
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Connected to server' })
-})
+
