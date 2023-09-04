@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import styles from "./../../app/globals.module.css";
 import LoadingSpinner from "./LoadingSpinner"; 
 import "../globals.css"
+import { API_URL } from "../config/config";
+
 
 function SignupForm() {
   const [formState, setFormState] = useState({
@@ -33,7 +35,7 @@ function SignupForm() {
     setIsLoading(true); // Set isLoading to true at the start of the async function
 
     try {
-      const response = await fetch("http://localhost:8080/auth/signup", {
+      const response = await fetch(`${API_URL}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),

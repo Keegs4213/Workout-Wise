@@ -6,6 +6,7 @@ import Header from '../app/components/Header';
 import styles from '../app/globals.module.css';
 import "../public/bootstrap.min.css"
 
+
 export default function SignupPage() {
   const [message, setMessage] = useState('');
   const router = useRouter();
