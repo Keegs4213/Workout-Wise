@@ -89,13 +89,14 @@ gantt
 We ensured product quality through frequent testing during the development process. We constantly tested all aspects of the application throughout the entire process to ensure that no unexpected errors occurred when making changes. We handled edge cases by anticipating user errors and providing appropriate error messages, which led to more efficient debugging.
 
 ## Implementation
-We initially considered making this a mobile-only app but decided to support both desktop and mobile platforms to make it more accessible. We have deployed the front-end application with Vercel, but in the future, we plan to acquire a domain and use a service like Elastic Beanstalk + AWS for production-level deployment.
+We initially considered making this a mobile-only app but decided to support both desktop and mobile platforms to make it more accessible. We have deployed the front-end application with Vercel and originally deployed the backend using AWS elastic beanstalk but the cost was too much so have switched backend hosting to Heroku. To access the application please visit: https://workout-wise-kg.vercel.app/ 
 
 ## End-to-end solution
 The software effectively meets its objectives by providing users with personalized workout plans based on their fitness goals and levels and a way to track their workouts.
 
 ## References 
 [WorkoutWise GitHub Repository](https://github.com/Keegs4213/Workout-Wise)
+[WorkoutWise Live Deployment](https://workout-wise-kg.vercel.app/)
 
 *Key Resources*:
 - Next.js
