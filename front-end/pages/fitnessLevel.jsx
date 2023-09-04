@@ -7,6 +7,7 @@ import styles from "../app/globals.module.css";
 import "../public/bootstrap.min.css";
 import axios from "axios";
 import { API_URL } from '../config/config';
+import "../app/globals.css";
 
 const levels = [
   {
