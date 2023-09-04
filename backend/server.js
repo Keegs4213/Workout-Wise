@@ -25,7 +25,7 @@ require('./database/mongodb')
 const corsOptions = {
   origin: [
     'http://localhost:3000', // Allow localhost for development
-    'https://pure-springs-99603-4cd96693a709.herokuapp.com/' // Allow your production domain
+    'https://workout-wise-p9ai5i0p0-keegs4213.vercel.app' // Allow your production domain
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
