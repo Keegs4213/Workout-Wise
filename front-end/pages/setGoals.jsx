@@ -7,6 +7,7 @@ import styles from "../app/globals.module.css";
 import "../public/bootstrap.min.css";
 import "../app/globals.css";
 
+
 const goals = [
   {
     image: "/musclegain.jpg",

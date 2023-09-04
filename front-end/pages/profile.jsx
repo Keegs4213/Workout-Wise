@@ -8,6 +8,7 @@ import "../public/bootstrap.min.css";
 import BottomNavBar from "../app/components/Navbar";
 import "../app/globals.css";
 import { set } from 'mongoose'
+import { API_URL } from '../config/config';
 
 export default function Profile() {
   const [user, setUser] = useState(null);

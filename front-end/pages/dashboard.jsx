@@ -25,6 +25,7 @@ import { Line, Doughnut } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../app/components/LoadingSpinner";
 import "../app/globals.css";
+import { API_URL } from '../config/config';
 
 export default function Dashboard() {
   const [quote, setQuote] = useState("");

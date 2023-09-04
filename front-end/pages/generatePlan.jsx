@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import LoadingSpinner from "../app/components/LoadingSpinner";
 import "../app/globals.css"
 
+
 // Helper function to shuffle an array
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
