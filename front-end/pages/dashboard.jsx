@@ -55,7 +55,7 @@ export default function Dashboard() {
 
       try {
         const response = await axios.get(
-          `http://localhost:8080/users/${userId}`
+          `${API_URL}/users/${userId}`
         );
         setUser(response.data);
         setGoals(response.data.fitnessGoal);
@@ -68,7 +68,7 @@ export default function Dashboard() {
     const fetchQuote = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/quote/randomQuote"
+          `${API_URL}/quote/randomQuote`
         );
         setQuote(response.data.quote);
       } catch (error) {
