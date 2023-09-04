@@ -22,18 +22,20 @@ app.get('/', (req, res) => {
 // Connect to the database
 require('./database/mongodb')
 
-const corsOptions = {
-  origin: [
-    'http://localhost:3000', // Allow localhost for development
-    'https://workout-wise-p9ai5i0p0-keegs4213.vercel.app' // Allow your production domain
-  ],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204
-};
+// const corsOptions = {
+//   origin: [
+//     'http://localhost:3000', // Allow localhost for development
+//     'https://workout-wise-p9ai5i0p0-keegs4213.vercel.app' // Allow your production domain
+//   ],
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+//   optionsSuccessStatus: 204,
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// };
 
 // Middleware
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions)); 
+app.use(cors());
 app.use(express.json())
 
 // Routes
