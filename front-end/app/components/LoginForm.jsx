@@ -5,7 +5,7 @@ import Link from 'next/link'
 import styles from './../../app/globals.module.css'
 import { Form, Button } from 'react-bootstrap'
 import '../globals.css'
-import { API_URL } from '../config/config';
+import { API_URL } from '../../config/config';
 
 function LoginPage() {
   const [email, setEmail] = useState("");

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import styles from "./../../app/globals.module.css";
 import LoadingSpinner from "./LoadingSpinner"; 
 import "../globals.css"
-import { API_URL } from "../../config/config.js"
+import { API_URL } from '../../config/config';
 
 
 function SignupForm() {
