@@ -90,6 +90,7 @@ We ensured product quality through frequent testing during the development proce
 
 ## Implementation
 We initially considered making this a mobile-only app but decided to support both desktop and mobile platforms to make it more accessible. We have deployed the front-end application with Vercel and originally deployed the backend using AWS elastic beanstalk but the cost was too much so have switched backend hosting to Heroku. To access the application please visit: https://workout-wise-kg.vercel.app/ 
+Please note, Heroku sleeps the backend when not in use to reduce cost so first time you login/signup it may take a while to load as it is waking the backend.
 
 ## End-to-end solution
 The software effectively meets its objectives by providing users with personalized workout plans based on their fitness goals and levels and a way to track their workouts.
